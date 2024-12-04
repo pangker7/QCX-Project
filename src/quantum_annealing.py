@@ -9,6 +9,7 @@ from argparse import *
 import time
 
 import preprocess
+import basic
 
 # get qubit count
 parser = ArgumentParser(description="Parser")
@@ -36,17 +37,16 @@ bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2'), ('O2', 'H1')]
 # bonds_a = [('C1','O1'), ('C1','O1'), ('C1','O2'), ('H1','O2')]
 
 # embed
-embd, B = util.change_to_graph(cha_b, bonds_b)
-_, A = util.change_to_graph(cha_a, bonds_a, embd)
+embd, B = preprocess.change_to_graph(cha_b, bonds_b)
+_, A = preprocess.change_to_graph(cha_a, bonds_a, embd)
 
 N = len(A[0,:])
 M = len(B[0,:])
 
-T0 = args.t0
-M0 = args.m0
+T0 = args.t0 # 40
+M0 = args.m0 # 200
 
-L1 = 10
-L2 = 10
+L1 = L2 = 10
 
 SHOTS = 1000000
 
@@ -123,13 +123,13 @@ def annealing(T,M0):
         # print(m)
         for j in range(N):
             for r in range(M,2**L):
-                circ.compose(spin_one(-L1*dt*((m+1)/M0),r),list(range(L*j, L*j+L)),inplace=True)
+                circ.compose(spin_one(-L1*dt*((m+1)/M0)**5,r),list(range(L*j, L*j+L)),inplace=True)
             for i in range(j+1):
                 for b in range(M):
                     # if j == i:
                     #     circ.compose(spin_one(1*dt*((m+1)/M0), b), list(range(L*j, L*j+L)),inplace=True) # why?
                     if j != i:
-                        circ.compose(spin_two(-L2*dt*((m+1)/M0),b,b),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
+                        circ.compose(spin_two(-L2*dt*((m+1)/M0)**5,b,b),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
                     for a in range(M):
                         if (B[a][b] != A[i][j]):
                             if j == i:
@@ -143,115 +143,80 @@ def annealing(T,M0):
     circ.measure_all()
     return circ
 
-# def count_single_and_double_qubit_gates(circuit):
-#     single_qubit_gates = 0
-#     double_qubit_gates = 0
-    
-#     for instruction in circuit.data:
-#         gate = instruction.operation
-#         # Skip barriers
-#         if gate.name == 'barrier':
-#             continue
-#         num_qubits = gate.num_qubits
-        
-#         if num_qubits == 1:
-#             single_qubit_gates += 1
-#         elif num_qubits == 2:
-#             double_qubit_gates += 1
-#         else:
-#             raise ValueError(f"Gate {gate.name} acts on {num_qubits} qubits, which is not a single or double qubit gate.")
-    
-#     return single_qubit_gates, double_qubit_gates
-
-# main
-
-print("Building circuit")
+print("Building circuit...")
 start_time = time.time()
 circ = annealing(T0, M0)
 end_time = time.time()
 print(f"Finished in {int(1000*(end_time-start_time))} ms")
 
-# n_s, n_d = count_single_and_double_qubit_gates(circ)
-# print("We are using",n_s,"single-qubit gates and",n_d,"two-qubit gates.")
-
-# Create a noise model with the specified T1 and T2 rates
-# noise_model = NoiseModel()
-# basis_gates = ['u1','u2','u3','id','cx']
-
-# single_qubit_error = thermal_relaxation_error(T1, T2, time=TAU1)#ns
-# noise_model.add_all_qubit_quantum_error(single_qubit_error, ['u1', 'u2', 'u3', 'id'])
-
-# two_qubit_error_i = thermal_relaxation_error(T1, T2, time=TAU2)#ns
-# two_qubit_error = two_qubit_error_i.expand(two_qubit_error_i)
-# noise_model.add_all_qubit_quantum_error(two_qubit_error, ['cx'])
-
-# # transpile
-# transpile(circ, basis_gates=basis_gates)
-# n_s, n_d = count_single_and_double_qubit_gates(circ)
-# print("Transpiled, we are using",n_s,"single-qubit gates and",n_d,"two-qubit gates.")
-# # this seems to do nothing, but it's a good sign.
-
-# Execute the circuit with the noise model
-# backend = Aer.get_backend('aer_simulator')
-
-print('Running simulation')
+print('Running simulation...')
 start_time = time.time()
 backend = AerSimulator(device='GPU')
-job = backend.run(circ, shots=SHOTS)#, noise_model=noise_model)
+job = backend.run(circ, shots=SHOTS)
 result = job.result()
 end_time = time.time()
 print(f"Finished in {int(1000*(end_time-start_time))} ms")
 
-# print(result)
 counts = result.get_counts(circ)
-# print("Measurement counts:", counts)
-# print(len(counts))
-
 sorted_list = sorted(counts.items(), key=lambda item: item[1], reverse=True)
-top_5 = sorted_list[:5]
-for array, value in top_5:
-    print(f"Array (flipped): {array}, Freq: {100*value/SHOTS:.3f}%")
-
-
-# Evaluate target function W(x)
-def result_string_to_func(x_string):
+valid_prob = 0
+W_min = 1000
+f_min = []
+W_avg = 0
+solutions = []
+sol_prob = 0
+for result, count in sorted_list:
+    f = basic.result_to_f(result, A, B)
+    valid = basic.valid(f, A, B)
+    valid_prob += int(valid) * count
+    W_value  = basic.eval_W(f, A, B, L1, L2)
+    if W_value == 0:
+        solutions += f
+        sol_prob += count
+    if W_value < W_min:
+        W_min = W_value
+        f_min = f
+    W_avg += W_value * count
+valid_prob /= SHOTS
+W_avg /= SHOTS
+sol_prob /= SHOTS
+print(f"Valid prob: {valid_prob:.3f}, Average W: {W_avg:.3f}, Min W: {W_min:.3f}, Solution prob: {sol_prob:.6f}")
+# top_5 = sorted_list[:5]
+# for array, value in top_5:
+#     print(f"Array (flipped): {array}, Freq: {100*value/SHOTS:.3f}%")
     
 
 
-def evaluate_W(f):
-    W = 0
-    
+# # Convert counts to a numpy array of length n
+# x_values = []
+# for key in counts.keys():
+#     x_values += [np.flip(np.array([int(b) for b in format(int(key,base=2), '0'+str(N*L+2)+'b')]))] * counts[key]
+# x_values = np.array(x_values)
 
-# Convert counts to a numpy array of length n
-x_values = []
-for key in counts.keys():
-    x_values += [np.flip(np.array([int(b) for b in format(int(key,base=2), '0'+str(N*L+2)+'b')]))] * counts[key]
-x_values = np.array(x_values)
+# n_sol = 0
+# last_x = [0]*N*L
+# for x_value in x_values:
+#     v_values = x_value[:N*L].reshape(N, L)
 
-n_sol = 0
-last_x = [0]*N*L
-for x_value in x_values:
-    v_values = x_value[:N*L].reshape(N, L)
+#     # Calculate the value for each row: 4*v1 + 2*v2 + v3
+#     values = [0]*N
+#     for i in range(L):
+#         values = values + (1<<(L-i-1)) * v_values[:,i]
+#     if (np.any(values > M-1)):
+#         continue
 
-    # Calculate the value for each row: 4*v1 + 2*v2 + v3
-    values = [0]*N
-    for i in range(L):
-        values = values + (1<<(L-i-1)) * v_values[:,i]
-    if (np.any(values > M-1)):
-        continue
+#     # Create the one-hot encoded matrix
+#     one_hot_matrix = np.zeros((N, M))
+#     one_hot_matrix[np.arange(N), values] = 1
 
-    # Create the one-hot encoded matrix
-    one_hot_matrix = np.zeros((N, M))
-    one_hot_matrix[np.arange(N), values] = 1
+#     # Calculate PBP^T
+#     P = one_hot_matrix
+#     PBP_T = P @ B @ np.transpose(P)
 
-    # Calculate PBP^T
-    P = one_hot_matrix
-    PBP_T = P @ B @ np.transpose(P)
-
-    # Check if PBP^T matches A
-    if np.all(PBP_T == A):
-        if np.any(x_value[:N*L] != last_x):
-            print("solution!", values, x_value)
-            last_x = x_value[:N*L]
-        n_sol = n_sol + 1
-print("# of correct solutions:", n_sol)
+#     # Check if PBP^T matches A
+#     if np.all(PBP_T == A):
+#         if np.any(x_value[:N*L] != last_x):
+#             print("solution!", values, x_value)
+#             last_x = x_value[:N*L]
+#         n_sol = n_sol + 1
+# print("# of correct solutions:", n_sol)
