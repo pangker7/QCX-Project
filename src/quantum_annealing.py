@@ -89,7 +89,7 @@ def QA_circuit(A, B, params):
     return circ
 
 def QA_simulate(A, B, params):
-    default_params = {'t0': 20, 'm0': 100, 'shots': 1000000, 'l1': 10, 'l2': 10, 'dynamic_l': 3, 'b0': 1}
+    default_params = {'t0': 20, 'm0': 100, 'shots': 1000000, 'l1': 10, 'l2': 10, 'dynamic_l': 3, 'b0': 1, 'device': 'CPU'}
     params = {**default_params, **params}
 
     N, M, L = basic.get_NML(A, B)
@@ -103,7 +103,7 @@ def QA_simulate(A, B, params):
 
     print('Running simulation...')
     start_time = time.time()
-    backend = AerSimulator(device='GPU')
+    backend = AerSimulator(device=params['device'])
     job = backend.run(circ, shots=params['shots'])
     result = job.result()
     end_time = time.time()
@@ -139,16 +139,16 @@ def QA_simulate(A, B, params):
 if __name__ == "__main__":
     # Example usage:
 
-    cha_b = ['C1', 'C2', 'C3', 'C4', 'O1', 'O2', 'H1', 'H2', 'H3', "H4", 'H5', 'H6', 'H7', 'H8']
-    bonds_b = [('C1','H1'), ('C2','H2'), ('C3','H3'), ('C1','H4'), 
-            ('C1','H5'), ('C2','H6'), ('C3','H7'), 
-            ('C1','C2'), ('C2','C3'), ('C3','C4'),
-            ('C4','O1'), ('C4','O1'), ('C4','O2'), ('H8','O2')]
-    cha_a = ['C1', 'O1', 'O2', 'H1']
-    bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2'), ('O2', 'H1')]
+    cha_b = ['C1', 'C2', 'C3', 'C4', 'O1', 'O2']
+    bonds_b = [('C1','C2'), ('C2','C3'), ('C3','C4'),
+            ('C4','O1'), ('C4','O1'), ('C4','O2')]
+    hydrogen_b = [3, 2, 2, 0, 0, 1]
+    cha_a = ['C1', 'O1', 'O2']
+    bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2')]
+    hydrogen_a = [0, 0, 1]
     
-    embd, B = preprocess.change_to_graph(cha_b, bonds_b)
-    _, A = preprocess.change_to_graph(cha_a, bonds_a, embd)
+    B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
+    A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
 
     QA_simulate(A, B, params={'t0': 80, 'm0': 400})
     
