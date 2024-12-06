@@ -114,25 +114,28 @@ def QA_simulate(A, B, params):
     valid_prob = 0
     W_min = 1000
     f_min = []
-    W_avg = 0
+    d_avg = 0
+    d_min_classical = 0 # TODO
     solutions = []
     sol_prob = 0
     for result, count in sorted_list:
         f = basic.result_to_f(result, A, B)
         valid = basic.valid(f, A, B)
         valid_prob += int(valid) * count
-        W_value  = basic.eval_W(f, A, B, params['l1'], params['l2'])
-        if W_value == 0:
+        if not valid:
+            continue
+        d_value  = basic.eval_d(f, A, B)
+        if d_value == 0:
             solutions += f
             sol_prob += count
-        if W_value < W_min:
-            W_min = W_value
+        if d_value < W_min:
+            W_min = d_value
             f_min = f
-        W_avg += W_value * count
+        d_avg += d_value * count
+    d_avg /= valid_prob
     valid_prob /= params['shots']
-    W_avg /= params['shots']
     sol_prob /= params['shots']
-    print(f"Valid prob: {valid_prob:.3f}, Average W: {W_avg:.3f}, Min W: {W_min:.3f}, Solution prob: {sol_prob:.6f}")
+    print(f"Valid prob: {valid_prob:.3f}, Average d: {d_avg:.3f}, Min W: {W_min:.3f}, Solution prob: {sol_prob:.6f}, Solution: {f_min}")
 
 
 
@@ -150,5 +153,5 @@ if __name__ == "__main__":
     B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
     A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
 
-    QA_simulate(A, B, params={'t0': 80, 'm0': 400})
+    QA_simulate(A, B, params={'t0': 20, 'm0': 100})
     
