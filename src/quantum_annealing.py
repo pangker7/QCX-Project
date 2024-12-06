@@ -16,9 +16,16 @@ import basic
 # A, B: adjacent matrices
 # T0: total evolution time
 # M0: number of layers
-def QA_circuit(A, B, params):
+def QA_circuit(problem, params):
 
-    N, M, L = basic.get_NML(A, B)
+    mat_A = problem.mat_A
+    mat_B = problem.mat_B
+    vec_A = problem.vec_A
+    vec_B = problem.vec_B
+    N = problem.N
+    M = problem.M
+    L = problem.L
+
     dt = params["t0"]/params["m0"]
 
     def spin_one(phi,n):
@@ -63,12 +70,12 @@ def QA_circuit(A, B, params):
                     if j != i:
                         circ.compose(spin_two(-params["l2"]*dt*x**(params["dynamic_l"]+1),b,b),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
                     for a in range(M):
-                        if (B[a][b] != A[i][j]):
+                        if (mat_B[a][b] != mat_A[i][j]):
                             if j == i:
                                 if a == b: # now a = b, or the factor is zero.
-                                    circ.compose(spin_one(-2*dt*x*(B[a][b]-A[i][j])**2,a),list(range(L*j,L*j+L)),inplace=True)
+                                    circ.compose(spin_one(-2*dt*x*(mat_B[a][b]-mat_A[i][j])**2,a),list(range(L*j,L*j+L)),inplace=True)
                             else:
-                                circ.compose(spin_two(-2*dt*x*(B[a][b]-A[i][j])**2,b,a),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
+                                circ.compose(spin_two(-2*dt*x*(mat_B[a][b]-mat_A[i][j])**2,b,a),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
         circ.rx(2*dt*(1-x)*params["b0"], range(N*L))
         return circ
     
@@ -88,55 +95,108 @@ def QA_circuit(A, B, params):
     circ.measure_all()
     return circ
 
-def QA_simulate(A, B, params):
-    default_params = {'t0': 20, 'm0': 100, 'shots': 1000000, 'l1': 10, 'l2': 10, 'dynamic_l': 3, 'b0': 1, 'device': 'CPU'}
+def QA_simulate(problem: basic.Problem, params: dict) -> dict:
+    """
+    Run the simulation for a noiseless quantum annealing circuit.
+
+    Args:
+        mat_A, mat_B, vec_A, vec_B(np.ndarray): Arguments for the optimization problem.
+        params(dict): Parameters for circuit and simulation, contaning the following options.
+            device (string): Device for AerSimulator, 'CPU' by default.
+            silent (bool): Whether print information to console or not, False by default.
+            shots (int): Number of running times, 1,000,000 by default.
+            m0 (int): Number of layers, 100 by default.
+            t0 (float): Total evolution time, 50 by default.
+            b0 (float): Transverse magnetic field strength, 1 by default.
+            l1,l2 (float): Coefficients for regularization terms, 10 by defalut.
+            dynamic_l (int): Use dynamic l(x)=lx^k, 0 for disable, 4 by default.
+
+
+    Returns:
+        `result`(dict): result information.
+    """
+
+    default_params = {'device': 'CPU', 'silent': False, 'shots': 1000000, 
+                      'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
     params = {**default_params, **params}
 
-    N, M, L = basic.get_NML(A, B)
-    print("We are using",N*L,"qubits, with N =",N,", M =",M)
+    mat_A = problem.mat_A
+    mat_B = problem.mat_B
+    vec_A = problem.vec_A
+    vec_B = problem.vec_B
+    N = problem.N
+    M = problem.M
+    L = problem.L
 
-    print("Building circuit...")
+    total_start_time = time.time()
+
+    if(not params['silent']):
+        print("------------------")
+        print("Starting QA simulation under the following param: ")
+        print(params)
+        print("We are using",N*L,"qubits, with N =",N,", M =",M)
+
+    # Build circuit
+    if(not params['silent']):
+        print("Building circuit...")
     start_time = time.time()
-    circ = QA_circuit(A, B, params)
+    circ = QA_circuit(problem, params)
     end_time = time.time()
-    print(f"Finished in {int(1000*(end_time-start_time))} ms")
+    if(not params['silent']):
+        print(f"Finished in {int(1000*(end_time-start_time))} ms")
 
-    print('Running simulation...')
+    # Run simulation
+    if(not params['silent']):
+        print('Running simulation...')
     start_time = time.time()
     backend = AerSimulator(device=params['device'])
     job = backend.run(circ, shots=params['shots'])
-    result = job.result()
+    sim_result = job.result()
     end_time = time.time()
-    print(f"Finished in {int(1000*(end_time-start_time))} ms")
+    if(not params['silent']):
+        print(f"Finished in {int(1000*(end_time-start_time))} ms")
 
-    counts = result.get_counts(circ)
-    sorted_list = sorted(counts.items(), key=lambda item: item[1], reverse=True)
+    # Data processing
+    counts = sim_result.get_counts(circ)
+    sorted_counts = sorted(counts.items(), key=lambda item: item[1], reverse=True)
     valid_prob = 0
-    W_min = 1000
-    f_min = []
+    d_min = 1000
     d_avg = 0
-    d_min_classical = 0 # TODO
+    d_min_cl, _ = problem.brutal_force()
     solutions = []
     sol_prob = 0
-    for result, count in sorted_list:
-        f = basic.result_to_f(result, A, B)
-        valid = basic.valid(f, A, B)
+    for result, count in sorted_counts:
+        f = problem.result_to_f(result)
+        valid = problem.valid(f)
         valid_prob += int(valid) * count
         if not valid:
             continue
-        d_value  = basic.eval_d(f, A, B)
-        if d_value == 0:
+        d_value  = problem.eval_d(f)
+        d_avg += d_value * count
+        if d_value == d_min_cl:
             solutions += f
             sol_prob += count
-        if d_value < W_min:
-            W_min = d_value
-            f_min = f
-        d_avg += d_value * count
+        if d_value < d_min:
+            d_min = d_value
     d_avg /= valid_prob
     valid_prob /= params['shots']
     sol_prob /= params['shots']
-    print(f"Valid prob: {valid_prob:.3f}, Average d: {d_avg:.3f}, Min W: {W_min:.3f}, Solution prob: {sol_prob:.6f}, Solution: {f_min}")
+    if(not params['silent']):
+        print(f"Valid prob: {valid_prob:.3f}, Solution prob: {sol_prob:.6f}, Average d: {d_avg:.3f}, Min d: {d_min:.3f}, Classical Min d: {d_min_cl:.3f}.")
+    
+    result = {}
+    total_end_time = time.time()
+    result['time'] = total_end_time - total_start_time
+    result['d_avg'] = d_avg
+    result['d_min'] = d_min
+    result['d_min_cl'] = d_min_cl
+    result['valid_prob'] = valid_prob
+    result['sol_prob'] = sol_prob
+    result['problem'] = problem
+    result['solutions'] = solutions
+    result['counts'] = sorted_counts
 
+    return result
 
 
 if __name__ == "__main__":
@@ -150,8 +210,10 @@ if __name__ == "__main__":
     bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2')]
     hydrogen_a = [0, 0, 1]
     
-    B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
-    A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
+    mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
+    mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
 
-    QA_simulate(A, B, params={'t0': 20, 'm0': 100})
+    problem = basic.Problem(mat_A, mat_B, hydrogen_a, hydrogen_b)
+
+    QA_simulate(problem, params={'t0': 50, 'm0': 100})
     
