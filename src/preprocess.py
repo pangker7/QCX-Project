@@ -64,13 +64,13 @@ if __name__ == "__main__":
 
 # THIS IS A GLOBAL ATOM LIST!
 atom_list = [
-["H","Li","Na","K","Rb","Cs"],
+["Li","Na","K","Rb","Cs"],
 ["Be","Mg","Ca","Sr","Ba"],
 ["B","Al","Ga","In","Tl"],
 ["C","Si","Ge","Sn","Pb"],
 ["N","P","As","Sb","Bi"],
 ["O","S","Se","Te"],
-["I","F","Cl","Br","I"]
+["F","Cl","Br","I"]
 ]
 # ATOM LIST END!
 
