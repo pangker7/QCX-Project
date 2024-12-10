@@ -164,7 +164,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
     valid_prob = 0
     d_min = 1000
     d_avg = 0
-    d_min_cl, _ = problem.brutal_force()
+    d_min_cl, num_sol_clas = problem.brutal_force()
     solutions = []
     sol_prob = 0
     for result, count in sorted_counts:
@@ -176,7 +176,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
         d_value  = problem.eval_d(f)
         d_avg += d_value * count
         if d_value == d_min_cl:
-            solutions += f
+            solutions += [f]
             sol_prob += count
         if d_value < d_min:
             d_min = d_value
@@ -185,6 +185,8 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
     sol_prob /= params['shots']
     if(not params['silent']):
         print(f"Valid prob: {valid_prob:.3f}, Solution prob: {sol_prob:.6f}, Average d: {d_avg:.3f}, Min d: {d_min:.3f}, Classical Min d: {d_min_cl:.3f}.")
+    if(not params['silent']):
+        print(f"Out of solutions {num_sol_clas}, quantum algorithm found {solutions}.")
     
     result = {}
     total_end_time = time.time()

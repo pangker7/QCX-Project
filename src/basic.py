@@ -62,6 +62,7 @@ class Problem:
         assert len(f) == self.N
         for i in range(self.N):
             assert f[i] >= 0 and f[i] < 2**self.L
+            W += self.list_query.query(self.vec_A[i],self.vec_B[f[i]],self.same_group_loss,self.diff_group_loss)
             if f[i] >= self.M:
                 W += l1
             for j in range(i, self.N):
@@ -90,8 +91,8 @@ class Problem:
         """
         d_min = 1000
         solutions = []
-        f = [0]*self.N
         for x in range(self.M**self.N):
+            f = [0]*self.N # else every f will be the copy of the same thing.
             for i in range(self.N):
                 f[i] = (x // self.M**i) % self.M
             if self.valid(f):
@@ -100,5 +101,5 @@ class Problem:
                     d_min = d_value
                     solutions = [f]
                 elif d_value == d_min:
-                    solutions += f
+                    solutions += [f]
         return d_min, solutions
