@@ -65,6 +65,8 @@ def QA_circuit(problem, params):
         for j in range(N):
             for r in range(M,2**L):
                 circ.compose(spin_one(-params["l1"]*dt*x**(params["dynamic_l"]+1),r),list(range(L*j, L*j+L)),inplace=True)
+            for b in range(M):
+                circ.compose(spin_one(-2*dt*x*(problem.list_query.query(vec_A[j],vec_B[b],problem.same_group_loss,problem.diff_group_loss)),b),list(range(L*j,L*j+L)),inplace=True)
             for i in range(j+1):
                 for b in range(M):
                     if j != i:
@@ -213,7 +215,7 @@ if __name__ == "__main__":
     mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
     mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
 
-    problem = basic.Problem(mat_A, mat_B, hydrogen_a, hydrogen_b)
+    problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
 
     QA_simulate(problem, params={'t0': 50, 'm0': 100})
     

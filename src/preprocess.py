@@ -1,5 +1,7 @@
 import numpy as np
 
+# This file should be named as "chemistry"
+
 def get_atom_type(c):
     j = 0
     while not ('0' <= c[j] <= '9'):
@@ -59,3 +61,40 @@ if __name__ == "__main__":
 
     adj_matrix = change_to_graph(cha, bonds, hydrogen, 3, 3)
     print(adj_matrix)
+
+# THIS IS A GLOBAL ATOM LIST!
+atom_list = [
+["H","Li","Na","K","Rb","Cs"],
+["Be","Mg","Ca","Sr","Ba"],
+["B","Al","Ga","In","Tl"],
+["C","Si","Ge","Sn","Pb"],
+["N","P","As","Sb","Bi"],
+["O","S","Se","Te"],
+["I","F","Cl","Br","I"]
+]
+# ATOM LIST END!
+
+class CharacterListQuery:
+    def __init__(self, list_of_lists):
+        self.char_to_indices = {}
+        for index, sublist in enumerate(list_of_lists):
+            for char in sublist:
+                if char not in self.char_to_indices:
+                    self.char_to_indices[char] = set()
+                self.char_to_indices[char].add(index)
+
+    def query(self, lit_1, lit_2, same_group_loss, diff_group_loss):
+        if lit_1 == lit_2:
+            return 0
+
+        if lit_1 not in self.char_to_indices or lit_2 not in self.char_to_indices:
+            return diff_group_loss # unknown element is very different from any known ones!
+        
+        common_indices = self.char_to_indices[lit_1] & self.char_to_indices[lit_2]
+        if common_indices:
+            return same_group_loss
+        
+        return diff_group_loss
+
+def get_list_query():
+    return CharacterListQuery(atom_list)

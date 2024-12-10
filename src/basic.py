@@ -1,21 +1,24 @@
 import numpy as np
-
+from preprocess import get_list_query, get_atom_type
 
 class Problem:
     """
     A class representing a problem instance for graph similarity or matching.
     """
 
-    def __init__(self, mat_A: np.ndarray, mat_B: np.ndarray, vec_A: np.ndarray, vec_B: np.ndarray, subgraph: bool=True):
+    def __init__(self, mat_A: np.ndarray, mat_B: np.ndarray, vec_A: np.ndarray, vec_B: np.ndarray, same_group_loss: float, diff_group_loss: float, subgraph: bool=True):
         """
         Initialize the Problem instance with adjacency matrices and vectors.
         subgraph (bool): Full graph match / subgraph match.
         """
         self.mat_A = mat_A
         self.mat_B = mat_B
-        self.vec_A = np.array(vec_A)
-        self.vec_B = np.array(vec_B)
+        self.vec_A = np.array([get_atom_type(x) for x in vec_A])
+        self.vec_B = np.array([get_atom_type(x) for x in vec_B])
         self.subgraph = True
+        self.same_group_loss = same_group_loss
+        self.diff_group_loss = diff_group_loss
+        self.list_query = get_list_query()
         self.N = len(mat_A[0, :])
         self.M = len(mat_B[0, :])
         self.L = len(bin(self.M - 1)) - 2
@@ -75,6 +78,7 @@ class Problem:
         d2 = 0
         assert self.valid(f)
         for i in range(self.N):
+            d2 += self.list_query.query(self.vec_A[i],self.vec_B[f[i]],self.same_group_loss,self.diff_group_loss)
             for j in range(i, self.N):
                 d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
         d = np.sqrt(d2)
@@ -82,7 +86,7 @@ class Problem:
     
     def brutal_force(self):
         """
-        Classical brutal-force solver, retures d_min, solutions
+        Classical brutal-force solver, returns d_min, solutions
         """
         d_min = 1000
         solutions = []
