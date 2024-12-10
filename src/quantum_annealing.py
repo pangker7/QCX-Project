@@ -34,7 +34,10 @@ def QA_circuit(problem, params):
         for m in range(L):
             if len(bin_n) <= m or bin_n[-m-1] == '0':
                 this.x(L-1-m)
-        this.compose(PhaseGate(phi).control(L-1),range(L),inplace=True)
+        if (L > 1):
+            this.compose(PhaseGate(phi).control(L-1),range(L),inplace=True)
+        else:
+            this.compose(PhaseGate(phi),range(L),inplace=True)
         for m in range(L):
             if len(bin_n) <= m or bin_n[-m-1] == '0':
                 this.x(L-1-m)
@@ -180,6 +183,9 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
             sol_prob += count
         if d_value < d_min:
             d_min = d_value
+    if valid_prob == 0:
+        print("No valid solutions. Not even valid!")
+        return
     d_avg /= valid_prob
     valid_prob /= params['shots']
     sol_prob /= params['shots']
