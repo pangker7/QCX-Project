@@ -185,10 +185,13 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
             d_min = d_value
     if valid_prob == 0:
         print("No valid solutions. Not even valid!")
-        return
-    d_avg /= valid_prob
-    valid_prob /= params['shots']
-    sol_prob /= params['shots']
+        d_avg = -1
+        valid_prob = 0
+        sol_prob = 0
+    else:
+        d_avg /= valid_prob
+        valid_prob /= params['shots']
+        sol_prob /= params['shots']
     if(not params['silent']):
         print(f"Valid prob: {valid_prob:.3f}, Solution prob: {sol_prob:.6f}, Average d: {d_avg:.3f}, Min d: {d_min:.3f}, Classical Min d: {d_min_cl:.3f}.")
     if(not params['silent']):
