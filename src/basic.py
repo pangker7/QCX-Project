@@ -26,7 +26,7 @@ class Problem:
         self.mat_B = mat_B
         self.vec_A = np.array([get_atom_type(x) for x in vec_A])
         self.vec_B = np.array([get_atom_type(x) for x in vec_B])
-        self.subgraph = True
+        self.subgraph = subgraph
         self.same_group_loss = same_group_loss
         self.diff_group_loss = diff_group_loss
         self.list_query = get_list_query()
@@ -82,7 +82,8 @@ class Problem:
                 if j > i and f[i] == f[j]:
                     W += l2
                 if f[i] < self.M and f[j] < self.M:
-                    W += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
+                    if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]:
+                        W += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
         return W
 
     def eval_d(self, f: list):
@@ -99,7 +100,8 @@ class Problem:
                 self.diff_group_loss,
             )
             for j in range(i, self.N):
-                d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
+                if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]:
+                    d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
         d = np.sqrt(d2)
         return d
 

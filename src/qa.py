@@ -66,12 +66,8 @@ def QA_circuit(problem, params):
         circ = QuantumCircuit(N * L)
         x = Parameter("x")
         for j in range(N):
-            for r in range(M, 2**L):
-                circ.compose(
-                    spin_one(-params["l1"] * dt * x ** (params["dynamic_l"] + 1), r),
-                    list(range(L * j, L * j + L)),
-                    inplace=True,
-                )
+            for r in range(M,2**L):
+                circ.compose(spin_one(-2*params["l1"]*dt*x**(params["dynamic_l"]+1),r),list(range(L*j, L*j+L)),inplace=True)
             for b in range(M):
                 circ.compose(
                     spin_one(
@@ -94,43 +90,20 @@ def QA_circuit(problem, params):
             for i in range(j + 1):
                 for b in range(M):
                     if j != i:
-                        circ.compose(
-                            spin_two(
-                                -params["l2"] * dt * x ** (params["dynamic_l"] + 1),
-                                b,
-                                b,
-                            ),
-                            list(range(L * j, L * j + L))
-                            + list(range(L * i, L * i + L)),
-                            inplace=True,
-                        )
+                        circ.compose(spin_two(-2*params["l2"]*dt*x**(params["dynamic_l"]+1),b,b),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
                     for a in range(M):
-                        if mat_B[a][b] != mat_A[i][j]:
+                        dist = mat_B[a][b] - mat_A[i][j]
+                        if (not dist == 0):
                             if j == i:
-                                if a == b:  # now a = b, or the factor is zero.
-                                    circ.compose(
-                                        spin_one(
-                                            -2
-                                            * dt
-                                            * x
-                                            * (mat_B[a][b] - mat_A[i][j]) ** 2,
-                                            a,
-                                        ),
-                                        list(range(L * j, L * j + L)),
-                                        inplace=True,
-                                    )
+                                if a == b: # now a = b, or the factor is zero.
+                                    if problem.subgraph:
+                                        if dist < 0:
+                                            circ.compose(spin_one(-2*dt*x*dist**2,a),list(range(L*j,L*j+L)),inplace=True)
+                                    else:
+                                        circ.compose(spin_one(-2*dt*x*dist**2,a),list(range(L*j,L*j+L)),inplace=True)
                             else:
-                                circ.compose(
-                                    spin_two(
-                                        -2 * dt * x * (mat_B[a][b] - mat_A[i][j]) ** 2,
-                                        b,
-                                        a,
-                                    ),
-                                    list(range(L * j, L * j + L))
-                                    + list(range(L * i, L * i + L)),
-                                    inplace=True,
-                                )
-        circ.rx(2 * dt * (1 - x) * params["b0"], range(N * L))
+                                circ.compose(spin_two(-2*dt*x*dist**2,b,a),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
+        circ.rx(2*dt*(1-x)*params["b0"], range(N*L))
         return circ
 
     circ = QuantumCircuit(N * L)
@@ -187,10 +160,6 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
     }
     params = {**default_params, **params}
 
-    mat_A = problem.mat_A
-    mat_B = problem.mat_B
-    vec_A = problem.vec_A
-    vec_B = problem.vec_B
     N = problem.N
     M = problem.M
     L = problem.L
@@ -216,8 +185,9 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
     if not params["silent"]:
         print("Running simulation...")
     start_time = time.time()
-    backend = AerSimulator(device=params["device"])
-    job = backend.run(circ, shots=params["shots"])
+    simulator = AerSimulator(device=params['device'], method='statevector')
+    # simulator.set_options(precision='single')
+    job = simulator.run(circ, shots=params['shots'])
     sim_result = job.result()
     end_time = time.time()
     if not params["silent"]:
@@ -225,14 +195,13 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
 
     # Data processing
     counts = sim_result.get_counts(circ)
-    sorted_counts = sorted(counts.items(), key=lambda item: item[1], reverse=True)
     valid_prob = 0
     d_min = 1000
     d_avg = 0
-    d_min_cl, num_sol_clas = problem.brutal_force()
+    d_min_cl, num_sol_clas = problem.cl_solution
     solutions = []
     sol_prob = 0
-    for result, count in sorted_counts:
+    for result, count in counts.items():
         f = problem.result_to_f(result)
         valid = problem.valid(f)
         valid_prob += int(valid) * count
@@ -246,7 +215,8 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
         if d_value < d_min:
             d_min = d_value
     if valid_prob == 0:
-        print("No valid solutions. Not even valid!")
+        if(not params['silent']):
+            print("No valid solutions. Not even valid!")
         d_avg = -1
         valid_prob = 0
         sol_prob = 0
@@ -263,15 +233,15 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
 
     result = {}
     total_end_time = time.time()
-    result["time"] = total_end_time - total_start_time
-    result["d_avg"] = d_avg
-    result["d_min"] = d_min
-    result["d_min_cl"] = d_min_cl
-    result["valid_prob"] = valid_prob
-    result["sol_prob"] = sol_prob
-    result["problem"] = problem
-    result["solutions"] = solutions
-    result["counts"] = sorted_counts
+    result['time'] = total_end_time - total_start_time
+    result['d_avg'] = d_avg
+    result['d_min'] = d_min
+    result['d_min_cl'] = d_min_cl
+    result['valid_prob'] = valid_prob
+    result['sol_prob'] = sol_prob
+    result['problem'] = problem
+    result['solutions'] = solutions
+    result['counts'] = counts
 
     return result
 
@@ -279,20 +249,21 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
 if __name__ == "__main__":
     # Example usage:
 
-    cha_b = ["C1", "C2", "C3", "C4", "O1", "O2"]
-    bonds_b = [
-        ("C1", "C2"),
-        ("C2", "C3"),
-        ("C3", "C4"),
-        ("C4", "O1"),
-        ("C4", "O1"),
-        ("C4", "O2"),
-    ]
-    hydrogen_b = [3, 2, 2, 0, 0, 1]
-    cha_a = ["C1", "O1", "O2"]
-    bonds_a = [("C1", "O1"), ("C1", "O1"), ("C1", "O2")]
-    hydrogen_a = [0, 0, 1]
+    # cha_b = ['C1', 'C2', 'C3', 'C4', 'O1', 'O2']
+    # bonds_b = [('C1','C2'), ('C2','C3'), ('C3','C4'),
+    #         ('C4','O1'), ('C4','O1'), ('C4','O2')]
+    # hydrogen_b = [3, 2, 2, 0, 0, 1]
+    # cha_a = ['C1', 'O1', 'O2']
+    # bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2')]
+    # hydrogen_a = [0, 0, 1]
 
+    cha_b = ['O1', 'C1', 'O2', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'Cl1', 'Cl2']
+    bonds_b = [('O1', 'C1'), ('C1', 'O2'), ('C1', 'O2'), ('C1', 'C2'), ('C2', 'C3'), ('C2', 'C7'), ('C2', 'C7'), ('C3', 'C4'), ('C3', 'C4'), ('C3', 'Cl1'), ('C4', 'C5'), ('C4', 'Cl2'), ('C5', 'C6'), ('C5', 'C6'), ('C6', 'C7')]
+    hydrogen_b = [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0]
+    cha_a = ['O1', 'C1', 'O2', 'C2']
+    bonds_a = [('O1', 'C1'), ('C1', 'O2'), ('C1', 'O2'), ('C1', 'C2')]
+    hydrogen_a = [1, 0, 0, 0]
+    
     mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
     mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
 
@@ -300,4 +271,5 @@ if __name__ == "__main__":
         mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0
     )
 
-    QA_simulate(problem, params={"t0": 50, "m0": 100})
+    QA_simulate(problem, params={'t0':50, 'm0':100})
+    
