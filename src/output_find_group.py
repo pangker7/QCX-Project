@@ -35,31 +35,87 @@ def read_and_rearrange_data(file_path):
 
     return result
 
+def find_o(chas):
+    n = 0
+    for cha in chas:
+        if 'O' in cha:
+            n += 1
+    return n
+
+cha_as = [
+    [],
+    ['C1','O1'],
+    ['C1','O1','O2'],
+    ['P1','O1','O2','O3'],
+    ['C1','C2','N1','O1','O2'],
+    ['C1','C2','C3','C4','C5','C6']
+]
+bonds_as = [
+    [],
+    [('C1','O1'), ('C1','O1')],
+    [('C1','O1'), ('C1','O1'), ('C1','O2')],
+    [('P1','O1'), ('P1','O1'), ('P1','O2'), ('P1','O3')],
+    [('C1','O1'), ('C1','O1'), ('C2','O2'), ('C2','O2'), ('C1','N1'), ('C2','N1')],
+    [('C1','C2'), ('C2','C3'), ('C2','C3'), ('C3','C4'), ('C4','C5'), ('C4','C5'), ('C5','C6'), ('C6','C1'), ('C6','C1')]
+]
+hydrogen_as = [
+    [],
+    [0,0],
+    [0,0,1],
+    [0,0,1,1],
+    [0,0,1,0,0],
+    [0,0,0,0,0,0]
+]
+
 if __name__ == "__main__":
-    exp = int(input("No. of experiment. 1 for plotting p - M, 2 for plotting p - m0: "))
+    exp = int(input("No. of experiment. 0 for testing, 1 for plotting p - M, 2 for plotting p - m0, 3 for plotting p - N_val: "))
+    group = int(input("Enter name of group. 1 is invalid, 2 for Carbonyl (-CO-), 3 for Carboxyl (-COOH), 4 for Phosphonate (-PO₃H₂), 5 for Imide (-C(O)NHC(O)-), 6 for Benzene: "))
 
     data = read_and_rearrange_data("./molecule.txt")
     random.shuffle(data)
 
-    if exp == 1:
+    if exp == 0:
         sol_probs = []
         val_probs = []
-        Ms = []
         for cha_b, bonds_b, hydrogen_b in tqdm.tqdm(data):
-            cha_a = ['C1', 'O1', 'O2']
-            bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2')]
-            hydrogen_a = [0, 0, 1]
+            cha_a = cha_as[group-1]
+            bonds_a = bonds_as[group-1]
+            hydrogen_a = hydrogen_as[group-1]
 
             mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
             mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
 
             problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
 
-            if (problem.brutal_force()[0] == 0 and len(problem.brutal_force()[1]) == 1):
+            sol = quantum_annealing.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent': False})
+            sol_probs += [sol['sol_prob']]
+            val_probs += [sol['valid_prob']]
+        with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
+            file.write(str(sol_probs) + "\n")
+            file.write(str(val_probs) + "\n")
+            file.write(str(sum(sol_probs)/len(sol_probs)) + " " + str(sum(val_probs)/len(val_probs)) + "\n")
+    elif exp == 1 or exp == 3:
+        sol_probs = []
+        val_probs = []
+        Ms = []
+        for cha_b, bonds_b, hydrogen_b in tqdm.tqdm(data):
+            cha_a = cha_as[group-1]
+            bonds_a = bonds_as[group-1]
+            hydrogen_a = hydrogen_as[group-1]
+
+            mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
+            mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
+
+            problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
+
+            if (problem.brutal_force()[0] == 0 and (len(problem.brutal_force()[1]) == 1 or exp == 3)):
                 sol = quantum_annealing.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent':True})
                 sol_probs += [sol['sol_prob']]
                 val_probs += [sol['valid_prob']]
-                Ms += [sol['problem'].M]
+                if exp == 1:
+                    Ms += [sol['problem'].M]
+                elif exp == 3:
+                    Ms += [find_o(cha_b) / 2]
 
         # plotting
         for data in [sol_probs, val_probs]:
@@ -99,8 +155,8 @@ if __name__ == "__main__":
             plt.legend()
             plt.show()
             input("Press Enter to continue showing next plot...")
-        
-        with open("output_find_carboxyl_1.txt", "a") as file:
+
+        with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
             file.write(str(Ms) + "\n")
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
@@ -114,9 +170,9 @@ if __name__ == "__main__":
             sum_sol_prob = 0
             sum_val_prob = 0
             for cha_b, bonds_b, hydrogen_b in tqdm.tqdm(data):
-                cha_a = ['C1', 'O1', 'O2']
-                bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2')]
-                hydrogen_a = [0, 0, 1]
+                cha_a = cha_as[group-1]
+                bonds_a = bonds_as[group-1]
+                hydrogen_a = hydrogen_as[group-1]
 
                 mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
                 mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
@@ -143,7 +199,7 @@ if __name__ == "__main__":
             plt.show()
             input("Press Enter to continue showing next plot...")
         
-        with open("output_find_carboxyl_2.txt", "a") as file:
+        with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
             file.write(str(m0s) + "\n")
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
