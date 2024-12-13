@@ -69,24 +69,8 @@ def QA_circuit(problem, params):
             for r in range(M,2**L):
                 circ.compose(spin_one(-2*params["l1"]*dt*x**(params["dynamic_l"]+1),r),list(range(L*j, L*j+L)),inplace=True)
             for b in range(M):
-                circ.compose(
-                    spin_one(
-                        -2
-                        * dt
-                        * x
-                        * (
-                            problem.list_query.query(
-                                vec_A[j],
-                                vec_B[b],
-                                problem.same_group_loss,
-                                problem.diff_group_loss,
-                            )
-                        ),
-                        b,
-                    ),
-                    list(range(L * j, L * j + L)),
-                    inplace=True,
-                )
+                circ.compose(spin_one(-2*dt*x*(problem.list_query.query(vec_A[j],vec_B[b],problem.same_group_loss,problem.diff_group_loss,)),b)
+                            ,list(range(L * j, L * j + L)),inplace=True)
             for i in range(j + 1):
                 for b in range(M):
                     if j != i:
@@ -198,7 +182,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
     valid_prob = 0
     d_min = 1000
     d_avg = 0
-    d_min_cl, num_sol_clas = problem.cl_solution
+    d_min_cl, num_sol_clas = problem.brutal_force()
     solutions = []
     sol_prob = 0
     for result, count in counts.items():

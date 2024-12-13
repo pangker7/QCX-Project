@@ -1,6 +1,6 @@
 import preprocess
 import basic
-import quantum_annealing
+import qa
 import numpy as np
 import matplotlib.pyplot as plt
 import tqdm
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
             problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
 
-            sol = quantum_annealing.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent': False})
+            sol = qa.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent': False})
             sol_probs += [sol['sol_prob']]
             val_probs += [sol['valid_prob']]
         with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
@@ -109,7 +109,7 @@ if __name__ == "__main__":
             problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
 
             if (problem.brutal_force()[0] == 0 and (len(problem.brutal_force()[1]) == 1 or exp == 3)):
-                sol = quantum_annealing.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent':True})
+                sol = qa.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent':True})
                 sol_probs += [sol['sol_prob']]
                 val_probs += [sol['valid_prob']]
                 if exp == 1:
@@ -180,7 +180,7 @@ if __name__ == "__main__":
                 problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
 
                 # if (problem.brutal_force()[0] == 0 and len(problem.brutal_force()[1]) == 1):
-                sol = quantum_annealing.QA_simulate(problem, params={'t0': m0/2, 'm0': m0, 'silent':True})
+                sol = qa.QA_simulate(problem, params={'t0': m0/2, 'm0': m0, 'silent':True})
                 sum_sol_prob += sol['sol_prob']
                 sum_val_prob += sol['valid_prob']
             sol_probs += [sum_sol_prob / len(data)]
