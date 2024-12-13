@@ -5,37 +5,34 @@ from torch_geometric.nn import GCNConv, global_mean_pool
 from sklearn.metrics import mean_squared_error
 
 
-# 子图选择器
 class SubgraphSelector(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels):
         super(SubgraphSelector, self).__init__()
         self.conv1 = GCNConv(in_channels, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, hidden_channels)
-        self.fc = torch.nn.Linear(hidden_channels, 1)  # 输出每个节点的概率
+        self.fc = torch.nn.Linear(hidden_channels, 1)  # probability of output
 
     def forward(self, x, edge_index):
         x = F.relu(self.conv1(x, edge_index))
         x = F.relu(self.conv2(x, edge_index))
-        p = torch.sigmoid(self.fc(x))  # 节点属于子图的概率
+        p = torch.sigmoid(self.fc(x))  # probability of vertices in the subgraph
         return p
 
 
-# 图嵌入网络
 class GraphEmbedder(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, out_channels):
         super(GraphEmbedder, self).__init__()
         self.conv1 = GCNConv(in_channels, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, hidden_channels)
-        self.fc = torch.nn.Linear(hidden_channels, out_channels)  # 图嵌入维度
+        self.fc = torch.nn.Linear(hidden_channels, out_channels)
 
     def forward(self, x, edge_index, batch):
         x = F.relu(self.conv1(x, edge_index))
         x = F.relu(self.conv2(x, edge_index))
-        h = global_mean_pool(x, batch)  # 图池化生成全局嵌入
+        h = global_mean_pool(x, batch)
         return h
 
 
-# 总体模型
 class SubgraphGNN(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, embed_dim):
         super(SubgraphGNN, self).__init__()
@@ -43,14 +40,14 @@ class SubgraphGNN(torch.nn.Module):
         self.embedder = GraphEmbedder(in_channels, hidden_channels, embed_dim)
 
     def forward(self, x_H, edge_index_H, x_G, edge_index_G, batch_H, batch_G):
-        # 预测子图节点概率
+        # predict probability of subgraph
         p = self.selector(x_H, edge_index_H)
 
-        # 用预测的概率选择子图节点
-        x_F = x_H * p  # 简单乘法权重示例
+        choose subgraph vertices by predicted probability
+        x_F = x_H * p  # simple multiplications
         h_F = self.embedder(x_F, edge_index_H, batch_H)
 
-        # 图 G 的嵌入
+        # embedding of G
         h_G = self.embedder(x_G, edge_index_G, batch_G)
 
         return h_F, h_G, p

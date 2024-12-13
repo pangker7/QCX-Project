@@ -19,38 +19,16 @@ def find_closest_subgraph(adj_G, adj_H, distance_function):
     best_subgraph = None
     best_vertices = None
 
-    # 枚举 H 的所有大小为 n 的顶点子集
+    # enumerate all vertices set
     for vertices in itertools.combinations(range(m), n):
-        # 提取子图的邻接矩阵
         adj_F = extract_subgraph(adj_H, vertices)
-        # 计算距离
         dist = distance_function(adj_G, adj_F)
-        # 更新最优解
         if dist < min_distance:
             min_distance = dist
             best_subgraph = adj_F
             best_vertices = vertices
 
     return best_vertices, min_distance
-
-
-# find minimum weight given injection f
-def find_min_weight(N, M, weight_function):
-    if M < N:
-        raise ValueError("M cannot be larger than N!")
-
-    min_weight = float("inf")
-    best_f = None
-
-    # 枚举所有大小为 N 的排列
-    for perm in itertools.permutations(range(M), N):
-        # perm 是一个可能的 f
-        weight = weight_function(perm)
-        if weight < min_weight:
-            min_weight = weight
-            best_f = perm
-
-    return best_f, min_weight
 
 
 if __name__ == "__main__":
