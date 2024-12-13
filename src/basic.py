@@ -1,4 +1,5 @@
 import numpy as np
+import itertools
 
 
 def get_NML(A, B):
@@ -30,6 +31,24 @@ def valid(f, A, B):
             if f[i] == f[j]:
                 return False
     return True
+
+
+# find minimum weight given injection f
+def find_min_weight(N, M, weight_function):
+    if M < N:
+        raise ValueError("M cannot be larger than N!")
+
+    min_weight = float("inf")
+    best_f = None
+
+    # enumerate all permutations for f
+    for perm in itertools.permutations(range(M), N):
+        weight = weight_function(perm)
+        if weight < min_weight:
+            min_weight = weight
+            best_f = perm
+
+    return best_f, min_weight
 
 
 # Evaluate W(f)
