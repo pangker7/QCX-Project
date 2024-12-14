@@ -105,28 +105,9 @@ class Problem:
         d = np.sqrt(d2)
         return d
 
-    # def brutal_force(self):
-    #     """
-    #     Classical brutal-force solver, returns d_min, solutions
-    #     """
-    #     d_min = 1000
-    #     solutions = []
-    #     for x in range(self.M**self.N):
-    #         f = [0] * self.N  # else every f will be the copy of the same thing.
-    #         for i in range(self.N):
-    #             f[i] = (x // self.M**i) % self.M
-    #         if self.valid(f):
-    #             d_value = self.eval_d(f)
-    #             if d_value < d_min:
-    #                 d_min = d_value
-    #                 solutions = [f]
-    #             elif d_value == d_min:
-    #                 solutions += [f]
-    #     return d_min, solutions
-
     def brutal_force(self):
         """
-        Optimized brutal-force solver using valid function to avoid unnecessary checks
+        Classical brutal-force solver, returns d_min, solutions
         """
         d_min = 1000
         solutions = []
@@ -141,3 +122,43 @@ class Problem:
                 elif d_value == d_min:
                     solutions.append(f)
         return d_min, solutions
+
+    def has_group(self):
+        from collections import defaultdict
+
+        vec_A=self.vec_A
+        vec_B=self.vec_B
+        mat_A=self.mat_A
+        mat_B=self.mat_B
+        N=self.N
+        M=self.M
+
+        pos_map = defaultdict(list)
+        for i, val in enumerate(vec_B):
+            pos_map[val].append(i)
+
+        used_indices = set()
+
+        def backtrack(curr):
+            if len(curr) == N:
+                for i in range(N):
+                    for j in range(i, N):
+                        if mat_A[i][j] != mat_B[curr[i]][curr[j]]:
+                            return False
+                return True
+
+            # find valid position for vec_A[i]
+            for idx in pos_map[vec_A[len(curr)]]:
+                if idx not in used_indices:  # ensure not repeat
+                    used_indices.add(idx)
+                    curr.append(idx)
+
+                    if backtrack(curr):
+                        return True
+
+                    curr.pop()
+                    used_indices.remove(idx)
+
+            return False
+
+        return backtrack([])
