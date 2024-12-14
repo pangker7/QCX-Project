@@ -51,15 +51,19 @@ def classify_molecules_by_groups(path_groups, path_molecues, path_output):
         # for i in range(num_molecule):
             row = [molecule_id[i]]  # 第一列是分子ID
             for j in range(num_group):
-                print(i,j)
                 mat_A = preprocess.change_to_graph(group_vertice_set[j], group_edge_set[j], group_num_hydrogen_set[j], 1, 1)
                 mat_B = preprocess.change_to_graph(molecule_vertice_set[i], molecule_edge_set[i], molecule_num_hydrogen_set[i], 1, 1)
 
-                problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set[i]), same_group_loss=0.2, diff_group_loss=1.0)
-                has_group_value = run_with_timeout(problem.has_group, 0.5)
+
+                N = len(mat_A[0,:])
+                M = len(mat_B[0,:])
+                if N * np.log2(M) > 20:
+                    has_group_value = 2
+                else:
+                    problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set[i]), same_group_loss=0.2, diff_group_loss=1.0)
+                    has_group_value = problem.has_group()
 
                 row.append(int(has_group_value))
-
             writer.writerow(row)
 
 

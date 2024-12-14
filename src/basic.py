@@ -14,8 +14,8 @@ class Problem:
         mat_B: np.ndarray,
         vec_A: np.ndarray,
         vec_B: np.ndarray,
-        same_group_loss: float,
-        diff_group_loss: float,
+        same_group_loss: float = 0.2,
+        diff_group_loss: float = 1,
         subgraph: bool = True,
     ):
         """
@@ -101,7 +101,7 @@ class Problem:
                 self.diff_group_loss,
             )
             for j in range(i, self.N):
-                if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]:
+                if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]] or not self.subgraph:
                     d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
         d = np.sqrt(d2)
         return d
@@ -125,41 +125,5 @@ class Problem:
         return d_min, solutions
 
     def has_group(self):
-        from collections import defaultdict
-
-        vec_A=self.vec_A
-        vec_B=self.vec_B
-        mat_A=self.mat_A
-        mat_B=self.mat_B
-        N=self.N
-        M=self.M
-
-        pos_map = defaultdict(list)
-        for i, val in enumerate(vec_B):
-            pos_map[val].append(i)
-
-        used_indices = set()
-
-        def backtrack(curr):
-            if len(curr) == N:
-                for i in range(N):
-                    for j in range(i, N):
-                        if mat_A[i][j] != mat_B[curr[i]][curr[j]]:
-                            return False
-                return True
-
-            # find valid position for vec_A[i]
-            for idx in pos_map[vec_A[len(curr)]]:
-                if idx not in used_indices:  # ensure not repeat
-                    used_indices.add(idx)
-                    curr.append(idx)
-
-                    if backtrack(curr):
-                        return True
-
-                    curr.pop()
-                    used_indices.remove(idx)
-
-            return False
-
-        return backtrack([])
+        d_min, _ = self.brutal_force()
+        return (d_min == 0)
