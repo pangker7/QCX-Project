@@ -33,6 +33,7 @@ class Problem:
         self.N = len(mat_A[0, :])
         self.M = len(mat_B[0, :])
         self.L = len(bin(self.M - 1)) - 2
+        self.cl_solution = self.brutal_force()
         assert mat_A.shape == (self.N, self.N)
         assert mat_B.shape == (self.M, self.M)
         assert self.vec_A.shape == (self.N,)
