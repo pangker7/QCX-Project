@@ -105,21 +105,39 @@ class Problem:
         d = np.sqrt(d2)
         return d
 
+    # def brutal_force(self):
+    #     """
+    #     Classical brutal-force solver, returns d_min, solutions
+    #     """
+    #     d_min = 1000
+    #     solutions = []
+    #     for x in range(self.M**self.N):
+    #         f = [0] * self.N  # else every f will be the copy of the same thing.
+    #         for i in range(self.N):
+    #             f[i] = (x // self.M**i) % self.M
+    #         if self.valid(f):
+    #             d_value = self.eval_d(f)
+    #             if d_value < d_min:
+    #                 d_min = d_value
+    #                 solutions = [f]
+    #             elif d_value == d_min:
+    #                 solutions += [f]
+    #     return d_min, solutions
+
     def brutal_force(self):
         """
-        Classical brutal-force solver, returns d_min, solutions
+        Optimized brutal-force solver using valid function to avoid unnecessary checks
         """
         d_min = 1000
         solutions = []
-        for x in range(self.M**self.N):
-            f = [0] * self.N  # else every f will be the copy of the same thing.
-            for i in range(self.N):
-                f[i] = (x // self.M**i) % self.M
-            if self.valid(f):
+
+        for perm in itertools.permutations(range(self.M), self.N):
+            f = list(perm)
+            if self.valid(f):  # Only evaluate valid solutions
                 d_value = self.eval_d(f)
                 if d_value < d_min:
                     d_min = d_value
                     solutions = [f]
                 elif d_value == d_min:
-                    solutions += [f]
+                    solutions.append(f)
         return d_min, solutions
