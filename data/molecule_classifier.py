@@ -1,11 +1,18 @@
 from pandas._libs.lib import has_infs
+from tqdm import tqdm
 import csv
-import basic
-import preprocess
 import numpy as np
 import pandas as pd
 import ast
-from tqdm import tqdm
+import os
+import sys
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+include_path = os.path.join(script_dir, "../src")
+sys.path.append(include_path)
+
+import preprocess
+import basic
 
 def convert_str_to_list_or_tuple(val):
         try:
@@ -58,4 +65,8 @@ def classify_molecules_by_groups(path_groups, path_molecues, path_output):
 
 
 if __name__ == '__main__':
-    classify_molecules_by_groups("data/fun_group.csv", "data/molecule_group_presence.csv", "data/molecule_group_presence_output.csv")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    group_path = os.path.join(script_dir, "fun_group.csv")
+    input_path = os.path.join(script_dir, "molecule_group_presence.csv")
+    output_path = os.path.join(script_dir, "molecule_group_presence_output.csv")
+    classify_molecules_by_groups(group_path, input_path, output_path)

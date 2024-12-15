@@ -1,5 +1,6 @@
 import random
 import networkx as nx
+import os
 
 def generate_molecule(M, p, K, group, TRIES=10000):
     """
@@ -189,8 +190,8 @@ def visualize_molecule(G):
     plt.title("Generated Molecule")
     plt.show()
 
-def molecule_to_text_file(G, filename="../data/artificial_molecule.txt"):
-    """
+def molecule_to_text_file(G, filename="artificial_molecule.txt"):
+    """s
     Transforms the molecule into the text file format with three lines:
     1. Atom literals
     2. Bonds
@@ -210,8 +211,12 @@ def molecule_to_text_file(G, filename="../data/artificial_molecule.txt"):
     random.shuffle(bonds)
     
     hydrogen_counts = [G.nodes[node].get("hydrogen_count", 0) for node in atoms]
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    file_path = os.path.join(script_dir, filename)
     
-    with open(filename, "a") as file:
+    with open(file_path, "a") as file:
         file.write(str(atoms) + "\n")
         file.write(str(bonds) + "\n")
         file.write(str(hydrogen_counts) + "\n")
@@ -219,6 +224,7 @@ def molecule_to_text_file(G, filename="../data/artificial_molecule.txt"):
 
 # Usage
 if __name__ == "__main__":
+    print("We do APPEND on the data fil artificial_molecule! If you have things not wanted in it, turn back it's not too late!")
     M = int(input("Enter the total number of atoms (M): "))
     p = float(input("Enter the average ratio of bonds (p): "))
     K = int(input("Enter the total amount of groups you need (K): "))

@@ -1,12 +1,19 @@
-import preprocess
-import basic
-import qa
 import numpy as np
 import matplotlib.pyplot as plt
 import tqdm
 import random
+import sys
 import os
+import importlib
 from collections import defaultdict
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+include_path = os.path.join(script_dir, "../src")
+sys.path.append(include_path)
+
+import preprocess
+import basic
+import qa
 
 def read_and_rearrange_data(file_path):
     with open(file_path, 'r') as file:
@@ -72,10 +79,18 @@ if __name__ == "__main__":
     exp = int(input("No. of experiment. 0 for testing, 1 for plotting p - M, 2 for plotting p - m0, 3 for plotting p - N_val: "))
     group = int(input("Enter name of group. 1 is invalid, 2 for Carbonyl (-CO-), 3 for Carboxyl (-COOH), 4 for Phosphonate (-PO₃H₂), 5 for Imide (-C(O)NHC(O)-), 6 for Benzene: "))
 
-    data = read_and_rearrange_data("../data/artificial_molecule.txt")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_path = os.path.join(script_dir, "artificial_molecule.txt")
+    output_path = os.path.join(script_dir, "../output")
+    data = read_and_rearrange_data(input_path)
     random.shuffle(data)
-    if not os.path.exists('output'):
-        os.mkdir('output')
+    if not os.path.exists(output_path):
+        os.mkdir(output_path)
+
+    file_path = os.path.join(script_dir, f"../output/output_find_carboxyl_{exp}.txt")
+    if not os.path.exists(file_path):
+        with open(file_path, "w") as file:
+            file.write("")
 
     if exp == 0:
         sol_probs = []
@@ -90,10 +105,10 @@ if __name__ == "__main__":
 
             problem = basic.Problem(mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0)
 
-            sol = qa.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent': False})
+            sol = qa.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent': True})
             sol_probs += [sol['sol_prob']]
             val_probs += [sol['valid_prob']]
-        with open(f"output/output_find_carboxyl_{exp}.txt", "a") as file:
+        with open(file_path, "a") as file:
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
             file.write(str(sum(sol_probs)/len(sol_probs)) + " " + str(sum(val_probs)/len(val_probs)) + "\n")
@@ -159,7 +174,7 @@ if __name__ == "__main__":
             plt.show()
             input("Press Enter to continue showing next plot...")
 
-        with open(f"output/output_find_carboxyl_{exp}.txt", "a") as file:
+        with open(file_path, "a") as file:
             file.write(str(Ms) + "\n")
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
@@ -202,7 +217,7 @@ if __name__ == "__main__":
             plt.show()
             input("Press Enter to continue showing next plot...")
         
-        with open(f"output/output_find_carboxyl_{exp}.txt", "a") as file:
+        with open(file_path, "a") as file:
             file.write(str(m0s) + "\n")
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
