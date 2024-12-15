@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tqdm
 import random
+import os
 from collections import defaultdict
 
 def read_and_rearrange_data(file_path):
@@ -73,6 +74,8 @@ if __name__ == "__main__":
 
     data = read_and_rearrange_data("./molecule.txt")
     random.shuffle(data)
+    if not os.path.exists('output'):
+        os.mkdir('output')
 
     if exp == 0:
         sol_probs = []
@@ -90,7 +93,7 @@ if __name__ == "__main__":
             sol = qa.QA_simulate(problem, params={'t0': 50, 'm0': 100, 'silent': False})
             sol_probs += [sol['sol_prob']]
             val_probs += [sol['valid_prob']]
-        with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
+        with open(f"output/output_find_carboxyl_{exp}.txt", "a") as file:
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
             file.write(str(sum(sol_probs)/len(sol_probs)) + " " + str(sum(val_probs)/len(val_probs)) + "\n")
@@ -156,7 +159,7 @@ if __name__ == "__main__":
             plt.show()
             input("Press Enter to continue showing next plot...")
 
-        with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
+        with open(f"output/output_find_carboxyl_{exp}.txt", "a") as file:
             file.write(str(Ms) + "\n")
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
@@ -199,7 +202,7 @@ if __name__ == "__main__":
             plt.show()
             input("Press Enter to continue showing next plot...")
         
-        with open(f"output_find_carboxyl_{exp}.txt", "a") as file:
+        with open(f"output/output_find_carboxyl_{exp}.txt", "a") as file:
             file.write(str(m0s) + "\n")
             file.write(str(sol_probs) + "\n")
             file.write(str(val_probs) + "\n")
