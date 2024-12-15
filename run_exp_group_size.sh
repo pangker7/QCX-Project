@@ -4,3 +4,4 @@ for i in 2 3 4 5 6; do
     echo -e "0\n$i" | python ./data/output_find_group.py
     echo $i >> ./output/output_find_carboxyl_0.txt
 done
+python ./plot/plot_group_size.py
