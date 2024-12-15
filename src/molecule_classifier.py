@@ -35,36 +35,41 @@ def classify_molecules_by_groups(path_groups, path_molecues, path_output):
     group_num_hydrogen_set = df_group['NumHydrogenSet'].apply(convert_str_to_list_or_tuple)
     num_group=len(group_name)
 
-    df_molecule = pd.read_csv(path_molecues)
-    molecule_vertice_set = df_molecule['VerticeSet'].apply(convert_str_to_list_or_tuple)
-    molecule_edge_set = df_molecule['EdgeSet'].apply(convert_str_to_list_or_tuple)
-    molecule_num_hydrogen_set = df_molecule['NumHydrogenSet'].apply(convert_str_to_list_or_tuple)
-    molecule_id = df_molecule['ChemSpiderID'].apply(convert_str_to_list_or_tuple)
-    num_molecule=len(molecule_id)
+    with open(path_molecues, 'r', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        i = 1
+        for row in reader:
+            if i > 438:
+                molecule_vertice_set = ast.literal_eval(row['VerticeSet'])
+                molecule_edge_set = ast.literal_eval(row['EdgeSet'])
+                molecule_num_hydrogen_set = ast.literal_eval(row['NumHydrogenSet'])
+
+                print('Molecule: ', i)
+                i += 1
+                # row = [molecule_id[i]]  # 第一列是分子ID
+                for j in tqdm(range(num_group)):
+                    mat_A = preprocess.change_to_graph(group_vertice_set[j], group_edge_set[j], group_num_hydrogen_set[j], 1, 1)
+                    mat_B = preprocess.change_to_graph(molecule_vertice_set, molecule_edge_set, molecule_num_hydrogen_set, 1, 1)
 
 
-    with open(path_output, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([""] + group_name)
+                    N = len(mat_A[0,:])
+                    M = len(mat_B[0,:])
+                    if N * np.log2(M) > 20:
+                        has_group_value = 2
+                    else:
+                        problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set), same_group_loss=0.2, diff_group_loss=1.0)
+                        has_group_value = problem.has_group()
 
-        for i in tqdm(range(num_molecule)):
-        # for i in range(num_molecule):
-            row = [molecule_id[i]]  # 第一列是分子ID
-            for j in range(num_group):
-                mat_A = preprocess.change_to_graph(group_vertice_set[j], group_edge_set[j], group_num_hydrogen_set[j], 1, 1)
-                mat_B = preprocess.change_to_graph(molecule_vertice_set[i], molecule_edge_set[i], molecule_num_hydrogen_set[i], 1, 1)
+                    row[group_name[j]] = int(has_group_value)
+                # Write updated row to the new CSV file
+                with open(path_output, 'a', newline='', encoding='utf-8') as output_csv:
+                    writer = csv.DictWriter(output_csv, fieldnames=reader.fieldnames)
+                    if output_csv.tell() == 0:  # Write header if file is empty
+                        writer.writeheader()
+                    writer.writerow(row)
+            else:
+                i += 1
 
-
-                N = len(mat_A[0,:])
-                M = len(mat_B[0,:])
-                if N * np.log2(M) > 20:
-                    has_group_value = 2
-                else:
-                    problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set[i]), same_group_loss=0.2, diff_group_loss=1.0)
-                    has_group_value = problem.has_group()
-
-                row.append(int(has_group_value))
-            writer.writerow(row)
 
 
 if __name__ == '__main__':
@@ -85,4 +90,4 @@ if __name__ == '__main__':
     # print("[" + ", ".join([str(row.tolist()) for row in mat_A]) + "]")
     # print("[" + ", ".join([str(row.tolist()) for row in mat_B]) + "]")
 
-    classify_molecules_by_groups("../data/fun_group.csv", "../data/molecule_info.csv", "../data/molecule_group_presence.csv")
+    classify_molecules_by_groups("data/fun_group.csv", "data/molecule_group_presence.csv", "data/molecule_group_presence_output.csv")
