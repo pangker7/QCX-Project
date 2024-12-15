@@ -189,7 +189,7 @@ def visualize_molecule(G):
     plt.title("Generated Molecule")
     plt.show()
 
-def molecule_to_text_file(G, filename="molecule.txt"):
+def molecule_to_text_file(G, filename="../data/artificial_molecule.txt"):
     """
     Transforms the molecule into the text file format with three lines:
     1. Atom literals

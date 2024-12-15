@@ -14,8 +14,8 @@ class Problem:
         mat_B: np.ndarray,
         vec_A: np.ndarray,
         vec_B: np.ndarray,
-        same_group_loss: float,
-        diff_group_loss: float,
+        same_group_loss: float = 0.2,
+        diff_group_loss: float = 1,
         subgraph: bool = True,
     ):
         """
@@ -33,6 +33,7 @@ class Problem:
         self.N = len(mat_A[0, :])
         self.M = len(mat_B[0, :])
         self.L = len(bin(self.M - 1)) - 2
+        self.cl_solution = self.brutal_force()
         assert mat_A.shape == (self.N, self.N)
         assert mat_B.shape == (self.M, self.M)
         assert self.vec_A.shape == (self.N,)
@@ -100,7 +101,7 @@ class Problem:
                 self.diff_group_loss,
             )
             for j in range(i, self.N):
-                if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]:
+                if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]] or not self.subgraph:
                     d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
         d = np.sqrt(d2)
         return d
@@ -111,15 +112,18 @@ class Problem:
         """
         d_min = 1000
         solutions = []
-        for x in range(self.M**self.N):
-            f = [0] * self.N  # else every f will be the copy of the same thing.
-            for i in range(self.N):
-                f[i] = (x // self.M**i) % self.M
-            if self.valid(f):
+
+        for perm in itertools.permutations(range(self.M), self.N):
+            f = list(perm)
+            if self.valid(f):  # Only evaluate valid solutions
                 d_value = self.eval_d(f)
                 if d_value < d_min:
                     d_min = d_value
                     solutions = [f]
                 elif d_value == d_min:
-                    solutions += [f]
+                    solutions.append(f)
         return d_min, solutions
+
+    def has_group(self):
+        d_min, _ = self.brutal_force()
+        return (d_min == 0)

@@ -37,6 +37,10 @@ def change_to_graph(cha, bonds, hydrogen, max_adj, max_hydrogen):
     adj_matrix = np.zeros((n, n))
     hydrogen = np.array(hydrogen)
     
+    if len(bonds) == 0:
+        adj_matrix[0][0]=hydrogen[0]
+        return adj_matrix
+    
     for bond in bonds:
         i, j = bond
         i = cha.index(i)

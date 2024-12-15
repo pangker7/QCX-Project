@@ -72,7 +72,7 @@ if __name__ == "__main__":
     exp = int(input("No. of experiment. 0 for testing, 1 for plotting p - M, 2 for plotting p - m0, 3 for plotting p - N_val: "))
     group = int(input("Enter name of group. 1 is invalid, 2 for Carbonyl (-CO-), 3 for Carboxyl (-COOH), 4 for Phosphonate (-PO₃H₂), 5 for Imide (-C(O)NHC(O)-), 6 for Benzene: "))
 
-    data = read_and_rearrange_data("./molecule.txt")
+    data = read_and_rearrange_data("../data/artificial_molecule.txt")
     random.shuffle(data)
     if not os.path.exists('output'):
         os.mkdir('output')
