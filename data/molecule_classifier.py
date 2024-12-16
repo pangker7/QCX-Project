@@ -23,7 +23,7 @@ def convert_str_to_list_or_tuple(val):
 def classify_molecules_by_groups(path_groups, path_molecues, path_output):
 
     df_group = pd.read_csv(path_groups)
-    group_strictly_equal = df_group['StrictlyEqual'].apply(convert_str_to_list_or_tuple)
+    group_strictly_equal = df_group['StrictlyEqual']
     group_name = df_group['GroupName'].apply(convert_str_to_list_or_tuple)
     group_vertice_set = df_group['VerticeSet'].apply(convert_str_to_list_or_tuple)
     group_edge_set = df_group['EdgeSet'].apply(convert_str_to_list_or_tuple)
@@ -51,7 +51,8 @@ def classify_molecules_by_groups(path_groups, path_molecues, path_output):
                 if N * np.ceil(np.log2(M)) > 20:
                     has_group_value = 2
                 else:
-                    problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set), same_group_loss=0.2, diff_group_loss=1.0, subgraph=group_strictly_equal[j])
+                    print(bool(group_strictly_equal[j]))
+                    problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set), same_group_loss=0.2, diff_group_loss=1.0, subgraph=not bool(group_strictly_equal[j]))
                     has_group_value = problem.has_group()
 
                 row[group_name[j]] = int(has_group_value)
