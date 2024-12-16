@@ -71,12 +71,13 @@ class Problem:
         assert len(f) == self.N
         for i in range(self.N):
             assert f[i] >= 0 and f[i] < 2**self.L
-            W += self.list_query.query(
-                self.vec_A[i],
-                self.vec_B[f[i]],
-                self.same_group_loss,
-                self.diff_group_loss,
-            )
+            if f[i] < self.M:
+                W += self.list_query.query(
+                    self.vec_A[i],
+                    self.vec_B[f[i]],
+                    self.same_group_loss,
+                    self.diff_group_loss,
+                )
             if f[i] >= self.M:
                 W += l1
             for j in range(i, self.N):

@@ -1,3 +1,4 @@
 src/__pycache__/
 output/
 data/molecule_group_presence.csv
+src/plot.ipynb

@@ -128,6 +128,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
     d_min_cl, cl_sols = problem.cl_solution
     w_min = 1000
     w_avg = 0
+    w_hist = {}
     solutions = []
     sol_prob = 0
     for result, count in counts.items():
@@ -136,6 +137,8 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
         valid_prob += int(valid) * count
         w_value = problem.eval_W(f, params['l1'], params['l2'])
         w_avg += w_value * count
+        w_hist.setdefault(w_value, 0)
+        w_hist[w_value] += count
         if w_value < w_min:
             w_min = w_value
         if not valid:
@@ -148,6 +151,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
         if d_value < d_min:
             d_min = d_value
     w_avg /= params['shots']
+    w_hist = sorted(w_hist.items(), key=lambda p : p[0])
     if valid_prob == 0:
         d_avg = -1
         valid_prob = 0
@@ -160,6 +164,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
     result = {}
     result['w_avg'] = w_avg
     result['w_min'] = w_min
+    result['w_hist'] = w_hist
     result['d_avg'] = d_avg
     result['d_min'] = d_min
     result['valid_prob'] = valid_prob
@@ -178,8 +183,8 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
             device (string): Device for AerSimulator, 'CPU' by default.
             silent (bool): Whether print information to console or not, False by default.
             shots (int): Number of running times for each circuit, 1,000,000 by default.
-            ephochs (int): Number of optimization ephochs
-            eta (float): eta for gradient decent
+            epochs (int): Number of optimization ephochs
+            lr (float): learning rate for gradient decent
             m0 (int): Number of layers, 5 by default.
             l1,l2 (float): Coefficients for regularization terms, 10 by defalut.
 
@@ -188,14 +193,12 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
     """
 
     default_params = {'device': 'CPU', 'silent': False, 'shots': 1000000, 
-                      'epoch': 20, 'eta': 1e-3, 'm0': 5, 'l1': 10, 'l2': 10}
+                      'epochs': 10, 'lr': 0.1, 'm0': 10, 'l1': 2, 'l2': 2}
     params = {**default_params, **params}
 
     N = problem.N
     M = problem.M
     L = problem.L
-
-    total_start_time = time.time()
 
     if(not params['silent']):
         print("------------------")
@@ -220,14 +223,73 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
     m0 = params['m0']
     dt = 0.5
     vt_bx = dt * np.array(range(m0)[::-1]) / m0
-    vt_func = dt * np.array(range(1, m0+1))
-    vt_reg = 5 * dt * np.array(range(1, m0+1)) ** 4
+    vt_func = dt * np.array(range(1, m0+1)) / m0
+    vt_reg = 5 * dt * (np.array(range(1, m0+1)) / m0) ** 4
     x0 = np.concatenate((vt_bx, vt_func, vt_reg))
+    x0 = np.fromstring("0.50088642  0.26506707  0.25897509  0.23941262  0.19595158  0.16509826  0.19426582  0.18108924  0.05771234  0.06291906 -0.02278328  0.0786359  0.16914648  0.19343238  0.24072872  0.24033925  0.31208672  0.46683556  0.32480595  0.43947762  0.03918165  0.20645738  0.34412306  0.42481009  0.48928957  0.49324575  0.69216613  1.00998438  1.51448759  2.47851422", sep='  ')
     if(not params['silent']):
         print('Initial parameters: ', x0)
-    result = QVA_run(circ, x0, params)
-    print(result)
+    result0 = QVA_run(circ, x0, params)
+    print(result0)
+    return 0
 
+    # GD
+    num_params = len(x0)
+    delta = 0.01
+    lr = params['lr']
+    grad = np.zeros(num_params)
+    w_avg = []
+    valid_prob = []
+    sol_prob = []
+    w_avg.append(result0['w_avg'])
+    valid_prob.append(result0['valid_prob'])
+    sol_prob.append(result0['sol_prob'])
+    for epoch in range(params['epochs']):
+        print(f"--- Epoch {epoch} ---")
+        for i in range(num_params):
+            x1 = x0.copy()
+            x1[i] += delta
+            result1 = QVA_run(circ, x1, params)
+            grad[i] = (result1['w_avg']-result0['w_avg']) / delta 
+        print(grad)
+
+        t_l = 0
+        t_r = 1
+        w_l = result0['w_avg']
+        w_r = QVA_run(circ, x0-t_r*lr*grad, params)['w_avg']
+        # print(f"{t_l}: {w_l}")
+        # print(f"{t_r}: {w_r}")
+        for _ in range(6):
+            t_m = (t_r + t_l) / 2
+            w_m = QVA_run(circ, x0-t_m*lr*grad, params)['w_avg']
+            # print(f"{t_m}: {w_m}")
+            if w_m > w_l:
+                t_r = t_m
+                w_r = w_m
+            elif w_m < w_l and w_m > w_r:
+                t_l = t_m
+                w_l = w_m
+            else:
+                t_lm = (t_l + t_m) / 2
+                w_lm = QVA_run(circ, x0-t_lm*lr*grad, params)['w_avg']
+                if w_lm < w_l and w_lm < w_m:
+                    t_r = t_m
+                    w_r = w_m
+                else:
+                    t_l = t_m
+                    w_l = w_m
+
+        x0 = x0 - t_m * lr * grad
+        result0 = QVA_run(circ, x0, params)
+        w_avg.append(result0['w_avg'])
+        valid_prob.append(result0['valid_prob'])
+        sol_prob.append(result0['sol_prob'])
+        print(t_m)
+        print(x0)
+        print(result0)
+    print(w_avg)
+    print(valid_prob)
+    print(sol_prob)
 
 if __name__ == "__main__":
     # Example usage:
