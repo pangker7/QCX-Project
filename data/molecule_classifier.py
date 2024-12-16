@@ -51,7 +51,6 @@ def classify_molecules_by_groups(path_groups, path_molecues, path_output):
                 if N * np.ceil(np.log2(M)) > 20:
                     has_group_value = 2
                 else:
-                    print(bool(group_strictly_equal[j]))
                     problem = basic.Problem(mat_A, mat_B, np.array(group_vertice_set[j]), np.array(molecule_vertice_set), same_group_loss=0.2, diff_group_loss=1.0, subgraph=not bool(group_strictly_equal[j]))
                     has_group_value = problem.has_group()
 
