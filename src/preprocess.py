@@ -32,7 +32,7 @@ def register_atoms(cha_atom): # temporary solution
 # output: graph adjacency matrix
 # diagonals are: H-1.0 O-0.6 C-0.3
 # off-diagonal terms are: n for n existence of (A,B) or (B,A). matrix is symmetric.
-def change_to_graph(cha, bonds, hydrogen, max_adj, max_hydrogen):
+def change_to_graph(cha, bonds, hydrogen, max_adj=3, max_hydrogen=3):
     n = len(cha)
     adj_matrix = np.zeros((n, n))
     hydrogen = np.array(hydrogen)
