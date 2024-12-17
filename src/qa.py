@@ -182,7 +182,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
     valid_prob = 0
     d_min = 1000
     d_avg = 0
-    d_min_cl, num_sol_clas = problem.brutal_force()
+    d_min_cl, num_sol_clas = problem.cl_solution
     solutions = []
     sol_prob = 0
     for result, count in counts.items():
