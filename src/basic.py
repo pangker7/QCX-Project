@@ -1,6 +1,6 @@
 import numpy as np
 import itertools
-from preprocess import get_list_query, get_atom_type
+from .preprocess import get_list_query, get_atom_type, change_to_graph
 
 
 class Problem:
@@ -38,6 +38,12 @@ class Problem:
         assert mat_B.shape == (self.M, self.M)
         assert self.vec_A.shape == (self.N,)
         assert self.vec_B.shape == (self.M,)
+
+    @classmethod
+    def from_bonds(cls, cha_a, cha_b, bonds_a, bonds_b, hydrogen_a, hydrogen_b):
+        mat_A = change_to_graph(cha_a, bonds_a, hydrogen_a)
+        mat_B = change_to_graph(cha_b, bonds_b, hydrogen_b)
+        return cls(mat_A, mat_B, cha_a, cha_b)
 
     def result_to_f(self, result: str):
         """
@@ -102,7 +108,11 @@ class Problem:
                 self.diff_group_loss,
             )
             for j in range(i, self.N):
-                if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]] or not self.subgraph:
+                if (
+                    j > i
+                    or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]
+                    or not self.subgraph
+                ):
                     d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
         d = np.sqrt(d2)
         return d
@@ -127,4 +137,4 @@ class Problem:
 
     def has_group(self):
         d_min, _ = self.brutal_force()
-        return (d_min == 0)
+        return d_min == 0
