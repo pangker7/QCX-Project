@@ -9,8 +9,8 @@ from scipy.linalg import polar
 from argparse import *
 import time
 
-import preprocess
-import basic
+from . import preprocess
+from . import basic
 
 
 # Construct the quantum circuit for quantum annealing (QA)
