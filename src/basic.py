@@ -1,3 +1,4 @@
+from re import sub
 import numpy as np
 import itertools
 from .preprocess import get_list_query, get_atom_type, change_to_graph
@@ -40,10 +41,10 @@ class Problem:
         assert self.vec_B.shape == (self.M,)
 
     @classmethod
-    def from_bonds(cls, cha_a, cha_b, bonds_a, bonds_b, hydrogen_a, hydrogen_b):
+    def from_bonds(cls, cha_a, cha_b, bonds_a, bonds_b, hydrogen_a, hydrogen_b, subgraph=True):
         mat_A = change_to_graph(cha_a, bonds_a, hydrogen_a)
         mat_B = change_to_graph(cha_b, bonds_b, hydrogen_b)
-        return cls(mat_A, mat_B, cha_a, cha_b)
+        return cls(mat_A, mat_B, cha_a, cha_b, subgraph=subgraph)
 
     def result_to_f(self, result: str):
         """
