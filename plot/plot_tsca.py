@@ -41,21 +41,32 @@ def get_sorted_arr(prob, indices):
     return x, y
 
 
-def plot_prob(prob, prob_name, indices_list, label_list, color_list, plot_err=True, plot_data=True):
+def plot_data(prob, indices, label, color):
+    plt.scatter(len_molecule[indices], prob[indices], label=label, color=color)
+
+
+def plot_err(prob, indices, color, ecolor):
+    x, y_list = get_sorted_arr(prob, indices)
+    avg = [np.mean(data) for data in y_list]
+    err = [np.std(data) for data in y_list]
+    plt.errorbar(x, avg, yerr=err, fmt="o", color=color, ecolor=ecolor, elinewidth=2, capsize=4)
+
+
+def plot_fig(prob, prob_name, indices_list, label_list, color_list, ecolor, plot_err_flag=True, plot_data_flag=True, ylim=(0, 1)):
+    """
+    indices_list = [has, not_has], label_list = [has, not_has], color_list = [has, not_has, avg]
+    """
     plt.figure()
-    for i, indices in enumerate(indices_list):
-        x, y_list = get_sorted_arr(prob, indices)
-        avg = [np.mean(data) for data in y_list]
-        err = [np.std(data) for data in y_list]
-        plt.ylim(0, 1)
-        if plot_err:
-            plt.errorbar(x, avg, yerr=err, fmt="o", color=color_list[i][1], ecolor="grey", elinewidth=2, capsize=4)
-        if plot_data:
-            plt.scatter(len_molecule[indices], prob[indices], label=label_list[i], color=color_list[i][0])
+    plt.ylim(ylim)
+    if plot_data_flag:
+        for i in range(2):
+            plot_data(prob, indices_list[i], label_list[i], color_list[i])
+    if plot_err_flag:
+        plot_err(prob, range(num_molecule), color_list[2], ecolor)
     plt.grid()
     plt.legend()
     label_name = "+".join(label_list)
-    plot_name = ("plot_err" if plot_err else "") + ("plot_data" if plot_data else "")
+    plot_name = ("err" if plot_err else "") + ("data" if plot_data else "")
     fig_name = prob_name + label_name + plot_name
     plt.savefig(f"{fig_name}.pdf")
     plt.close()
@@ -63,21 +74,8 @@ def plot_prob(prob, prob_name, indices_list, label_list, color_list, plot_err=Tr
 
 indices_list = [has_indices, not_has_indices]
 label_list = ["has", "not_has"]
-color_list = [["#1f77b4", "#aec7e8"], ["#ff7f0e", "#ffbb78"]]
-plot_prob(valid_prob, "valid", indices_list, label_list, color_list)
-plot_prob(valid_prob, "valid", indices_list, label_list, color_list, plot_err=True, plot_data=False)
-plot_prob(valid_prob, "valid", [indices_list[0]], [label_list[0]], [color_list[0]], plot_err=True, plot_data=True)
-plot_prob(valid_prob, "valid", [indices_list[1]], [label_list[1]], [color_list[1]], plot_err=True, plot_data=True)
-plot_prob(sol_prob, "sol", indices_list, label_list, color_list)
-plot_prob(sol_prob, "sol", indices_list, label_list, color_list, plot_err=True, plot_data=False)
-plot_prob(sol_prob, "sol", [indices_list[0]], [label_list[0]], [color_list[0]], plot_err=True, plot_data=True)
-plot_prob(sol_prob, "sol", [indices_list[1]], [label_list[1]], [color_list[1]], plot_err=True, plot_data=True)
-# plot_prob(valid_prob, [indices_list[1]], [label_list[1]], [color_list[1]], plot_err=True, plot_data=False)
+# [data, err]
+# color_list = [["#1f77b4", "#aec7e8"], ["#ff7f0e", "#ffbb78"]]
+color_list = ["#1f77b4", "#ff7f0e", "red"]
 
-# plt.scatter(
-# len_molecule[not_has_idx], sol_prob[not_has_idx], label="not_has", color="#ff7f0e""#1f77b4"
-# )
-# plt.title("散点图示例")
-# plt.xlabel("X轴")
-# plt.ylabel("Y轴")
-# plt.show()
+plot_fig(valid_prob, "valid", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0.7, 1))
