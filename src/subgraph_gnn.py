@@ -43,7 +43,7 @@ class SubgraphGNN(torch.nn.Module):
         # predict probability of subgraph
         p = self.selector(x_H, edge_index_H)
 
-        choose subgraph vertices by predicted probability
+        # choose subgraph vertices by predicted probability
         x_F = x_H * p  # simple multiplications
         h_F = self.embedder(x_F, edge_index_H, batch_H)
 
