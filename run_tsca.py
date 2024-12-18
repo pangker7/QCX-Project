@@ -61,11 +61,11 @@ if __name__ == "__main__":
         "degeneracy",
         "find_rate",
     ]
-    # with open(f"./data/TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
-    #     writer = csv.writer(file)
-    #     writer.writerow(field_name)
+    with open(f"./data/TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(field_name)
 
-    for molecule_id in tqdm(molecule_id_list[558:]):
+    for molecule_id in tqdm(molecule_id_list):
         cha_b = molecule_vertice_set[molecule_id]
         bonds_b = molecule_edge_set[molecule_id]
         hydrogen_b = molecule_num_hydrogen_set[molecule_id]
