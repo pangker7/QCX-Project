@@ -209,9 +209,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
         valid_prob /= params["shots"]
         sol_prob /= params["shots"]
     if not params["silent"]:
-        print(
-            f"Valid prob: {valid_prob:.3f}, Solution prob: {sol_prob:.6f}, Average d: {d_avg:.3f}, Min d: {d_min:.3f}, Classical Min d: {d_min_cl:.3f}."
-        )
+        print(f"Valid prob: {valid_prob:.3f}, Solution prob: {sol_prob:.6f}, Average d: {d_avg:.3f}, Min d: {d_min:.3f}, Classical Min d: {d_min_cl:.3f}.")
     if not params["silent"]:
         print(f"Out of solutions {num_sol_clas}, quantum algorithm found {solutions}.")
 

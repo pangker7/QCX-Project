@@ -93,6 +93,7 @@ class Problem:
                 if f[i] < self.M and f[j] < self.M:
                     if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]:
                         W += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
+        W = round(W, 6)
         return W
 
     def eval_d(self, f: list):
@@ -115,7 +116,9 @@ class Problem:
                     or not self.subgraph
                 ):
                     d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
+        d2 = round(d2, 6)
         d = np.sqrt(d2)
+        d = round(d, 6)
         return d
 
     def brutal_force(self):
