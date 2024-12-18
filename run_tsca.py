@@ -23,22 +23,18 @@ if __name__ == "__main__":
     group_strictly_equal = df_group["StrictlyEqual"]
     group_vertice_set = df_group["VerticeSet"].apply(convert_str_to_list_or_tuple)
     group_edge_set = df_group["EdgeSet"].apply(convert_str_to_list_or_tuple)
-    group_num_hydrogen_set = df_group["NumHydrogenSet"].apply(
-        convert_str_to_list_or_tuple
-    )
+    group_num_hydrogen_set = df_group["NumHydrogenSet"].apply(convert_str_to_list_or_tuple)
 
     df_molecule = pd.read_csv("./data/molecule_info.csv")
     molecule_vertice_set = df_molecule["VerticeSet"].apply(convert_str_to_list_or_tuple)
     molecule_spider_id = df_molecule["ChemSpiderID"].apply(convert_str_to_list_or_tuple)
     molecule_edge_set = df_molecule["EdgeSet"].apply(convert_str_to_list_or_tuple)
-    molecule_num_hydrogen_set = df_molecule["NumHydrogenSet"].apply(
-        convert_str_to_list_or_tuple
-    )
+    molecule_num_hydrogen_set = df_molecule["NumHydrogenSet"].apply(convert_str_to_list_or_tuple)
 
     with open("./data/TSCA_run_data.json", "r", encoding="utf-8") as file:
         run_data = json.load(file)
 
-    group_idx = 2
+    group_idx = 11
     run_data_group = run_data[group_idx]
     group_id = run_data_group["group_id"]
     group_name = run_data_group["group_name"]
@@ -71,9 +67,7 @@ if __name__ == "__main__":
         hydrogen_b = molecule_num_hydrogen_set[molecule_id]
         spider_id = molecule_spider_id[molecule_id]
 
-        problem = Problem.from_bonds(
-            cha_a, cha_b, bonds_a, bonds_b, hydrogen_a, hydrogen_b, subgraph=subgraph
-        )
+        problem = Problem.from_bonds(cha_a, cha_b, bonds_a, bonds_b, hydrogen_a, hydrogen_b, subgraph=subgraph)
         result = QA_simulate(problem, params={"t0": 50, "m0": 100, "device": "GPU"})
 
         d_min_cl, solutions_cl = problem.cl_solution
@@ -91,8 +85,6 @@ if __name__ == "__main__":
             degeneracy,
             find_rate,
         ]
-        with open(
-            f"./data/TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline=""
-        ) as file:
+        with open(f"./data/TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(row)
