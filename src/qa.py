@@ -193,7 +193,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
             continue
         d_value = problem.eval_d(f)
         d_avg += d_value * count
-        if d_value == d_min_cl:
+        if abs(d_value - d_min_cl) <= problem.epsilon:
             solutions += [f]
             sol_prob += count
         if d_value < d_min:

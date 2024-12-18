@@ -9,8 +9,8 @@ from scipy.linalg import polar
 from argparse import *
 import time
 
-import preprocess
-import basic
+from . import preprocess
+from . import basic
 
 def QVA_circuit(problem:basic.Problem, params:dict):
     """
@@ -131,6 +131,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
     w_hist = {}
     solutions = []
     sol_prob = 0
+    epsilon = problem.epsilon
     for result, count in counts.items():
         f = problem.result_to_f(result)
         valid = problem.valid(f)
@@ -145,7 +146,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
             continue
         d_value  = problem.eval_d(f)
         d_avg += d_value * count
-        if d_value == d_min_cl:
+        if abs(d_value - d_min_cl) <= epsilon:
             solutions += [f]
             sol_prob += count
         if d_value < d_min:

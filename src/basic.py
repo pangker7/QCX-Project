@@ -18,6 +18,7 @@ class Problem:
         same_group_loss: float = 0.2,
         diff_group_loss: float = 1,
         subgraph: bool = True,
+        epsilon: float = 1e-4,
     ):
         """
         Initialize the Problem instance with adjacency matrices and vectors.
@@ -30,6 +31,7 @@ class Problem:
         self.subgraph = subgraph
         self.same_group_loss = same_group_loss
         self.diff_group_loss = diff_group_loss
+        self.epsilon = epsilon
         self.list_query = get_list_query()
         self.N = len(mat_A[0, :])
         self.M = len(mat_B[0, :])
@@ -93,7 +95,6 @@ class Problem:
                 if f[i] < self.M and f[j] < self.M:
                     if j > i or self.mat_A[i][j] > self.mat_B[f[i]][f[j]]:
                         W += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
-        W = round(W, 6)
         return W
 
     def eval_d(self, f: list):
@@ -116,9 +117,7 @@ class Problem:
                     or not self.subgraph
                 ):
                     d2 += (self.mat_A[i][j] - self.mat_B[f[i]][f[j]]) ** 2
-        d2 = round(d2, 6)
         d = np.sqrt(d2)
-        d = round(d, 6)
         return d
 
     def brutal_force(self):
@@ -135,7 +134,7 @@ class Problem:
                 if d_value < d_min:
                     d_min = d_value
                     solutions = [f]
-                elif d_value == d_min:
+                elif abs(d_value - d_min) <= self.epsilon:
                     solutions.append(f)
         return d_min, solutions
 
