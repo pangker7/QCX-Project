@@ -3,3 +3,5 @@ output/
 data/molecule_group_presence.csv
 src/plot.ipynb
 data/molecule_info_classified_myh.csv
+.DS_Store
+plot/*.pdf
