@@ -1,0 +1,1322 @@
+nohup: ignoring input
+  0%|          | 0/132 [00:00<?, ?it/s]  1%|          | 1/132 [00:05<12:30,  5.73s/it]  2%|▏         | 2/132 [00:10<11:43,  5.41s/it]  2%|▏         | 3/132 [00:16<11:42,  5.45s/it]  3%|▎         | 4/132 [00:21<11:42,  5.49s/it]  4%|▍         | 5/132 [00:27<11:38,  5.50s/it]  5%|▍         | 6/132 [00:32<11:18,  5.39s/it]  5%|▌         | 7/132 [00:38<11:18,  5.43s/it]  6%|▌         | 8/132 [00:43<11:17,  5.46s/it]  7%|▋         | 9/132 [00:48<10:58,  5.36s/it]  8%|▊         | 10/132 [00:54<11:16,  5.54s/it]  8%|▊         | 11/132 [01:01<11:45,  5.83s/it]------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 943 ms
+Running simulation...
+Finished in 4673 ms
+Valid prob: 0.353, Solution prob: 0.184692, Average d: 2.047, Min d: 2.000, Classical Min d: 2.000.
+Out of solutions [[1, 2, 3, 4, 0], [1, 2, 3, 5, 0], [1, 2, 4, 3, 0], [1, 2, 4, 5, 0], [1, 2, 5, 3, 0], [1, 2, 5, 4, 0], [3, 2, 1, 4, 0], [3, 2, 1, 5, 0], [4, 2, 1, 3, 0], [4, 2, 1, 5, 0], [5, 2, 1, 3, 0], [5, 2, 1, 4, 0]], quantum algorithm found [[0, 5, 4, 2, 1], [0, 3, 1, 2, 4], [0, 4, 5, 2, 1], [1, 2, 4, 3, 0], [1, 2, 5, 3, 0], [4, 2, 1, 3, 0], [0, 3, 4, 2, 1], [0, 4, 1, 2, 3], [5, 2, 1, 4, 0], [0, 5, 1, 2, 3], [1, 2, 3, 4, 0], [3, 2, 1, 4, 0], [1, 2, 5, 4, 0], [1, 2, 3, 5, 0], [0, 5, 3, 2, 1], [0, 3, 5, 2, 1], [1, 2, 4, 5, 0], [4, 2, 1, 5, 0], [0, 3, 1, 2, 5], [0, 5, 1, 2, 4], [5, 2, 1, 3, 0], [0, 4, 1, 2, 5], [0, 4, 3, 2, 1], [3, 2, 1, 5, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 938 ms
+Running simulation...
+Finished in 4149 ms
+Valid prob: 0.273, Solution prob: 0.038513, Average d: 2.196, Min d: 2.082, Classical Min d: 2.082.
+Out of solutions [[2, 3, 0, 1, 5], [2, 4, 0, 1, 5], [5, 1, 0, 3, 2], [5, 1, 0, 4, 2]], quantum algorithm found [[5, 1, 0, 4, 2], [2, 4, 0, 1, 5], [2, 3, 0, 1, 5], [5, 1, 0, 3, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 1017 ms
+Running simulation...
+Finished in 4362 ms
+Valid prob: 0.266, Solution prob: 0.035021, Average d: 2.512, Min d: 2.404, Classical Min d: 2.404.
+Out of solutions [[3, 4, 5, 0, 1], [3, 4, 5, 2, 1], [5, 4, 3, 0, 1], [5, 4, 3, 2, 1]], quantum algorithm found [[5, 4, 3, 2, 1], [1, 2, 5, 4, 3], [3, 4, 5, 2, 1], [1, 2, 3, 4, 5], [3, 4, 5, 0, 1], [1, 0, 3, 4, 5], [5, 4, 3, 0, 1], [1, 0, 5, 4, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 1050 ms
+Running simulation...
+Finished in 4395 ms
+Valid prob: 0.299, Solution prob: 0.026808, Average d: 2.504, Min d: 2.380, Classical Min d: 2.380.
+Out of solutions [[0, 3, 2, 1, 4], [0, 3, 2, 1, 5], [4, 1, 2, 3, 0], [5, 1, 2, 3, 0]], quantum algorithm found [[0, 3, 2, 1, 4], [4, 1, 2, 3, 0], [0, 3, 2, 1, 5], [5, 1, 2, 3, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 1035 ms
+Running simulation...
+Finished in 4387 ms
+Valid prob: 0.404, Solution prob: 0.037811, Average d: 2.242, Min d: 2.160, Classical Min d: 2.160.
+Out of solutions [[0, 1, 2, 3, 5], [1, 0, 4, 3, 5], [5, 3, 2, 1, 0], [5, 3, 4, 0, 1]], quantum algorithm found [[0, 1, 2, 3, 5], [5, 3, 2, 1, 0], [5, 3, 4, 0, 1], [1, 0, 4, 3, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 908 ms
+Running simulation...
+Finished in 4177 ms
+Valid prob: 0.434, Solution prob: 0.267728, Average d: 1.772, Min d: 1.700, Classical Min d: 1.700.
+Out of solutions [[3, 2, 5, 1, 4], [4, 1, 3, 0, 5], [4, 1, 5, 2, 3], [5, 0, 3, 1, 4]], quantum algorithm found [[5, 0, 3, 1, 4], [4, 1, 3, 0, 5], [4, 1, 5, 2, 3], [3, 2, 5, 1, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 1049 ms
+Running simulation...
+Finished in 4361 ms
+Valid prob: 0.336, Solution prob: 0.131919, Average d: 2.084, Min d: 2.000, Classical Min d: 2.000.
+Out of solutions [[2, 1, 3, 4, 5], [2, 1, 5, 4, 3], [3, 4, 5, 1, 2], [5, 4, 3, 1, 2]], quantum algorithm found [[5, 4, 3, 1, 2], [2, 1, 3, 4, 5], [3, 4, 5, 1, 2], [2, 1, 5, 4, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 1027 ms
+Running simulation...
+Finished in 4402 ms
+Valid prob: 0.410, Solution prob: 0.081349, Average d: 2.088, Min d: 2.000, Classical Min d: 2.000.
+Out of solutions [[1, 0, 5, 4, 3], [1, 2, 3, 4, 5], [3, 2, 1, 0, 5], [3, 4, 5, 0, 1], [5, 0, 1, 2, 3], [5, 4, 3, 2, 1]], quantum algorithm found [[3, 2, 1, 0, 5], [1, 0, 5, 4, 3], [5, 4, 3, 2, 1], [1, 2, 3, 4, 5], [3, 4, 5, 0, 1], [5, 0, 1, 2, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 906 ms
+Running simulation...
+Finished in 4148 ms
+Valid prob: 0.519, Solution prob: 0.346662, Average d: 1.398, Min d: 1.333, Classical Min d: 1.333.
+Out of solutions [[3, 2, 1, 4, 5], [5, 4, 1, 2, 3]], quantum algorithm found [[5, 4, 1, 2, 3], [3, 2, 1, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 6
+Building circuit...
+Finished in 1069 ms
+Running simulation...
+Finished in 4772 ms
+Valid prob: 0.451, Solution prob: 0.182537, Average d: 2.017, Min d: 1.944, Classical Min d: 1.944.
+Out of solutions [[0, 1, 2, 3, 4], [0, 5, 2, 3, 4], [0, 5, 3, 2, 1], [0, 5, 4, 1, 2], [0, 5, 4, 2, 1], [0, 5, 4, 3, 2], [1, 0, 5, 4, 3], [1, 2, 3, 0, 5], [1, 2, 3, 4, 5], [1, 2, 3, 5, 0], [1, 2, 4, 5, 0], [1, 2, 5, 4, 3], [2, 1, 0, 3, 4], [2, 1, 0, 4, 3], [2, 1, 0, 5, 4], [2, 1, 4, 5, 0], [2, 1, 5, 4, 3], [2, 3, 4, 5, 0], [3, 2, 1, 0, 5], [3, 4, 0, 1, 2], [3, 4, 1, 0, 5], [3, 4, 5, 0, 1], [3, 4, 5, 1, 2], [3, 4, 5, 2, 1], [4, 3, 0, 1, 2], [4, 3, 1, 0, 5], [4, 3, 2, 0, 5], [4, 3, 2, 1, 0], [4, 3, 2, 5, 0], [4, 5, 0, 1, 2], [5, 0, 1, 2, 3], [5, 0, 1, 3, 4], [5, 0, 1, 4, 3], [5, 0, 2, 3, 4], [5, 0, 3, 2, 1], [5, 4, 3, 2, 1]], quantum algorithm found [[0, 1, 2, 3, 4], [2, 1, 0, 3, 4], [4, 3, 0, 1, 2], [3, 2, 1, 0, 5], [3, 4, 0, 1, 2], [3, 4, 5, 1, 2], [2, 1, 0, 5, 4], [4, 3, 1, 0, 5], [0, 5, 4, 1, 2], [3, 4, 1, 0, 5], [2, 3, 4, 5, 0], [1, 2, 5, 4, 3], [5, 4, 3, 2, 1], [2, 1, 0, 4, 3], [1, 2, 3, 4, 5], [4, 3, 2, 5, 0], [0, 5, 3, 2, 1], [0, 5, 4, 2, 1], [4, 3, 2, 1, 0], [0, 5, 4, 3, 2], [5, 0, 3, 2, 1], [2, 1, 4, 5, 0], [3, 4, 5, 2, 1], [1, 0, 5, 4, 3], [4, 5, 0, 1, 2], [3, 4, 5, 0, 1], [5, 0, 1, 2, 3], [0, 5, 2, 3, 4], [5, 0, 2, 3, 4], [5, 0, 1, 3, 4], [2, 1, 5, 4, 3], [1, 2, 3, 0, 5], [5, 0, 1, 4, 3], [1, 2, 3, 5, 0], [4, 3, 2, 0, 5], [1, 2, 4, 5, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1151 ms
+Running simulation...
+Finished in 5199 ms
+Valid prob: 0.429, Solution prob: 0.207538, Average d: 0.495, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[3, 2, 1, 0, 4], [4, 0, 1, 2, 3]], quantum algorithm found [[4, 0, 1, 2, 3], [3, 2, 1, 0, 4]].
+------------------
+Starting QA simulation under the following param: 
+  9%|▉         | 12/132 [01:07<12:01,  6.01s/it] 10%|▉         | 13/132 [01:13<12:05,  6.10s/it] 11%|█         | 14/132 [01:20<12:20,  6.27s/it] 11%|█▏        | 15/132 [01:26<12:03,  6.19s/it] 12%|█▏        | 16/132 [01:33<12:13,  6.32s/it] 13%|█▎        | 17/132 [01:39<12:05,  6.31s/it] 14%|█▎        | 18/132 [01:46<12:08,  6.39s/it] 14%|█▍        | 19/132 [01:52<11:57,  6.35s/it] 15%|█▌        | 20/132 [01:59<12:08,  6.50s/it] 16%|█▌        | 21/132 [02:06<12:19,  6.66s/it] 17%|█▋        | 22/132 [02:13<12:14,  6.68s/it] 17%|█▋        | 23/132 [02:19<12:17,  6.77s/it] 18%|█▊        | 24/132 [02:27<12:22,  6.87s/it]{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1194 ms
+Running simulation...
+Finished in 5100 ms
+Valid prob: 0.434, Solution prob: 0.071523, Average d: 0.875, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 6, 4, 5], [5, 4, 6, 1, 0]], quantum algorithm found [[5, 4, 6, 1, 0], [0, 1, 6, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1174 ms
+Running simulation...
+Finished in 4990 ms
+Valid prob: 0.469, Solution prob: 0.059633, Average d: 0.822, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 6, 4, 5], [5, 4, 6, 1, 0]], quantum algorithm found [[5, 4, 6, 1, 0], [0, 1, 6, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1242 ms
+Running simulation...
+Finished in 5258 ms
+Valid prob: 0.498, Solution prob: 0.052195, Average d: 2.121, Min d: 2.028, Classical Min d: 2.028.
+Out of solutions [[2, 3, 4, 5, 6], [6, 5, 4, 3, 2]], quantum algorithm found [[2, 3, 4, 5, 6], [6, 5, 4, 3, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1107 ms
+Running simulation...
+Finished in 4755 ms
+Valid prob: 0.503, Solution prob: 0.317270, Average d: 1.275, Min d: 1.202, Classical Min d: 1.202.
+Out of solutions [[2, 1, 0, 3, 4], [2, 1, 0, 3, 5], [2, 1, 0, 3, 6], [4, 3, 0, 1, 2], [5, 3, 0, 1, 2], [6, 3, 0, 1, 2]], quantum algorithm found [[6, 3, 0, 1, 2], [5, 3, 0, 1, 2], [2, 1, 0, 3, 6], [2, 1, 0, 3, 5], [2, 1, 0, 3, 4], [4, 3, 0, 1, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1267 ms
+Running simulation...
+Finished in 5188 ms
+Valid prob: 0.593, Solution prob: 0.040374, Average d: 2.231, Min d: 2.160, Classical Min d: 2.160.
+Out of solutions [[0, 1, 2, 4, 6], [0, 1, 3, 5, 6], [6, 4, 2, 1, 0], [6, 5, 3, 1, 0]], quantum algorithm found [[6, 5, 3, 1, 0], [0, 1, 3, 5, 6], [0, 1, 2, 4, 6], [6, 4, 2, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1189 ms
+Running simulation...
+Finished in 4925 ms
+Valid prob: 0.563, Solution prob: 0.148476, Average d: 2.223, Min d: 2.160, Classical Min d: 2.160.
+Out of solutions [[0, 1, 2, 5, 6], [0, 1, 4, 5, 6], [0, 1, 6, 5, 4], [2, 1, 0, 5, 6], [4, 5, 6, 1, 0], [6, 5, 0, 1, 2], [6, 5, 2, 1, 0], [6, 5, 4, 1, 0]], quantum algorithm found [[6, 5, 2, 1, 0], [6, 5, 0, 1, 2], [6, 5, 4, 1, 0], [2, 1, 0, 5, 6], [0, 1, 2, 5, 6], [4, 5, 6, 1, 0], [0, 1, 4, 5, 6], [0, 1, 6, 5, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1263 ms
+Running simulation...
+Finished in 5124 ms
+Valid prob: 0.477, Solution prob: 0.073210, Average d: 2.455, Min d: 2.333, Classical Min d: 2.333.
+Out of solutions [[2, 3, 4, 0, 1], [3, 2, 1, 5, 4], [3, 2, 1, 6, 4], [4, 3, 2, 0, 1], [4, 5, 1, 2, 3], [4, 5, 3, 2, 1], [4, 6, 1, 2, 3], [4, 6, 3, 2, 1]], quantum algorithm found [[4, 5, 3, 2, 1], [1, 2, 3, 6, 4], [4, 6, 3, 2, 1], [4, 3, 2, 0, 1], [2, 3, 4, 0, 1], [1, 2, 3, 5, 4], [4, 6, 1, 2, 3], [1, 0, 4, 3, 2], [4, 5, 1, 2, 3], [3, 2, 1, 5, 4], [1, 0, 2, 3, 4], [3, 2, 1, 6, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1181 ms
+Running simulation...
+Finished in 4966 ms
+Valid prob: 0.500, Solution prob: 0.169462, Average d: 0.826, Min d: 0.667, Classical Min d: 0.667.
+Out of solutions [[0, 4, 1, 3, 2], [2, 3, 1, 4, 0]], quantum algorithm found [[2, 3, 1, 4, 0], [0, 4, 1, 3, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1261 ms
+Running simulation...
+Finished in 5423 ms
+Valid prob: 0.481, Solution prob: 0.113551, Average d: 1.971, Min d: 1.856, Classical Min d: 1.856.
+Out of solutions [[0, 6, 2, 1, 3], [0, 6, 3, 1, 2], [2, 1, 3, 6, 0], [3, 1, 2, 6, 0]], quantum algorithm found [[0, 6, 2, 1, 3], [0, 6, 3, 1, 2], [3, 1, 2, 6, 0], [2, 1, 3, 6, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1411 ms
+Running simulation...
+Finished in 5433 ms
+Valid prob: 0.482, Solution prob: 0.096248, Average d: 2.136, Min d: 2.000, Classical Min d: 2.000.
+Out of solutions [[3, 1, 0, 2, 4], [4, 2, 0, 1, 3]], quantum algorithm found [[3, 1, 0, 2, 4], [4, 2, 0, 1, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1404 ms
+Running simulation...
+Finished in 5190 ms
+Valid prob: 0.477, Solution prob: 0.129725, Average d: 1.375, Min d: 1.202, Classical Min d: 1.202.
+Out of solutions [[3, 1, 5, 4, 6], [6, 4, 5, 1, 3]], quantum algorithm found [[3, 1, 5, 4, 6], [6, 4, 5, 1, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 7
+Building circuit...
+Finished in 1287 ms
+Running simulation...
+Finished in 5508 ms
+Valid prob: 0.503, Solution prob: 0.074446, Average d: 2.007, Min d: 1.886, Classical Min d: 1.886.
+Out of solutions [[2, 3, 4, 5, 6], [6, 5, 4, 3, 2]], quantum algorithm found [[6, 5, 4, 3, 2], [2, 3, 4, 5, 6]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1535 ms
+Running simulation...
+Finished in 5369 ms
+Valid prob: 0.522, Solution prob: 0.274246, Average d: 0.381, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]], quantum algorithm found [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1520 ms
+Running simulation...
+Finished in 5475 ms
+Valid prob: 0.552, Solution prob: 0.363731, Average d: 2.153, Min d: 2.108, Classical Min d: 2.108.
+ 19%|█▉        | 25/132 [02:34<12:28,  6.99s/it] 20%|█▉        | 26/132 [02:42<12:45,  7.23s/it] 20%|██        | 27/132 [02:49<12:58,  7.41s/it] 21%|██        | 28/132 [02:57<12:58,  7.49s/it] 22%|██▏       | 29/132 [03:05<13:15,  7.72s/it] 23%|██▎       | 30/132 [03:14<13:20,  7.85s/it] 23%|██▎       | 31/132 [03:22<13:29,  8.01s/it] 24%|██▍       | 32/132 [03:30<13:34,  8.14s/it]Out of solutions [[1, 0, 5, 3, 4], [1, 2, 5, 3, 4], [4, 3, 1, 6, 5], [4, 3, 1, 7, 5], [4, 3, 5, 0, 1], [4, 3, 5, 2, 1], [5, 6, 1, 3, 4], [5, 7, 1, 3, 4]], quantum algorithm found [[4, 3, 5, 2, 1], [1, 0, 5, 3, 4], [1, 2, 5, 3, 4], [4, 3, 1, 6, 5], [5, 7, 1, 3, 4], [4, 3, 5, 0, 1], [5, 6, 1, 3, 4], [4, 3, 1, 7, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1552 ms
+Running simulation...
+Finished in 5992 ms
+Valid prob: 0.543, Solution prob: 0.343876, Average d: 1.178, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[5, 4, 7, 2, 6], [6, 2, 5, 0, 7], [6, 2, 7, 4, 5], [7, 0, 5, 2, 6]], quantum algorithm found [[7, 0, 5, 2, 6], [5, 4, 7, 2, 6], [6, 2, 5, 0, 7], [6, 2, 7, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1620 ms
+Running simulation...
+Finished in 5934 ms
+Valid prob: 0.580, Solution prob: 0.274998, Average d: 1.775, Min d: 1.726, Classical Min d: 1.726.
+Out of solutions [[0, 1, 7, 2, 3], [0, 1, 7, 3, 2], [0, 1, 7, 3, 4], [0, 1, 7, 4, 3], [0, 5, 7, 2, 3], [0, 5, 7, 3, 2], [1, 0, 7, 2, 3], [1, 0, 7, 3, 2], [1, 0, 7, 3, 4], [1, 0, 7, 4, 3], [2, 3, 7, 0, 1], [2, 3, 7, 0, 5], [2, 3, 7, 1, 0], [2, 3, 7, 4, 5], [2, 3, 7, 5, 0], [2, 3, 7, 5, 4], [3, 2, 7, 0, 1], [3, 2, 7, 0, 5], [3, 2, 7, 1, 0], [3, 2, 7, 4, 5], [3, 2, 7, 5, 0], [3, 2, 7, 5, 4], [3, 4, 7, 0, 1], [3, 4, 7, 1, 0], [4, 3, 7, 0, 1], [4, 3, 7, 1, 0], [4, 5, 7, 2, 3], [4, 5, 7, 3, 2], [5, 0, 7, 2, 3], [5, 0, 7, 3, 2], [5, 4, 7, 2, 3], [5, 4, 7, 3, 2]], quantum algorithm found [[1, 0, 7, 3, 4], [0, 5, 7, 3, 2], [1, 0, 7, 4, 3], [1, 0, 7, 3, 2], [4, 5, 7, 3, 2], [4, 3, 7, 1, 0], [3, 2, 7, 5, 0], [2, 3, 7, 5, 4], [0, 1, 7, 4, 3], [5, 4, 7, 2, 3], [2, 3, 7, 4, 5], [3, 2, 7, 5, 4], [3, 2, 7, 0, 5], [5, 4, 7, 3, 2], [0, 1, 7, 3, 4], [5, 0, 7, 3, 2], [2, 3, 7, 0, 5], [2, 3, 7, 1, 0], [0, 5, 7, 2, 3], [3, 2, 7, 1, 0], [5, 0, 7, 2, 3], [3, 2, 7, 4, 5], [2, 3, 7, 5, 0], [1, 0, 7, 2, 3], [3, 2, 7, 0, 1], [3, 4, 7, 1, 0], [4, 3, 7, 0, 1], [0, 1, 7, 3, 2], [0, 1, 7, 2, 3], [4, 5, 7, 2, 3], [2, 3, 7, 0, 1], [3, 4, 7, 0, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1531 ms
+Running simulation...
+Finished in 5800 ms
+Valid prob: 0.547, Solution prob: 0.234527, Average d: 1.895, Min d: 1.856, Classical Min d: 1.856.
+Out of solutions [[0, 1, 3, 4, 6], [0, 1, 4, 6, 7], [0, 1, 6, 4, 3], [1, 0, 3, 4, 6], [1, 0, 4, 6, 7], [1, 0, 6, 4, 3], [3, 2, 1, 6, 7], [3, 2, 4, 6, 7], [3, 2, 6, 4, 5], [3, 4, 6, 0, 1], [3, 4, 6, 1, 0], [5, 4, 3, 6, 7], [5, 4, 6, 2, 3], [6, 4, 3, 0, 1], [6, 4, 3, 1, 0], [7, 6, 1, 2, 3], [7, 6, 3, 4, 5], [7, 6, 4, 0, 1], [7, 6, 4, 1, 0], [7, 6, 4, 2, 3]], quantum algorithm found [[7, 6, 4, 1, 0], [1, 0, 3, 4, 6], [3, 2, 4, 6, 7], [3, 4, 6, 0, 1], [7, 6, 1, 2, 3], [0, 1, 3, 4, 6], [6, 4, 3, 0, 1], [7, 6, 4, 0, 1], [0, 1, 6, 4, 3], [6, 4, 3, 1, 0], [5, 4, 6, 2, 3], [5, 4, 3, 6, 7], [7, 6, 3, 4, 5], [7, 6, 4, 2, 3], [1, 0, 4, 6, 7], [3, 4, 6, 1, 0], [3, 2, 6, 4, 5], [3, 2, 1, 6, 7], [1, 0, 6, 4, 3], [0, 1, 4, 6, 7]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1831 ms
+Running simulation...
+Finished in 6152 ms
+Valid prob: 0.580, Solution prob: 0.397882, Average d: 1.698, Min d: 1.660, Classical Min d: 1.660.
+Out of solutions [[1, 2, 3, 5, 6], [1, 2, 4, 5, 6], [1, 2, 6, 5, 4], [1, 2, 6, 5, 7], [2, 1, 4, 5, 6], [2, 1, 6, 5, 4], [2, 1, 6, 5, 7], [2, 1, 7, 5, 6], [4, 5, 6, 1, 2], [4, 5, 6, 2, 1], [6, 5, 3, 2, 1], [6, 5, 4, 1, 2], [6, 5, 4, 2, 1], [6, 5, 7, 1, 2], [7, 5, 6, 1, 2], [7, 5, 6, 2, 1]], quantum algorithm found [[2, 1, 7, 5, 6], [1, 2, 3, 5, 6], [1, 2, 6, 5, 4], [7, 5, 6, 2, 1], [6, 5, 3, 2, 1], [4, 5, 6, 1, 2], [2, 1, 6, 5, 7], [6, 5, 4, 1, 2], [1, 2, 4, 5, 6], [2, 1, 4, 5, 6], [2, 1, 6, 5, 4], [1, 2, 6, 5, 7], [4, 5, 6, 2, 1], [6, 5, 7, 1, 2], [6, 5, 4, 2, 1], [7, 5, 6, 1, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1748 ms
+Running simulation...
+Finished in 6034 ms
+Valid prob: 0.513, Solution prob: 0.233055, Average d: 1.897, Min d: 1.856, Classical Min d: 1.856.
+Out of solutions [[0, 1, 6, 5, 4], [1, 6, 7, 2, 3], [1, 6, 7, 3, 2], [1, 6, 7, 3, 4], [1, 6, 7, 4, 3], [1, 6, 7, 4, 5], [1, 6, 7, 5, 4], [2, 3, 0, 1, 6], [2, 3, 7, 6, 1], [3, 2, 0, 1, 6], [3, 2, 1, 6, 7], [3, 2, 7, 6, 1], [3, 4, 0, 1, 6], [3, 4, 7, 6, 1], [4, 3, 0, 1, 6], [4, 3, 7, 6, 1], [4, 5, 0, 1, 6], [4, 5, 6, 1, 0], [4, 5, 7, 6, 1], [5, 4, 0, 1, 6], [5, 4, 7, 6, 1], [6, 1, 0, 2, 3], [6, 1, 0, 3, 2], [6, 1, 0, 3, 4], [6, 1, 0, 4, 3], [6, 1, 0, 4, 5], [6, 1, 0, 5, 4], [7, 6, 1, 2, 3]], quantum algorithm found [[1, 6, 7, 3, 2], [2, 3, 7, 6, 1], [1, 6, 7, 3, 4], [0, 1, 6, 5, 4], [1, 6, 7, 2, 3], [6, 1, 0, 4, 5], [6, 1, 0, 3, 4], [4, 5, 7, 6, 1], [5, 4, 7, 6, 1], [4, 5, 6, 1, 0], [2, 3, 0, 1, 6], [5, 4, 0, 1, 6], [3, 4, 0, 1, 6], [6, 1, 0, 2, 3], [4, 3, 0, 1, 6], [7, 6, 1, 2, 3], [4, 3, 7, 6, 1], [3, 2, 0, 1, 6], [6, 1, 0, 3, 2], [3, 2, 7, 6, 1], [3, 4, 7, 6, 1], [1, 6, 7, 4, 3], [1, 6, 7, 4, 5], [6, 1, 0, 4, 3], [3, 2, 1, 6, 7], [1, 6, 7, 5, 4], [4, 5, 0, 1, 6], [6, 1, 0, 5, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1771 ms
+Running simulation...
+Finished in 6258 ms
+Valid prob: 0.567, Solution prob: 0.088945, Average d: 2.376, Min d: 2.333, Classical Min d: 2.333.
+Out of solutions [[1, 2, 3, 4, 5], [2, 3, 4, 5, 6], [3, 4, 5, 6, 7], [5, 4, 3, 2, 1], [6, 5, 4, 3, 2], [7, 6, 5, 4, 3]], quantum algorithm found [[2, 3, 4, 5, 6], [7, 6, 5, 4, 3], [3, 4, 5, 6, 7], [5, 4, 3, 2, 1], [6, 5, 4, 3, 2], [1, 2, 3, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1823 ms
+Running simulation...
+Finished in 6309 ms
+Valid prob: 0.595, Solution prob: 0.380404, Average d: 1.921, Min d: 1.886, Classical Min d: 1.886.
+Out of solutions [[0, 2, 1, 4, 5], [0, 2, 3, 1, 4], [0, 2, 4, 1, 3], [0, 5, 4, 1, 3], [1, 3, 0, 5, 4], [1, 3, 2, 0, 5], [1, 3, 5, 0, 2], [1, 4, 5, 0, 2], [2, 0, 1, 4, 5], [2, 0, 4, 1, 3], [2, 0, 5, 1, 3], [2, 0, 5, 3, 1], [2, 0, 5, 4, 1], [3, 1, 0, 5, 4], [3, 1, 4, 0, 2], [3, 1, 4, 2, 0], [3, 1, 4, 5, 0], [3, 1, 5, 0, 2], [4, 1, 3, 2, 0], [4, 5, 0, 1, 3], [4, 5, 0, 3, 1], [5, 0, 2, 3, 1], [5, 4, 1, 0, 2], [5, 4, 1, 2, 0]], quantum algorithm found [[1, 3, 5, 0, 2], [1, 3, 0, 5, 4], [3, 1, 0, 5, 4], [3, 1, 4, 5, 0], [5, 0, 2, 3, 1], [1, 3, 2, 0, 5], [3, 1, 5, 0, 2], [0, 5, 4, 1, 3], [0, 2, 1, 4, 5], [2, 0, 5, 3, 1], [2, 0, 5, 1, 3], [0, 2, 3, 1, 4], [3, 1, 4, 0, 2], [0, 2, 4, 1, 3], [5, 4, 1, 0, 2], [1, 4, 5, 0, 2], [2, 0, 4, 1, 3], [2, 0, 5, 4, 1], [5, 4, 1, 2, 0], [4, 1, 3, 2, 0], [4, 5, 0, 3, 1], [2, 0, 1, 4, 5], [3, 1, 4, 2, 0], [4, 5, 0, 1, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+ 25%|██▌       | 33/132 [03:39<13:29,  8.17s/it] 26%|██▌       | 34/132 [03:47<13:20,  8.17s/it] 27%|██▋       | 35/132 [04:38<33:51, 20.94s/it] 27%|██▋       | 36/132 [05:29<48:18, 30.19s/it] 28%|██▊       | 37/132 [06:23<58:45, 37.12s/it] 29%|██▉       | 38/132 [07:15<1:05:09, 41.59s/it] 30%|██▉       | 39/132 [08:10<1:10:53, 45.74s/it] 30%|███       | 40/132 [09:06<1:14:54, 48.85s/it] 31%|███       | 41/132 [09:59<1:16:03, 50.15s/it] 32%|███▏      | 42/132 [10:53<1:16:50, 51.23s/it] 33%|███▎      | 43/132 [11:47<1:17:13, 52.06s/it] 33%|███▎      | 44/132 [12:39<1:16:15, 52.00s/it] 34%|███▍      | 45/132 [13:32<1:15:58, 52.40s/it] 35%|███▍      | 46/132 [14:27<1:15:55, 52.97s/it]Building circuit...
+Finished in 1759 ms
+Running simulation...
+Finished in 6232 ms
+Valid prob: 0.483, Solution prob: 0.132158, Average d: 1.018, Min d: 0.745, Classical Min d: 0.745.
+Out of solutions [[0, 1, 6, 4, 5], [5, 4, 6, 1, 0]], quantum algorithm found [[0, 1, 6, 4, 5], [5, 4, 6, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 15 qubits, with N = 5 , M = 8
+Building circuit...
+Finished in 1773 ms
+Running simulation...
+Finished in 6111 ms
+Valid prob: 0.590, Solution prob: 0.063381, Average d: 1.333, Min d: 1.247, Classical Min d: 1.247.
+Out of solutions [[0, 1, 6, 5, 4], [4, 5, 6, 1, 0]], quantum algorithm found [[4, 5, 6, 1, 0], [0, 1, 6, 5, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2118 ms
+Running simulation...
+Finished in 48051 ms
+Valid prob: 0.552, Solution prob: 0.153717, Average d: 0.657, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[3, 7, 2, 8, 4], [4, 8, 2, 7, 3]], quantum algorithm found [[3, 7, 2, 8, 4], [4, 8, 2, 7, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2152 ms
+Running simulation...
+Finished in 48968 ms
+Valid prob: 0.445, Solution prob: 0.031268, Average d: 0.949, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[5, 4, 6, 7, 8], [8, 7, 6, 4, 5]], quantum algorithm found [[8, 7, 6, 4, 5], [5, 4, 6, 7, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2259 ms
+Running simulation...
+Finished in 50374 ms
+Valid prob: 0.448, Solution prob: 0.067823, Average d: 0.942, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[3, 2, 4, 5, 6], [6, 5, 4, 2, 3]], quantum algorithm found [[6, 5, 4, 2, 3], [3, 2, 4, 5, 6]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2195 ms
+Running simulation...
+Finished in 49269 ms
+Valid prob: 0.564, Solution prob: 0.151751, Average d: 0.736, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[3, 7, 2, 8, 4], [4, 8, 2, 7, 3]], quantum algorithm found [[4, 8, 2, 7, 3], [3, 7, 2, 8, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2359 ms
+Running simulation...
+Finished in 52087 ms
+Valid prob: 0.415, Solution prob: 0.010292, Average d: 2.306, Min d: 2.160, Classical Min d: 2.160.
+Out of solutions [[0, 5, 1, 2, 3], [3, 2, 1, 5, 0]], quantum algorithm found [[0, 5, 1, 2, 3], [3, 2, 1, 5, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2417 ms
+Running simulation...
+Finished in 52798 ms
+Valid prob: 0.462, Solution prob: 0.015784, Average d: 2.079, Min d: 1.944, Classical Min d: 1.944.
+Out of solutions [[0, 3, 1, 2, 5], [5, 2, 1, 3, 0]], quantum algorithm found [[5, 2, 1, 3, 0], [0, 3, 1, 2, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2413 ms
+Running simulation...
+Finished in 50099 ms
+Valid prob: 0.420, Solution prob: 0.171942, Average d: 1.578, Min d: 1.453, Classical Min d: 1.453.
+Out of solutions [[1, 2, 6, 5, 7], [2, 1, 6, 5, 7], [2, 3, 6, 5, 7], [3, 2, 6, 5, 7], [7, 5, 6, 1, 2], [7, 5, 6, 2, 1], [7, 5, 6, 2, 3], [7, 5, 6, 3, 2]], quantum algorithm found [[2, 1, 6, 5, 7], [7, 5, 6, 2, 1], [3, 2, 6, 5, 7], [2, 3, 6, 5, 7], [7, 5, 6, 1, 2], [7, 5, 6, 3, 2], [1, 2, 6, 5, 7], [7, 5, 6, 2, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2169 ms
+Running simulation...
+Finished in 50797 ms
+Valid prob: 0.406, Solution prob: 0.013094, Average d: 2.037, Min d: 1.856, Classical Min d: 1.856.
+Out of solutions [[0, 1, 2, 4, 5], [5, 4, 2, 1, 0]], quantum algorithm found [[5, 4, 2, 1, 0], [0, 1, 2, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2215 ms
+Running simulation...
+Finished in 51103 ms
+Valid prob: 0.472, Solution prob: 0.014249, Average d: 1.777, Min d: 1.599, Classical Min d: 1.599.
+Out of solutions [[0, 6, 7, 2, 1], [1, 2, 7, 6, 0]], quantum algorithm found [[1, 2, 7, 6, 0], [0, 6, 7, 2, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2079 ms
+Running simulation...
+Finished in 49155 ms
+Valid prob: 0.479, Solution prob: 0.064850, Average d: 1.289, Min d: 1.054, Classical Min d: 1.054.
+Out of solutions [[5, 4, 1, 7, 8], [5, 4, 6, 7, 8], [8, 7, 1, 4, 5], [8, 7, 6, 4, 5]], quantum algorithm found [[5, 4, 1, 7, 8], [8, 7, 1, 4, 5], [5, 4, 6, 7, 8], [8, 7, 6, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2120 ms
+Running simulation...
+Finished in 50429 ms
+Valid prob: 0.478, Solution prob: 0.020454, Average d: 1.660, Min d: 1.491, Classical Min d: 1.491.
+Out of solutions [[1, 8, 2, 4, 6], [6, 4, 2, 8, 1]], quantum algorithm found [[1, 8, 2, 4, 6], [6, 4, 2, 8, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2184 ms
+Running simulation...
+Finished in 51490 ms
+Valid prob: 0.479, Solution prob: 0.117617, Average d: 1.443, Min d: 1.291, Classical Min d: 1.291.
+Out of solutions [[7, 6, 8, 4, 3]], quantum algorithm found [[7, 6, 8, 4, 3], [3, 4, 8, 6, 7]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2140 ms
+Running simulation...
+Finished in 49282 ms
+Valid prob: 0.517, Solution prob: 0.124199, Average d: 1.937, Min d: 1.856, Classical Min d: 1.856.
+ 36%|███▌      | 47/132 [15:19<1:14:43, 52.75s/it] 36%|███▋      | 48/132 [16:11<1:13:41, 52.63s/it] 37%|███▋      | 49/132 [17:12<1:16:16, 55.14s/it] 38%|███▊      | 50/132 [18:13<1:17:42, 56.86s/it] 39%|███▊      | 51/132 [19:14<1:18:20, 58.03s/it] 39%|███▉      | 52/132 [20:15<1:18:32, 58.91s/it] 40%|████      | 53/132 [21:17<1:18:45, 59.81s/it] 41%|████      | 54/132 [22:18<1:18:25, 60.32s/it] 42%|████▏     | 55/132 [23:21<1:18:26, 61.13s/it] 42%|████▏     | 56/132 [24:23<1:17:30, 61.18s/it]Out of solutions [[2, 7, 8, 3, 4], [2, 7, 8, 4, 3], [2, 7, 8, 4, 5], [2, 7, 8, 5, 4], [2, 7, 8, 5, 6], [2, 7, 8, 6, 5], [3, 4, 8, 7, 2], [4, 3, 2, 7, 8], [4, 3, 8, 7, 2], [4, 5, 8, 7, 2], [5, 4, 8, 7, 2], [5, 6, 8, 7, 2], [6, 5, 8, 7, 2], [8, 7, 2, 3, 4]], quantum algorithm found [[4, 5, 8, 7, 2], [2, 7, 8, 5, 6], [4, 3, 2, 7, 8], [4, 3, 8, 7, 2], [2, 7, 8, 4, 3], [8, 7, 2, 3, 4], [2, 7, 8, 3, 4], [5, 6, 8, 7, 2], [3, 4, 8, 7, 2], [2, 7, 8, 5, 4], [2, 7, 8, 4, 5], [5, 4, 8, 7, 2], [6, 5, 8, 7, 2], [2, 7, 8, 6, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 9
+Building circuit...
+Finished in 2097 ms
+Running simulation...
+Finished in 49675 ms
+Valid prob: 0.489, Solution prob: 0.113838, Average d: 1.054, Min d: 0.577, Classical Min d: 0.577.
+Out of solutions [[2, 1, 3, 5, 4], [4, 5, 3, 1, 2]], quantum algorithm found [[2, 1, 3, 5, 4], [4, 5, 3, 1, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2410 ms
+Running simulation...
+Finished in 57565 ms
+Valid prob: 0.493, Solution prob: 0.054494, Average d: 1.253, Min d: 1.054, Classical Min d: 1.054.
+Out of solutions [[0, 4, 2, 5, 1], [0, 4, 3, 5, 1], [1, 5, 2, 4, 0], [1, 5, 3, 4, 0]], quantum algorithm found [[0, 4, 3, 5, 1], [1, 5, 2, 4, 0], [0, 4, 2, 5, 1], [1, 5, 3, 4, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2482 ms
+Running simulation...
+Finished in 57484 ms
+Valid prob: 0.584, Solution prob: 0.185670, Average d: 1.168, Min d: 0.989, Classical Min d: 0.989.
+Out of solutions [[9, 7, 8, 1, 2], [9, 7, 8, 3, 2]], quantum algorithm found [[9, 7, 8, 1, 2], [2, 3, 8, 7, 9], [2, 1, 8, 7, 9], [9, 7, 8, 3, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2528 ms
+Running simulation...
+Finished in 57273 ms
+Valid prob: 0.673, Solution prob: 0.110881, Average d: 1.377, Min d: 1.155, Classical Min d: 1.155.
+Out of solutions [[2, 1, 4, 8, 7], [7, 8, 4, 1, 2]], quantum algorithm found [[2, 1, 4, 8, 7], [7, 8, 4, 1, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2401 ms
+Running simulation...
+Finished in 57379 ms
+Valid prob: 0.560, Solution prob: 0.035435, Average d: 1.894, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[1, 8, 4, 3, 5], [1, 8, 9, 3, 5], [1, 8, 9, 5, 3], [3, 5, 1, 8, 9], [3, 5, 9, 8, 1], [5, 3, 1, 8, 9], [5, 3, 4, 1, 8], [5, 3, 4, 8, 1], [5, 3, 4, 8, 9], [5, 3, 9, 8, 1], [8, 1, 4, 3, 5], [9, 8, 1, 3, 5], [9, 8, 1, 5, 3], [9, 8, 4, 3, 5]], quantum algorithm found [[5, 3, 4, 8, 1], [1, 8, 9, 3, 5], [5, 3, 4, 1, 8], [9, 8, 1, 3, 5], [3, 5, 9, 8, 1], [5, 3, 9, 8, 1], [1, 8, 4, 3, 5], [5, 3, 4, 8, 9], [8, 1, 4, 3, 5], [1, 8, 9, 5, 3], [9, 8, 1, 5, 3], [5, 3, 1, 8, 9], [3, 5, 1, 8, 9], [9, 8, 4, 3, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2514 ms
+Running simulation...
+Finished in 58153 ms
+Valid prob: 0.571, Solution prob: 0.104497, Average d: 1.891, Min d: 1.826, Classical Min d: 1.826.
+Out of solutions [[0, 9, 8, 3, 2], [0, 9, 8, 3, 4], [2, 1, 6, 7, 8], [2, 3, 8, 5, 6], [2, 3, 8, 9, 0], [4, 3, 8, 9, 0], [6, 5, 2, 3, 8], [6, 5, 8, 3, 2], [8, 3, 2, 5, 6], [8, 7, 6, 1, 2]], quantum algorithm found [[4, 3, 8, 9, 0], [0, 9, 8, 3, 2], [2, 1, 6, 7, 8], [8, 3, 2, 5, 6], [2, 3, 8, 5, 6], [0, 9, 8, 3, 4], [6, 5, 8, 3, 2], [2, 3, 8, 9, 0], [8, 7, 6, 1, 2], [6, 5, 2, 3, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2456 ms
+Running simulation...
+Finished in 57934 ms
+Valid prob: 0.579, Solution prob: 0.007624, Average d: 1.897, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[2, 8, 9, 4, 5], [5, 4, 9, 8, 2]], quantum algorithm found [[5, 4, 9, 8, 2], [2, 8, 9, 4, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2593 ms
+Running simulation...
+Finished in 59224 ms
+Valid prob: 0.596, Solution prob: 0.194005, Average d: 1.986, Min d: 1.886, Classical Min d: 1.886.
+Out of solutions [[1, 3, 4, 5, 6], [1, 3, 8, 6, 5], [1, 3, 9, 5, 6], [1, 3, 9, 6, 5], [3, 1, 8, 6, 5], [3, 4, 5, 6, 8], [3, 4, 6, 8, 9], [3, 4, 8, 6, 5], [3, 9, 8, 6, 5], [4, 3, 1, 5, 6], [4, 3, 1, 6, 5], [4, 3, 1, 6, 8], [4, 3, 1, 8, 6], [4, 3, 6, 8, 9], [4, 3, 8, 6, 5], [4, 3, 9, 5, 6], [4, 3, 9, 6, 5], [4, 3, 9, 8, 6], [5, 6, 1, 3, 4], [5, 6, 1, 3, 9], [5, 6, 3, 9, 8], [5, 6, 8, 1, 3], [5, 6, 8, 3, 1], [5, 6, 8, 3, 4], [5, 6, 8, 4, 3], [5, 6, 8, 9, 3], [5, 6, 9, 3, 1], [5, 6, 9, 3, 4], [6, 5, 1, 3, 4], [6, 5, 1, 3, 9], [6, 5, 3, 9, 8], [6, 5, 4, 3, 1], [6, 5, 4, 3, 9], [6, 5, 9, 3, 1], [6, 5, 9, 3, 4], [6, 8, 1, 3, 4], [6, 8, 9, 3, 4], [8, 6, 1, 3, 4], [8, 6, 5, 4, 3], [8, 9, 3, 5, 6], [8, 9, 3, 6, 5], [9, 3, 1, 5, 6], [9, 3, 1, 6, 5], [9, 3, 4, 5, 6], [9, 8, 6, 3, 4], [9, 8, 6, 4, 3]], quantum algorithm found [[8, 9, 3, 5, 6], [6, 5, 1, 3, 9], [4, 3, 9, 6, 5], [4, 3, 9, 8, 6], [1, 3, 4, 5, 6], [1, 3, 8, 6, 5], [3, 4, 6, 8, 9], [5, 6, 8, 3, 1], [6, 5, 4, 3, 1], [9, 3, 4, 5, 6], [6, 5, 9, 3, 1], [3, 1, 8, 6, 5], [4, 3, 1, 6, 8], [4, 3, 1, 8, 6], [5, 6, 8, 1, 3], [6, 5, 1, 3, 4], [9, 8, 6, 3, 4], [4, 3, 9, 5, 6], [5, 6, 1, 3, 9], [5, 6, 9, 3, 1], [8, 6, 1, 3, 4], [5, 6, 8, 3, 4], [5, 6, 1, 3, 4], [6, 5, 9, 3, 4], [1, 3, 9, 5, 6], [5, 6, 3, 9, 8], [4, 3, 1, 5, 6], [5, 6, 8, 4, 3], [8, 6, 5, 4, 3], [6, 5, 3, 9, 8], [4, 3, 8, 6, 5], [6, 5, 4, 3, 9], [9, 8, 6, 4, 3], [3, 4, 5, 6, 8], [3, 4, 8, 6, 5], [9, 3, 1, 5, 6], [4, 3, 6, 8, 9], [3, 9, 8, 6, 5], [8, 9, 3, 6, 5], [6, 8, 9, 3, 4], [5, 6, 8, 9, 3], [5, 6, 9, 3, 4], [9, 3, 1, 6, 5], [4, 3, 1, 6, 5], [1, 3, 9, 6, 5], [6, 8, 1, 3, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2468 ms
+Running simulation...
+Finished in 57816 ms
+Valid prob: 0.565, Solution prob: 0.044910, Average d: 1.416, Min d: 1.202, Classical Min d: 1.202.
+Out of solutions [[1, 3, 2, 8, 6], [2, 8, 1, 3, 4], [4, 3, 1, 8, 2], [6, 8, 2, 3, 1]], quantum algorithm found [[1, 3, 2, 8, 6], [6, 8, 2, 3, 1], [4, 3, 1, 8, 2], [2, 8, 1, 3, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2452 ms
+Running simulation...
+Finished in 57418 ms
+Valid prob: 0.582, Solution prob: 0.171067, Average d: 1.606, Min d: 1.528, Classical Min d: 1.528.
+ 43%|████▎     | 57/132 [25:23<1:16:24, 61.12s/it] 44%|████▍     | 58/132 [26:24<1:15:07, 60.91s/it] 45%|████▍     | 59/132 [27:31<1:16:27, 62.85s/it] 45%|████▌     | 60/132 [28:38<1:16:50, 64.04s/it] 46%|████▌     | 61/132 [29:47<1:17:25, 65.42s/it] 47%|████▋     | 62/132 [30:57<1:17:55, 66.79s/it] 48%|████▊     | 63/132 [32:06<1:17:40, 67.55s/it] 48%|████▊     | 64/132 [33:13<1:16:23, 67.40s/it]Out of solutions [[1, 2, 5, 4, 6], [1, 2, 8, 4, 5], [1, 2, 8, 4, 6], [1, 2, 8, 6, 4], [4, 6, 1, 2, 8], [4, 6, 8, 2, 1], [5, 4, 1, 2, 8], [5, 4, 8, 2, 1], [6, 4, 1, 2, 8], [6, 4, 5, 2, 1], [6, 4, 8, 2, 1], [8, 2, 1, 4, 5], [8, 2, 1, 4, 6], [8, 2, 1, 6, 4]], quantum algorithm found [[1, 2, 8, 6, 4], [8, 2, 1, 4, 6], [1, 2, 8, 4, 5], [6, 4, 1, 2, 8], [1, 2, 5, 4, 6], [8, 2, 1, 4, 5], [8, 2, 1, 6, 4], [5, 4, 1, 2, 8], [6, 4, 8, 2, 1], [1, 2, 8, 4, 6], [5, 4, 8, 2, 1], [4, 6, 8, 2, 1], [4, 6, 1, 2, 8], [6, 4, 5, 2, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 10
+Building circuit...
+Finished in 2532 ms
+Running simulation...
+Finished in 56659 ms
+Valid prob: 0.548, Solution prob: 0.166429, Average d: 1.987, Min d: 1.886, Classical Min d: 1.886.
+Out of solutions [[0, 1, 6, 8, 7], [1, 0, 6, 8, 7], [1, 4, 6, 8, 7], [1, 5, 6, 8, 7], [1, 5, 7, 4, 6], [1, 5, 7, 6, 4], [1, 5, 7, 8, 6], [1, 5, 8, 6, 4], [4, 6, 0, 1, 5], [4, 6, 7, 5, 1], [4, 6, 8, 1, 5], [4, 6, 8, 5, 1], [5, 1, 0, 4, 6], [5, 1, 0, 6, 4], [5, 1, 0, 6, 8], [5, 1, 0, 8, 6], [5, 1, 4, 6, 8], [5, 1, 6, 8, 7], [5, 1, 8, 6, 4], [6, 4, 0, 1, 5], [6, 4, 1, 5, 7], [6, 4, 1, 7, 8], [6, 4, 1, 8, 7], [6, 4, 7, 5, 1], [6, 8, 0, 1, 5], [6, 8, 7, 5, 1], [7, 5, 1, 4, 6], [7, 8, 1, 4, 6], [7, 8, 6, 0, 1], [7, 8, 6, 1, 0], [7, 8, 6, 1, 5], [7, 8, 6, 4, 1], [7, 8, 6, 5, 1], [8, 6, 0, 1, 5], [8, 6, 4, 1, 5], [8, 7, 1, 4, 6]], quantum algorithm found [[1, 5, 6, 8, 7], [5, 1, 0, 8, 6], [8, 6, 4, 1, 5], [6, 8, 0, 1, 5], [6, 4, 1, 7, 8], [0, 1, 6, 8, 7], [4, 6, 0, 1, 5], [1, 5, 7, 8, 6], [1, 5, 8, 6, 4], [6, 4, 7, 5, 1], [1, 4, 6, 8, 7], [5, 1, 6, 8, 7], [1, 5, 7, 4, 6], [1, 5, 7, 6, 4], [7, 8, 1, 4, 6], [7, 8, 6, 1, 0], [6, 4, 1, 8, 7], [6, 4, 1, 5, 7], [8, 7, 1, 4, 6], [7, 8, 6, 1, 5], [5, 1, 4, 6, 8], [5, 1, 8, 6, 4], [8, 6, 0, 1, 5], [6, 4, 0, 1, 5], [5, 1, 0, 4, 6], [5, 1, 0, 6, 8], [7, 5, 1, 4, 6], [1, 0, 6, 8, 7], [4, 6, 7, 5, 1], [7, 8, 6, 0, 1], [6, 8, 7, 5, 1], [4, 6, 8, 5, 1], [7, 8, 6, 4, 1], [4, 6, 8, 1, 5], [7, 8, 6, 5, 1], [5, 1, 0, 6, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2665 ms
+Running simulation...
+Finished in 63292 ms
+Valid prob: 0.494, Solution prob: 0.156234, Average d: 0.570, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]], quantum algorithm found [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2627 ms
+Running simulation...
+Finished in 62764 ms
+Valid prob: 0.486, Solution prob: 0.159236, Average d: 0.558, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]], quantum algorithm found [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2674 ms
+Running simulation...
+Finished in 64524 ms
+Valid prob: 0.576, Solution prob: 0.159646, Average d: 0.683, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[4, 3, 5, 6, 10], [10, 6, 5, 3, 4]], quantum algorithm found [[4, 3, 5, 6, 10], [10, 6, 5, 3, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2722 ms
+Running simulation...
+Finished in 65786 ms
+Valid prob: 0.658, Solution prob: 0.211744, Average d: 0.693, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[1, 7, 0, 8, 2], [2, 8, 0, 7, 1]], quantum algorithm found [[1, 7, 0, 8, 2], [2, 8, 0, 7, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 3136 ms
+Running simulation...
+Finished in 64603 ms
+Valid prob: 0.596, Solution prob: 0.024704, Average d: 1.260, Min d: 1.000, Classical Min d: 1.000.
+Out of solutions [[0, 1, 10, 9, 4], [4, 9, 10, 1, 0]], quantum algorithm found [[4, 9, 10, 1, 0], [0, 1, 10, 9, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2482 ms
+Running simulation...
+Finished in 62841 ms
+Valid prob: 0.573, Solution prob: 0.106884, Average d: 1.851, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[0, 1, 3, 5, 7], [0, 1, 6, 5, 7], [0, 1, 8, 7, 5], [0, 1, 9, 7, 5], [1, 9, 3, 5, 6], [1, 9, 3, 5, 7], [1, 9, 4, 3, 5], [1, 9, 5, 3, 4], [1, 9, 6, 5, 3], [1, 9, 6, 5, 7], [1, 9, 7, 3, 4], [1, 9, 7, 5, 3], [1, 9, 7, 5, 6], [1, 9, 8, 7, 5], [1, 9, 10, 3, 4], [1, 9, 10, 3, 5], [1, 9, 10, 5, 3], [1, 9, 10, 5, 6], [1, 9, 10, 5, 7], [1, 9, 10, 7, 5], [3, 5, 0, 1, 9], [3, 5, 6, 1, 9], [3, 5, 6, 9, 1], [3, 5, 7, 9, 1], [3, 5, 10, 9, 1], [4, 3, 0, 1, 9], [4, 3, 5, 1, 9], [4, 3, 5, 9, 1], [4, 3, 7, 9, 1], [4, 3, 10, 9, 1], [5, 3, 0, 1, 9], [5, 3, 4, 1, 9], [5, 3, 4, 9, 1], [5, 3, 10, 9, 1], [5, 7, 0, 1, 9], [5, 7, 8, 1, 0], [5, 7, 8, 1, 9], [5, 7, 8, 9, 1], [5, 7, 9, 1, 0], [5, 7, 10, 9, 1], [6, 5, 0, 1, 9], [6, 5, 3, 1, 9], [6, 5, 3, 9, 1], [6, 5, 7, 9, 1], [6, 5, 10, 9, 1], [7, 5, 0, 1, 9], [7, 5, 3, 1, 0], [7, 5, 3, 1, 9], [7, 5, 3, 9, 1], [7, 5, 6, 1, 0], [7, 5, 6, 1, 9], [7, 5, 6, 9, 1], [7, 5, 10, 9, 1], [9, 1, 0, 3, 4], [9, 1, 0, 3, 5], [9, 1, 0, 5, 3], [9, 1, 0, 5, 6], [9, 1, 0, 5, 7], [9, 1, 0, 7, 5], [9, 1, 3, 5, 6], [9, 1, 3, 5, 7], [9, 1, 4, 3, 5], [9, 1, 5, 3, 4], [9, 1, 6, 5, 3], [9, 1, 6, 5, 7], [9, 1, 8, 7, 5]], quantum algorithm found [[6, 5, 7, 9, 1], [3, 5, 10, 9, 1], [1, 9, 10, 3, 5], [1, 9, 7, 3, 4], [5, 3, 0, 1, 9], [3, 5, 0, 1, 9], [9, 1, 0, 3, 4], [7, 5, 3, 1, 0], [7, 5, 10, 9, 1], [5, 7, 8, 1, 9], [1, 9, 6, 5, 3], [3, 5, 6, 9, 1], [5, 7, 10, 9, 1], [1, 9, 6, 5, 7], [9, 1, 0, 5, 3], [1, 9, 10, 7, 5], [6, 5, 3, 1, 9], [9, 1, 0, 3, 5], [7, 5, 0, 1, 9], [5, 7, 9, 1, 0], [9, 1, 0, 5, 6], [9, 1, 3, 5, 7], [4, 3, 5, 1, 9], [6, 5, 0, 1, 9], [4, 3, 10, 9, 1], [1, 9, 10, 5, 7], [6, 5, 3, 9, 1], [7, 5, 3, 1, 9], [5, 3, 10, 9, 1], [7, 5, 6, 1, 9], [4, 3, 0, 1, 9], [1, 9, 5, 3, 4], [0, 1, 3, 5, 7], [7, 5, 6, 9, 1], [9, 1, 0, 7, 5], [7, 5, 6, 1, 0], [0, 1, 6, 5, 7], [5, 3, 4, 9, 1], [1, 9, 8, 7, 5], [1, 9, 4, 3, 5], [5, 3, 4, 1, 9], [5, 7, 8, 1, 0], [0, 1, 8, 7, 5], [6, 5, 10, 9, 1], [5, 7, 8, 9, 1], [1, 9, 10, 3, 4], [4, 3, 5, 9, 1], [1, 9, 7, 5, 3], [9, 1, 0, 5, 7], [9, 1, 5, 3, 4], [7, 5, 3, 9, 1], [4, 3, 7, 9, 1], [1, 9, 3, 5, 7], [5, 7, 0, 1, 9], [0, 1, 9, 7, 5], [1, 9, 3, 5, 6], [9, 1, 3, 5, 6], [1, 9, 10, 5, 6], [9, 1, 6, 5, 3], [3, 5, 7, 9, 1], [9, 1, 4, 3, 5], [9, 1, 8, 7, 5], [1, 9, 10, 5, 3], [9, 1, 6, 5, 7], [1, 9, 7, 5, 6], [3, 5, 6, 1, 9]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2761 ms
+Running simulation...
+Finished in 63782 ms
+Valid prob: 0.619, Solution prob: 0.059509, Average d: 1.671, Min d: 1.563, Classical Min d: 1.563.
+Out of solutions [[1, 3, 10, 5, 6], [1, 3, 10, 6, 5], [5, 6, 10, 3, 1], [6, 5, 10, 3, 1]], quantum algorithm found [[1, 3, 10, 5, 6], [1, 3, 10, 6, 5], [5, 6, 10, 3, 1], [6, 5, 10, 3, 1]]. 49%|████▉     | 65/132 [34:21<1:15:30, 67.62s/it] 50%|█████     | 66/132 [35:30<1:14:45, 67.96s/it] 51%|█████     | 67/132 [36:39<1:13:59, 68.30s/it] 52%|█████▏    | 68/132 [37:49<1:13:17, 68.70s/it] 52%|█████▏    | 69/132 [38:59<1:12:43, 69.26s/it] 53%|█████▎    | 70/132 [40:10<1:12:01, 69.71s/it] 54%|█████▍    | 71/132 [41:21<1:11:17, 70.13s/it] 55%|█████▍    | 72/132 [42:29<1:09:24, 69.41s/it] 55%|█████▌    | 73/132 [43:45<1:10:18, 71.50s/it] 56%|█████▌    | 74/132 [45:02<1:10:40, 73.11s/it] 57%|█████▋    | 75/132 [46:18<1:10:19, 74.03s/it] 58%|█████▊    | 76/132 [47:35<1:09:43, 74.71s/it] 58%|█████▊    | 77/132 [48:53<1:09:28, 75.80s/it] 59%|█████▉    | 78/132 [50:11<1:08:54, 76.57s/it] 60%|█████▉    | 79/132 [51:28<1:07:41, 76.62s/it]
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2702 ms
+Running simulation...
+Finished in 64556 ms
+Valid prob: 0.583, Solution prob: 0.142762, Average d: 1.240, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[3, 2, 1, 4, 9], [3, 2, 1, 9, 4], [4, 9, 1, 2, 3], [9, 4, 1, 2, 3]], quantum algorithm found [[3, 2, 1, 4, 9], [3, 2, 1, 9, 4], [4, 9, 1, 2, 3], [9, 4, 1, 2, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2674 ms
+Running simulation...
+Finished in 64900 ms
+Valid prob: 0.538, Solution prob: 0.082445, Average d: 1.287, Min d: 1.155, Classical Min d: 1.155.
+Out of solutions [[1, 6, 2, 3, 0], [7, 6, 1, 3, 0]], quantum algorithm found [[1, 6, 2, 3, 0], [7, 6, 1, 3, 0], [0, 3, 1, 6, 7], [0, 3, 2, 6, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2698 ms
+Running simulation...
+Finished in 65417 ms
+Valid prob: 0.576, Solution prob: 0.081265, Average d: 1.226, Min d: 1.054, Classical Min d: 1.054.
+Out of solutions [[2, 1, 3, 4, 10], [10, 4, 3, 1, 2]], quantum algorithm found [[10, 4, 3, 1, 2], [2, 1, 3, 4, 10]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2829 ms
+Running simulation...
+Finished in 66183 ms
+Valid prob: 0.512, Solution prob: 0.159574, Average d: 1.479, Min d: 1.291, Classical Min d: 1.291.
+Out of solutions [[1, 8, 0, 2, 3], [1, 8, 0, 2, 4], [3, 2, 0, 8, 1], [4, 2, 0, 8, 1]], quantum algorithm found [[3, 2, 0, 8, 1], [1, 8, 0, 2, 3], [4, 2, 0, 8, 1], [1, 8, 0, 2, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2749 ms
+Running simulation...
+Finished in 66282 ms
+Valid prob: 0.475, Solution prob: 0.015668, Average d: 1.972, Min d: 1.826, Classical Min d: 1.826.
+Out of solutions [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]], quantum algorithm found [[4, 3, 2, 1, 0], [0, 1, 2, 3, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2814 ms
+Running simulation...
+Finished in 66551 ms
+Valid prob: 0.545, Solution prob: 0.034320, Average d: 1.967, Min d: 1.856, Classical Min d: 1.856.
+Out of solutions [[0, 10, 1, 2, 3], [0, 10, 3, 2, 1], [0, 10, 9, 2, 1], [1, 2, 0, 10, 9], [1, 2, 3, 10, 0], [1, 2, 9, 10, 0], [3, 2, 1, 10, 0], [9, 10, 0, 2, 1]], quantum algorithm found [[0, 10, 1, 2, 3], [3, 2, 1, 10, 0], [0, 10, 3, 2, 1], [1, 2, 0, 10, 9], [9, 10, 0, 2, 1], [0, 10, 9, 2, 1], [1, 2, 9, 10, 0], [1, 2, 3, 10, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 11
+Building circuit...
+Finished in 2657 ms
+Running simulation...
+Finished in 63561 ms
+Valid prob: 0.531, Solution prob: 0.072062, Average d: 0.922, Min d: 0.667, Classical Min d: 0.667.
+Out of solutions [[2, 1, 0, 4, 5], [2, 1, 0, 9, 10], [5, 4, 0, 1, 2], [10, 9, 0, 1, 2]], quantum algorithm found [[5, 4, 0, 1, 2], [10, 9, 0, 1, 2], [2, 1, 0, 4, 5], [2, 1, 0, 9, 10]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3014 ms
+Running simulation...
+Finished in 71056 ms
+Valid prob: 0.542, Solution prob: 0.153714, Average d: 0.635, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[7, 6, 8, 9, 10], [10, 9, 8, 6, 7]], quantum algorithm found [[7, 6, 8, 9, 10], [10, 9, 8, 6, 7]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3179 ms
+Running simulation...
+Finished in 71367 ms
+Valid prob: 0.553, Solution prob: 0.132753, Average d: 0.692, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[6, 5, 7, 8, 9], [9, 8, 7, 5, 6]], quantum algorithm found [[6, 5, 7, 8, 9], [9, 8, 7, 5, 6]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3116 ms
+Running simulation...
+Finished in 70758 ms
+Valid prob: 0.594, Solution prob: 0.095534, Average d: 0.761, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 11, 9, 10], [10, 9, 11, 1, 0]], quantum algorithm found [[0, 1, 11, 9, 10], [10, 9, 11, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 2904 ms
+Running simulation...
+Finished in 71071 ms
+Valid prob: 0.552, Solution prob: 0.133681, Average d: 0.690, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[6, 5, 7, 8, 9], [9, 8, 7, 5, 6]], quantum algorithm found [[9, 8, 7, 5, 6], [6, 5, 7, 8, 9]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3131 ms
+Running simulation...
+Finished in 72583 ms
+Valid prob: 0.603, Solution prob: 0.007254, Average d: 1.977, Min d: 1.886, Classical Min d: 1.886.
+Out of solutions [[3, 2, 1, 0, 11], [11, 0, 1, 2, 3]], quantum algorithm found [[11, 0, 1, 2, 3], [3, 2, 1, 0, 11]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3205 ms
+Running simulation...
+Finished in 72613 ms
+Valid prob: 0.519, Solution prob: 0.031212, Average d: 1.592, Min d: 1.453, Classical Min d: 1.453.
+Out of solutions [[0, 2, 1, 9, 11], [1, 2, 0, 8, 10], [10, 8, 0, 2, 1], [11, 9, 1, 2, 0]], quantum algorithm found [[1, 2, 0, 8, 10], [10, 8, 0, 2, 1], [11, 9, 1, 2, 0], [0, 2, 1, 9, 11]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3101 ms
+Running simulation...
+Finished in 71376 ms
+Valid prob: 0.605, Solution prob: 0.062426, Average d: 1.342, Min d: 1.155, Classical Min d: 1.155.
+Out of solutions [[8, 6, 10, 9, 11], [11, 9, 10, 6, 8]], quantum algorithm found [[8, 6, 10, 9, 11], [11, 9, 10, 6, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20  61%|██████    | 80/132 [52:46<1:06:39, 76.91s/it] 61%|██████▏   | 81/132 [54:00<1:04:49, 76.27s/it] 62%|██████▏   | 82/132 [55:19<1:04:07, 76.94s/it] 63%|██████▎   | 83/132 [56:35<1:02:40, 76.74s/it] 64%|██████▎   | 84/132 [57:51<1:01:06, 76.38s/it] 64%|██████▍   | 85/132 [59:11<1:00:38, 77.41s/it] 65%|██████▌   | 86/132 [1:00:26<59:00, 76.98s/it] 66%|██████▌   | 87/132 [1:01:54<1:00:12, 80.27s/it] 67%|██████▋   | 88/132 [1:03:28<1:01:43, 84.16s/it]qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3121 ms
+Running simulation...
+Finished in 71985 ms
+Valid prob: 0.484, Solution prob: 0.087098, Average d: 1.428, Min d: 1.155, Classical Min d: 1.155.
+Out of solutions [[0, 1, 4, 2, 3], [1, 0, 4, 2, 3], [3, 2, 4, 0, 1], [3, 2, 4, 1, 0]], quantum algorithm found [[3, 2, 4, 0, 1], [0, 1, 4, 2, 3], [3, 2, 4, 1, 0], [1, 0, 4, 2, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3066 ms
+Running simulation...
+Finished in 69408 ms
+Valid prob: 0.535, Solution prob: 0.250122, Average d: 1.080, Min d: 0.919, Classical Min d: 0.919.
+Out of solutions [[0, 10, 2, 11, 1], [0, 10, 3, 11, 1], [1, 11, 2, 10, 0], [1, 11, 3, 10, 0]], quantum algorithm found [[0, 10, 2, 11, 1], [0, 10, 3, 11, 1], [1, 11, 2, 10, 0], [1, 11, 3, 10, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3214 ms
+Running simulation...
+Finished in 72625 ms
+Valid prob: 0.548, Solution prob: 0.088855, Average d: 1.836, Min d: 1.667, Classical Min d: 1.667.
+Out of solutions [[0, 8, 2, 4, 9], [0, 8, 4, 9, 7], [0, 8, 6, 4, 9], [0, 8, 6, 9, 4], [0, 8, 7, 9, 4], [4, 9, 6, 8, 0], [4, 9, 7, 8, 0], [7, 9, 4, 8, 0], [9, 4, 2, 8, 0], [9, 4, 6, 8, 0]], quantum algorithm found [[0, 8, 6, 9, 4], [4, 9, 6, 8, 0], [9, 4, 6, 8, 0], [9, 4, 2, 8, 0], [7, 9, 4, 8, 0], [0, 8, 7, 9, 4], [0, 8, 2, 4, 9], [0, 8, 6, 4, 9], [4, 9, 7, 8, 0], [0, 8, 4, 9, 7]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3106 ms
+Running simulation...
+Finished in 70815 ms
+Valid prob: 0.611, Solution prob: 0.386879, Average d: 1.361, Min d: 1.238, Classical Min d: 1.238.
+Out of solutions [[1, 2, 10, 6, 7], [1, 2, 10, 6, 8], [1, 2, 10, 6, 9], [7, 6, 1, 2, 10], [7, 6, 10, 2, 1], [8, 6, 1, 2, 10], [8, 6, 10, 2, 1], [9, 6, 1, 2, 10], [9, 6, 10, 2, 1], [10, 2, 1, 6, 7], [10, 2, 1, 6, 8], [10, 2, 1, 6, 9]], quantum algorithm found [[10, 2, 1, 6, 9], [7, 6, 1, 2, 10], [10, 2, 1, 6, 8], [9, 6, 1, 2, 10], [10, 2, 1, 6, 7], [9, 6, 10, 2, 1], [8, 6, 10, 2, 1], [8, 6, 1, 2, 10], [1, 2, 10, 6, 8], [1, 2, 10, 6, 9], [1, 2, 10, 6, 7], [7, 6, 10, 2, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3010 ms
+Running simulation...
+Finished in 69721 ms
+Valid prob: 0.639, Solution prob: 0.309511, Average d: 1.870, Min d: 1.826, Classical Min d: 1.826.
+Out of solutions [[0, 1, 2, 7, 8], [0, 1, 2, 7, 10], [0, 1, 2, 8, 7], [0, 1, 2, 10, 7], [0, 1, 2, 10, 11], [0, 1, 3, 7, 8], [0, 1, 3, 7, 10], [0, 1, 3, 8, 7], [0, 1, 3, 10, 7], [0, 1, 3, 10, 11], [0, 1, 4, 5, 6], [0, 1, 4, 7, 8], [0, 1, 4, 7, 10], [0, 1, 4, 8, 7], [0, 1, 4, 10, 7], [0, 1, 4, 10, 11], [0, 1, 7, 10, 11], [0, 1, 10, 7, 8], [1, 4, 7, 10, 11], [1, 4, 10, 7, 8], [2, 1, 0, 7, 8], [2, 1, 0, 7, 10], [2, 1, 0, 8, 7], [2, 1, 0, 10, 7], [2, 1, 0, 10, 11], [2, 1, 3, 7, 8], [2, 1, 3, 7, 10], [2, 1, 3, 8, 7], [2, 1, 3, 10, 7], [2, 1, 3, 10, 11], [2, 1, 4, 5, 6], [2, 1, 4, 7, 8], [2, 1, 4, 7, 10], [2, 1, 4, 8, 7], [2, 1, 4, 10, 7], [2, 1, 4, 10, 11], [2, 1, 7, 10, 11], [2, 1, 10, 7, 8], [3, 1, 0, 7, 8], [3, 1, 0, 7, 10], [3, 1, 0, 8, 7], [3, 1, 0, 10, 7], [3, 1, 0, 10, 11], [3, 1, 2, 7, 8], [3, 1, 2, 7, 10], [3, 1, 2, 8, 7], [3, 1, 2, 10, 7], [3, 1, 2, 10, 11], [3, 1, 4, 5, 6], [3, 1, 4, 7, 8], [3, 1, 4, 7, 10], [3, 1, 4, 8, 7], [3, 1, 4, 10, 7], [3, 1, 4, 10, 11], [3, 1, 7, 10, 11], [3, 1, 10, 7, 8], [4, 1, 0, 7, 8], [4, 1, 0, 7, 10], [4, 1, 0, 8, 7], [4, 1, 0, 10, 7], [4, 1, 0, 10, 11], [4, 1, 2, 7, 8], [4, 1, 2, 7, 10], [4, 1, 2, 8, 7], [4, 1, 2, 10, 7], [4, 1, 2, 10, 11], [4, 1, 3, 7, 8], [4, 1, 3, 7, 10], [4, 1, 3, 8, 7], [4, 1, 3, 10, 7], [4, 1, 3, 10, 11], [4, 1, 7, 10, 11], [4, 1, 10, 7, 8], [4, 9, 7, 10, 11], [5, 6, 7, 10, 11], [6, 5, 4, 1, 0], [6, 5, 4, 1, 2], [6, 5, 4, 1, 3], [7, 8, 0, 1, 2], [7, 8, 0, 1, 3], [7, 8, 0, 1, 4], [7, 8, 2, 1, 0], [7, 8, 2, 1, 3], [7, 8, 2, 1, 4], [7, 8, 3, 1, 0], [7, 8, 3, 1, 2], [7, 8, 3, 1, 4], [7, 8, 4, 1, 0], [7, 8, 4, 1, 2], [7, 8, 4, 1, 3], [7, 10, 0, 1, 2], [7, 10, 0, 1, 3], [7, 10, 0, 1, 4], [7, 10, 1, 4, 9], [7, 10, 2, 1, 0], [7, 10, 2, 1, 3], [7, 10, 2, 1, 4], [7, 10, 3, 1, 0], [7, 10, 3, 1, 2], [7, 10, 3, 1, 4], [7, 10, 4, 1, 0], [7, 10, 4, 1, 2], [7, 10, 4, 1, 3], [8, 7, 0, 1, 2], [8, 7, 0, 1, 3], [8, 7, 0, 1, 4], [8, 7, 2, 1, 0], [8, 7, 2, 1, 3], [8, 7, 2, 1, 4], [8, 7, 3, 1, 0], [8, 7, 3, 1, 2], [8, 7, 3, 1, 4], [8, 7, 4, 1, 0], [8, 7, 4, 1, 2], [8, 7, 4, 1, 3], [8, 7, 10, 1, 0], [8, 7, 10, 1, 2], [8, 7, 10, 1, 3], [8, 7, 10, 1, 4], [8, 7, 10, 4, 1], [9, 4, 1, 7, 10], [9, 4, 1, 10, 7], [9, 4, 1, 10, 11], [9, 4, 7, 10, 11], [10, 7, 0, 1, 2], [10, 7, 0, 1, 3], [10, 7, 0, 1, 4], [10, 7, 1, 4, 9], [10, 7, 2, 1, 0], [10, 7, 2, 1, 3], [10, 7, 2, 1, 4], [10, 7, 3, 1, 0], [10, 7, 3, 1, 2], [10, 7, 3, 1, 4], [10, 7, 4, 1, 0], [10, 7, 4, 1, 2], [10, 7, 4, 1, 3], [11, 10, 0, 1, 2], [11, 10, 0, 1, 3], [11, 10, 0, 1, 4], [11, 10, 1, 4, 9], [11, 10, 2, 1, 0], [11, 10, 2, 1, 3], [11, 10, 2, 1, 4], [11, 10, 3, 1, 0], [11, 10, 3, 1, 2], [11, 10, 3, 1, 4], [11, 10, 4, 1, 0], [11, 10, 4, 1, 2], [11, 10, 4, 1, 3], [11, 10, 7, 1, 0], [11, 10, 7, 1, 2], [11, 10, 7, 1, 3], [11, 10, 7, 1, 4], [11, 10, 7, 4, 1], [11, 10, 7, 4, 9], [11, 10, 7, 6, 5], [11, 10, 7, 9, 4]], quantum algorithm found [[2, 1, 4, 8, 7], [2, 1, 0, 10, 11], [2, 1, 4, 10, 7], [11, 10, 7, 1, 3], [4, 1, 2, 10, 7], [9, 4, 1, 7, 10], [10, 7, 4, 1, 3], [10, 7, 0, 1, 2], [10, 7, 2, 1, 3], [4, 1, 3, 10, 11], [3, 1, 2, 10, 7], [3, 1, 7, 10, 11], [8, 7, 0, 1, 3], [4, 1, 0, 7, 10], [0, 1, 7, 10, 11], [0, 1, 4, 7, 8], [8, 7, 10, 1, 0], [7, 10, 0, 1, 2], [7, 10, 1, 4, 9], [2, 1, 4, 7, 8], [7, 8, 3, 1, 4], [8, 7, 0, 1, 4], [4, 1, 7, 10, 11], [6, 5, 4, 1, 2], [7, 10, 4, 1, 0], [8, 7, 10, 4, 1], [6, 5, 4, 1, 3], [4, 1, 3, 7, 8], [0, 1, 2, 7, 10], [11, 10, 4, 1, 3], [10, 7, 4, 1, 0], [7, 8, 2, 1, 0], [8, 7, 4, 1, 3], [3, 1, 10, 7, 8], [7, 10, 2, 1, 0], [6, 5, 4, 1, 0], [8, 7, 2, 1, 3], [0, 1, 4, 10, 11], [3, 1, 0, 8, 7], [11, 10, 1, 4, 9], [10, 7, 3, 1, 0], [8, 7, 4, 1, 0], [11, 10, 3, 1, 4], [9, 4, 7, 10, 11], [8, 7, 3, 1, 2], [3, 1, 4, 8, 7], [7, 8, 0, 1, 3], [2, 1, 0, 7, 8], [10, 7, 3, 1, 2], [4, 1, 0, 7, 8], [2, 1, 3, 7, 8], [8, 7, 2, 1, 0], [7, 8, 2, 1, 4], [4, 9, 7, 10, 11], [11, 10, 7, 1, 0], [7, 10, 0, 1, 3], [4, 1, 0, 10, 11], [2, 1, 4, 10, 11], [8, 7, 10, 1, 2], [4, 1, 10, 7, 8], [3, 1, 4, 10, 7], [8, 7, 3, 1, 4], [10, 7, 2, 1, 4], [7, 8, 4, 1, 2], [10, 7, 0, 1, 4], [2, 1, 0, 10, 7], [7, 10, 2, 1, 4], [3, 1, 2, 7, 10], [7, 10, 3, 1, 2], [8, 7, 0, 1, 2], [8, 7, 2, 1, 4], [4, 1, 2, 10, 11], [0, 1, 3, 7, 8], [7, 8, 4, 1, 0], [11, 10, 4, 1, 0], [0, 1, 2, 7, 8], [7, 8, 2, 1, 3], [7, 8, 3, 1, 2], [0, 1, 3, 7, 10], [11, 10, 7, 9, 4], [11, 10, 0, 1, 4], [0, 1, 2, 10, 7], [4, 1, 3, 10, 7], [3, 1, 0, 10, 11], [0, 1, 2, 8, 7], [7, 10, 2, 1, 3], [0, 1, 4, 8, 7], [11, 10, 7, 1, 2], [0, 1, 3, 10, 7], [11, 10, 2, 1, 4], [9, 4, 1, 10, 11], [5, 6, 7, 10, 11], [2, 1, 10, 7, 8], [2, 1, 3, 7, 10], [8, 7, 10, 1, 3], [3, 1, 2, 8, 7], [3, 1, 2, 10, 11], [0, 1, 4, 7, 10], [11, 10, 2, 1, 0], [11, 10, 7, 4, 9], [8, 7, 4, 1, 2], [0, 1, 4, 10, 7], [4, 1, 2, 7, 8], [7, 8, 0, 1, 4], [11, 10, 0, 1, 3], [0, 1, 3, 8, 7], [3, 1, 0, 10, 7], [11, 10, 4, 1, 2], [11, 10, 0, 1, 2], [2, 1, 4, 7, 10], [7, 10, 4, 1, 2], [11, 10, 2, 1, 3], [0, 1, 4, 5, 6], [7, 8, 4, 1, 3], [3, 1, 0, 7, 8], [7, 10, 3, 1, 0], [2, 1, 0, 7, 10], [1, 4, 10, 7, 8], [7, 8, 0, 1, 2], [8, 7, 10, 1, 4], [1, 4, 7, 10, 11], [3, 1, 4, 7, 8], [2, 1, 3, 10, 11], [2, 1, 3, 8, 7], [11, 10, 3, 1, 2], [4, 1, 3, 7, 10], [7, 10, 3, 1, 4], [10, 7, 3, 1, 4], [2, 1, 7, 10, 11], [0, 1, 2, 10, 11], [4, 1, 2, 8, 7], [4, 1, 0, 8, 7], [9, 4, 1, 10, 7], [0, 1, 10, 7, 8], [11, 10, 3, 1, 0], [11, 10, 7, 4, 1], [7, 10, 4, 1, 3], [2, 1, 0, 8, 7], [7, 10, 0, 1, 4], [3, 1, 0, 7, 10], [11, 10, 7, 1, 4], [2, 1, 4, 5, 6], [11, 10, 7, 6, 5], [10, 7, 4, 1, 2], [0, 1, 3, 10, 11], [10, 7, 1, 4, 9], [8, 7, 3, 1, 0], [3, 1, 2, 7, 8], [4, 1, 3, 8, 7], [2, 1, 3, 10, 7], [3, 1, 4, 10, 11], [10, 7, 2, 1, 0], [4, 1, 0, 10, 7], [10, 7, 0, 1, 3], [4, 1, 2, 7, 10], [3, 1, 4, 5, 6], [7, 8, 3, 1, 0], [3, 1, 4, 7, 10]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 3120 ms
+Running simulation...
+Finished in 74048 ms
+Valid prob: 0.586, Solution prob: 0.005727, Average d: 1.947, Min d: 1.826, Classical Min d: 1.826.
+Out of solutions [[0, 1, 8, 9, 7], [1, 0, 8, 9, 7], [7, 9, 8, 0, 1], [7, 9, 8, 1, 0]], quantum algorithm found [[0, 1, 8, 9, 7], [7, 9, 8, 0, 1], [1, 0, 8, 9, 7], [7, 9, 8, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 12
+Building circuit...
+Finished in 2994 ms
+Running simulation...
+Finished in 70213 ms
+Valid prob: 0.627, Solution prob: 0.002300, Average d: 1.863, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[0, 1, 4, 11, 9], [2, 1, 4, 11, 9], [3, 1, 4, 11, 9], [9, 11, 4, 1, 0], [9, 11, 4, 1, 2], [9, 11, 4, 1, 3]], quantum algorithm found [[9, 11, 4, 1, 0], [9, 11, 4, 1, 2], [9, 11, 4, 1, 3], [0, 1, 4, 11, 9], [2, 1, 4, 11, 9], [3, 1, 4, 11, 9]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3285 ms
+Running simulation...
+Finished in 81166 ms
+Valid prob: 0.625, Solution prob: 0.080403, Average d: 0.793, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[5, 0, 6, 7, 12], [12, 7, 6, 0, 5]], quantum algorithm found [[12, 7, 6, 0, 5], [5, 0, 6, 7, 12]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3558 ms
+Running simulation...
+Finished in 86000 ms
+Valid prob: 0.590, Solution prob: 0.133527, Average d: 1.164, Min d: 0.931, Classical Min d: 0.931.
+Out of solutions [[3, 5, 1, 6, 4], [4, 6, 1, 5, 3]], quantum algorithm found [[3, 5, 1, 6, 4], [4, 6, 1, 5, 3]].
+------------------
+Starting QA simulation under the following param: 
+ 67%|██████▋   | 89/132 [1:04:57<1:01:29, 85.80s/it] 68%|██████▊   | 90/132 [1:06:27<1:00:47, 86.85s/it] 69%|██████▉   | 91/132 [1:07:57<1:00:08, 88.00s/it] 70%|██████▉   | 92/132 [1:09:28<59:15, 88.88s/it]   70%|███████   | 93/132 [1:10:58<58:00, 89.24s/it] 71%|███████   | 94/132 [1:12:32<57:18, 90.47s/it] 72%|███████▏  | 95/132 [1:14:03<55:59, 90.81s/it] 73%|███████▎  | 96/132 [1:15:42<55:51, 93.10s/it] 73%|███████▎  | 97/132 [1:17:21<55:20, 94.88s/it]{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3784 ms
+Running simulation...
+Finished in 81930 ms
+Valid prob: 0.608, Solution prob: 0.187034, Average d: 1.580, Min d: 1.491, Classical Min d: 1.491.
+Out of solutions [[0, 1, 2, 11, 12], [0, 1, 3, 11, 12], [0, 1, 4, 11, 12], [2, 1, 0, 11, 12], [2, 1, 3, 11, 12], [2, 1, 4, 11, 12], [3, 1, 0, 11, 12], [3, 1, 2, 11, 12], [3, 1, 4, 11, 12], [4, 1, 0, 11, 12], [4, 1, 2, 11, 12], [4, 1, 3, 11, 12], [4, 9, 8, 11, 12], [7, 8, 10, 11, 12], [9, 4, 1, 11, 12], [12, 11, 0, 1, 2], [12, 11, 0, 1, 3], [12, 11, 0, 1, 4], [12, 11, 1, 4, 9], [12, 11, 2, 1, 0], [12, 11, 2, 1, 3], [12, 11, 2, 1, 4], [12, 11, 3, 1, 0], [12, 11, 3, 1, 2], [12, 11, 3, 1, 4], [12, 11, 4, 1, 0], [12, 11, 4, 1, 2], [12, 11, 4, 1, 3], [12, 11, 8, 9, 4], [12, 11, 10, 8, 7]], quantum algorithm found [[9, 4, 1, 11, 12], [2, 1, 3, 11, 12], [4, 9, 8, 11, 12], [12, 11, 4, 1, 2], [0, 1, 2, 11, 12], [0, 1, 4, 11, 12], [12, 11, 3, 1, 4], [12, 11, 8, 9, 4], [0, 1, 3, 11, 12], [4, 1, 2, 11, 12], [12, 11, 1, 4, 9], [12, 11, 0, 1, 3], [12, 11, 4, 1, 0], [4, 1, 0, 11, 12], [12, 11, 0, 1, 4], [12, 11, 2, 1, 3], [3, 1, 0, 11, 12], [12, 11, 2, 1, 0], [12, 11, 3, 1, 0], [3, 1, 2, 11, 12], [4, 1, 3, 11, 12], [12, 11, 0, 1, 2], [12, 11, 10, 8, 7], [2, 1, 4, 11, 12], [7, 8, 10, 11, 12], [3, 1, 4, 11, 12], [12, 11, 2, 1, 4], [12, 11, 4, 1, 3], [2, 1, 0, 11, 12], [12, 11, 3, 1, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3398 ms
+Running simulation...
+Finished in 82054 ms
+Valid prob: 0.611, Solution prob: 0.018673, Average d: 1.401, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[1, 3, 9, 8, 10], [3, 1, 9, 8, 10], [10, 8, 9, 1, 3], [10, 8, 9, 3, 1]], quantum algorithm found [[10, 8, 9, 3, 1], [10, 8, 9, 1, 3], [3, 1, 9, 8, 10], [1, 3, 9, 8, 10]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3913 ms
+Running simulation...
+Finished in 82960 ms
+Valid prob: 0.611, Solution prob: 0.253523, Average d: 1.461, Min d: 1.374, Classical Min d: 1.374.
+Out of solutions [[0, 12, 1, 7, 2], [0, 12, 1, 7, 3], [0, 12, 1, 8, 2], [0, 12, 1, 9, 3], [0, 12, 1, 10, 2], [0, 12, 1, 10, 5], [0, 12, 1, 11, 3], [0, 12, 1, 11, 5], [2, 7, 1, 12, 0], [2, 8, 1, 12, 0], [2, 10, 1, 12, 0], [3, 7, 1, 12, 0], [3, 9, 1, 12, 0], [3, 11, 1, 12, 0], [5, 10, 1, 12, 0], [5, 11, 1, 12, 0]], quantum algorithm found [[3, 9, 1, 12, 0], [0, 12, 1, 10, 5], [0, 12, 1, 7, 3], [3, 11, 1, 12, 0], [2, 7, 1, 12, 0], [0, 12, 1, 7, 2], [5, 10, 1, 12, 0], [3, 7, 1, 12, 0], [0, 12, 1, 11, 3], [2, 10, 1, 12, 0], [0, 12, 1, 10, 2], [5, 11, 1, 12, 0], [0, 12, 1, 9, 3], [0, 12, 1, 8, 2], [0, 12, 1, 11, 5], [2, 8, 1, 12, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3693 ms
+Running simulation...
+Finished in 83207 ms
+Valid prob: 0.532, Solution prob: 0.174165, Average d: 1.607, Min d: 1.438, Classical Min d: 1.438.
+Out of solutions [[1, 2, 4, 0, 3], [2, 1, 3, 0, 4], [3, 0, 1, 2, 4], [3, 0, 4, 2, 1], [3, 1, 0, 2, 4], [3, 1, 2, 0, 4], [4, 0, 2, 1, 3], [4, 0, 3, 1, 2], [4, 2, 0, 1, 3], [4, 2, 1, 0, 3]], quantum algorithm found [[4, 2, 0, 1, 3], [3, 1, 0, 2, 4], [4, 0, 3, 1, 2], [3, 1, 2, 0, 4], [3, 0, 4, 2, 1], [1, 2, 4, 0, 3], [4, 2, 1, 0, 3], [4, 0, 2, 1, 3], [3, 0, 1, 2, 4], [2, 1, 3, 0, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3561 ms
+Running simulation...
+Finished in 82722 ms
+Valid prob: 0.617, Solution prob: 0.284964, Average d: 1.061, Min d: 0.943, Classical Min d: 0.943.
+Out of solutions [[0, 5, 1, 8, 2], [0, 5, 2, 6, 1], [1, 6, 0, 8, 2], [1, 6, 2, 5, 0], [2, 8, 0, 6, 1], [2, 8, 1, 5, 0]], quantum algorithm found [[2, 8, 1, 5, 0], [0, 5, 1, 8, 2], [0, 5, 2, 6, 1], [1, 6, 2, 5, 0], [2, 8, 0, 6, 1], [1, 6, 0, 8, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3628 ms
+Running simulation...
+Finished in 85672 ms
+Valid prob: 0.623, Solution prob: 0.021501, Average d: 1.702, Min d: 1.556, Classical Min d: 1.556.
+Out of solutions [[2, 3, 6, 7, 8], [8, 7, 6, 3, 2]], quantum algorithm found [[2, 3, 6, 7, 8], [8, 7, 6, 3, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3499 ms
+Running simulation...
+Finished in 84249 ms
+Valid prob: 0.630, Solution prob: 0.151114, Average d: 1.576, Min d: 1.491, Classical Min d: 1.491.
+Out of solutions [[5, 6, 1, 3, 12], [6, 5, 1, 3, 12], [6, 5, 4, 3, 12], [7, 8, 1, 3, 12], [7, 8, 11, 3, 12], [8, 7, 1, 3, 12], [11, 8, 1, 3, 12], [12, 3, 1, 5, 6], [12, 3, 1, 6, 5], [12, 3, 1, 7, 8], [12, 3, 1, 8, 7], [12, 3, 1, 8, 11], [12, 3, 4, 5, 6], [12, 3, 11, 8, 7]], quantum algorithm found [[12, 3, 11, 8, 7], [7, 8, 11, 3, 12], [11, 8, 1, 3, 12], [12, 3, 4, 5, 6], [6, 5, 1, 3, 12], [6, 5, 4, 3, 12], [12, 3, 1, 8, 7], [7, 8, 1, 3, 12], [8, 7, 1, 3, 12], [12, 3, 1, 6, 5], [12, 3, 1, 5, 6], [12, 3, 1, 7, 8], [12, 3, 1, 8, 11], [5, 6, 1, 3, 12]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3812 ms
+Running simulation...
+Finished in 90885 ms
+Valid prob: 0.676, Solution prob: 0.366552, Average d: 1.287, Min d: 1.202, Classical Min d: 1.202.
+Out of solutions [[0, 7, 1, 12, 2], [0, 7, 2, 10, 1], [0, 7, 2, 11, 1], [0, 9, 1, 12, 2], [0, 9, 2, 11, 1], [1, 10, 0, 12, 2], [1, 10, 2, 7, 0], [1, 11, 2, 7, 0], [1, 11, 2, 9, 0], [2, 12, 0, 10, 1], [2, 12, 1, 7, 0], [2, 12, 1, 9, 0]], quantum algorithm found [[2, 12, 0, 10, 1], [1, 11, 2, 7, 0], [0, 9, 1, 12, 2], [1, 10, 2, 7, 0], [1, 11, 2, 9, 0], [2, 12, 1, 7, 0], [0, 7, 1, 12, 2], [0, 9, 2, 11, 1], [2, 12, 1, 9, 0], [0, 7, 2, 11, 1], [1, 10, 0, 12, 2], [0, 7, 2, 10, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 13
+Building circuit...
+Finished in 3673 ms
+Running simulation...
+Finished in 91750 ms
+Valid prob: 0.635, Solution prob: 0.145316, Average d: 0.839, Min d: 0.577, Classical Min d: 0.577.
+Out of solutions [[1, 2, 7, 6, 8], [1, 2, 10, 6, 8], [8, 6, 1, 9, 10], [8, 6, 7, 2, 1], [8, 6, 7, 9, 10], [8, 6, 10, 2, 1], [10, 9, 1, 6, 8], [10, 9, 7, 6, 8]], quantum algorithm found [[8, 6, 10, 2, 1], [1, 2, 10, 6, 8], [8, 6, 1, 9, 10], [10, 9, 7, 6, 8], [8, 6, 7, 2, 1], [8, 6, 7, 9, 10], [10, 9, 1, 6, 8], [1, 2, 7, 6, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 4143 ms
+Running simulation...
+Finished in 99345 ms
+ 74%|███████▍  | 98/132 [1:19:10<56:10, 99.12s/it] 75%|███████▌  | 99/132 [1:20:55<55:27, 100.83s/it] 76%|███████▌  | 100/132 [1:22:38<54:11, 101.60s/it] 77%|███████▋  | 101/132 [1:24:25<53:18, 103.16s/it] 77%|███████▋  | 102/132 [1:26:10<51:54, 103.83s/it]Valid prob: 0.586, Solution prob: 0.023150, Average d: 0.736, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[2, 9, 1, 8, 3], [3, 8, 1, 9, 2]], quantum algorithm found [[2, 9, 1, 8, 3], [3, 8, 1, 9, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 3996 ms
+Running simulation...
+Finished in 95504 ms
+Valid prob: 0.735, Solution prob: 0.381907, Average d: 0.684, Min d: 0.471, Classical Min d: 0.471.
+Out of solutions [[2, 1, 0, 11, 12], [2, 1, 13, 11, 12], [12, 11, 0, 1, 2], [12, 11, 13, 1, 2]], quantum algorithm found [[12, 11, 13, 1, 2], [12, 11, 0, 1, 2], [2, 1, 0, 11, 12], [2, 1, 13, 11, 12]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 3781 ms
+Running simulation...
+Finished in 94019 ms
+Valid prob: 0.571, Solution prob: 0.040890, Average d: 1.236, Min d: 1.054, Classical Min d: 1.054.
+Out of solutions [[5, 4, 1, 12, 13], [5, 4, 2, 12, 13], [5, 4, 6, 12, 13], [5, 4, 9, 12, 13], [13, 12, 1, 4, 5], [13, 12, 2, 4, 5], [13, 12, 6, 4, 5], [13, 12, 9, 4, 5]], quantum algorithm found [[5, 4, 6, 12, 13], [13, 12, 2, 4, 5], [5, 4, 1, 12, 13], [13, 12, 6, 4, 5], [5, 4, 2, 12, 13], [13, 12, 9, 4, 5], [13, 12, 1, 4, 5], [5, 4, 9, 12, 13]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 4095 ms
+Running simulation...
+Finished in 97168 ms
+Valid prob: 0.512, Solution prob: 0.298541, Average d: 1.173, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[0, 4, 2, 6, 3], [0, 4, 2, 7, 3], [0, 4, 2, 8, 3], [0, 4, 2, 12, 3], [0, 4, 3, 6, 2], [0, 4, 3, 7, 2], [0, 4, 3, 8, 2], [0, 4, 3, 12, 2], [0, 5, 2, 7, 3], [0, 5, 2, 8, 3], [0, 5, 2, 12, 3], [0, 5, 3, 7, 2], [0, 5, 3, 8, 2], [0, 5, 3, 12, 2], [0, 6, 2, 4, 3], [0, 6, 2, 8, 3], [0, 6, 3, 4, 2], [0, 6, 3, 8, 2], [0, 7, 2, 4, 3], [0, 7, 2, 5, 3], [0, 7, 3, 4, 2], [0, 7, 3, 5, 2], [0, 8, 2, 4, 3], [0, 8, 2, 5, 3], [0, 8, 2, 6, 3], [0, 8, 2, 12, 3], [0, 8, 3, 4, 2], [0, 8, 3, 5, 2], [0, 8, 3, 6, 2], [0, 8, 3, 12, 2], [0, 12, 2, 4, 3], [0, 12, 2, 5, 3], [0, 12, 2, 8, 3], [0, 12, 3, 4, 2], [0, 12, 3, 5, 2], [0, 12, 3, 8, 2], [2, 4, 0, 6, 3], [2, 4, 0, 7, 3], [2, 4, 0, 8, 3], [2, 4, 0, 12, 3], [2, 4, 3, 6, 0], [2, 4, 3, 7, 0], [2, 4, 3, 8, 0], [2, 4, 3, 12, 0], [2, 5, 0, 7, 3], [2, 5, 0, 8, 3], [2, 5, 0, 12, 3], [2, 5, 3, 7, 0], [2, 5, 3, 8, 0], [2, 5, 3, 12, 0], [2, 6, 0, 4, 3], [2, 6, 0, 8, 3], [2, 6, 3, 4, 0], [2, 6, 3, 8, 0], [2, 7, 0, 4, 3], [2, 7, 0, 5, 3], [2, 7, 3, 4, 0], [2, 7, 3, 5, 0], [2, 8, 0, 4, 3], [2, 8, 0, 5, 3], [2, 8, 0, 6, 3], [2, 8, 0, 12, 3], [2, 8, 3, 4, 0], [2, 8, 3, 5, 0], [2, 8, 3, 6, 0], [2, 8, 3, 12, 0], [2, 12, 0, 4, 3], [2, 12, 0, 5, 3], [2, 12, 0, 8, 3], [2, 12, 3, 4, 0], [2, 12, 3, 5, 0], [2, 12, 3, 8, 0], [3, 4, 0, 6, 2], [3, 4, 0, 7, 2], [3, 4, 0, 8, 2], [3, 4, 0, 12, 2], [3, 4, 2, 6, 0], [3, 4, 2, 7, 0], [3, 4, 2, 8, 0], [3, 4, 2, 12, 0], [3, 5, 0, 7, 2], [3, 5, 0, 8, 2], [3, 5, 0, 12, 2], [3, 5, 2, 7, 0], [3, 5, 2, 8, 0], [3, 5, 2, 12, 0], [3, 6, 0, 4, 2], [3, 6, 0, 8, 2], [3, 6, 2, 4, 0], [3, 6, 2, 8, 0], [3, 7, 0, 4, 2], [3, 7, 0, 5, 2], [3, 7, 2, 4, 0], [3, 7, 2, 5, 0], [3, 8, 0, 4, 2], [3, 8, 0, 5, 2], [3, 8, 0, 6, 2], [3, 8, 0, 12, 2], [3, 8, 2, 4, 0], [3, 8, 2, 5, 0], [3, 8, 2, 6, 0], [3, 8, 2, 12, 0], [3, 12, 0, 4, 2], [3, 12, 0, 5, 2], [3, 12, 0, 8, 2], [3, 12, 2, 4, 0], [3, 12, 2, 5, 0], [3, 12, 2, 8, 0]], quantum algorithm found [[0, 6, 3, 8, 2], [0, 8, 3, 6, 2], [3, 4, 0, 12, 2], [3, 4, 0, 6, 2], [2, 8, 3, 5, 0], [2, 12, 3, 5, 0], [2, 7, 0, 5, 3], [3, 6, 2, 4, 0], [0, 5, 2, 7, 3], [0, 12, 2, 5, 3], [0, 12, 3, 4, 2], [0, 12, 3, 8, 2], [2, 6, 3, 8, 0], [3, 5, 0, 7, 2], [0, 4, 3, 8, 2], [3, 4, 0, 7, 2], [0, 4, 2, 12, 3], [0, 7, 2, 5, 3], [2, 4, 0, 6, 3], [3, 7, 2, 5, 0], [3, 7, 0, 4, 2], [2, 12, 0, 8, 3], [3, 4, 2, 8, 0], [2, 7, 3, 5, 0], [2, 5, 0, 7, 3], [3, 12, 0, 4, 2], [0, 4, 2, 8, 3], [0, 4, 3, 12, 2], [3, 8, 2, 4, 0], [2, 5, 3, 8, 0], [0, 12, 2, 4, 3], [0, 8, 3, 5, 2], [3, 4, 2, 7, 0], [0, 6, 3, 4, 2], [3, 6, 2, 8, 0], [0, 7, 3, 4, 2], [3, 12, 0, 8, 2], [2, 7, 3, 4, 0], [2, 5, 0, 12, 3], [0, 12, 2, 8, 3], [2, 8, 3, 6, 0], [3, 4, 2, 12, 0], [0, 8, 3, 12, 2], [2, 12, 3, 8, 0], [2, 8, 0, 6, 3], [2, 8, 3, 4, 0], [0, 7, 3, 5, 2], [2, 4, 3, 6, 0], [0, 8, 2, 4, 3], [3, 5, 2, 8, 0], [2, 6, 0, 8, 3], [0, 5, 2, 8, 3], [3, 12, 2, 8, 0], [2, 4, 3, 12, 0], [2, 4, 3, 8, 0], [3, 5, 0, 8, 2], [2, 12, 3, 4, 0], [3, 7, 0, 5, 2], [0, 5, 2, 12, 3], [2, 4, 0, 8, 3], [3, 12, 2, 4, 0], [3, 5, 0, 12, 2], [2, 6, 0, 4, 3], [0, 8, 2, 5, 3], [3, 8, 2, 12, 0], [0, 8, 3, 4, 2], [0, 8, 2, 12, 3], [0, 4, 2, 6, 3], [3, 4, 0, 8, 2], [3, 8, 0, 5, 2], [3, 5, 2, 7, 0], [2, 4, 0, 7, 3], [2, 5, 3, 7, 0], [3, 8, 0, 12, 2], [3, 4, 2, 6, 0], [2, 8, 0, 12, 3], [0, 7, 2, 4, 3], [3, 7, 2, 4, 0], [3, 8, 0, 4, 2], [0, 5, 3, 8, 2], [2, 8, 0, 4, 3], [0, 4, 3, 6, 2], [2, 12, 0, 4, 3], [3, 6, 0, 8, 2], [3, 8, 2, 6, 0], [0, 4, 2, 7, 3], [3, 8, 2, 5, 0], [0, 12, 3, 5, 2], [2, 8, 0, 5, 3], [2, 5, 3, 12, 0], [2, 6, 3, 4, 0], [3, 6, 0, 4, 2], [2, 4, 0, 12, 3], [3, 12, 2, 5, 0], [2, 4, 3, 7, 0], [0, 5, 3, 7, 2], [0, 8, 2, 6, 3], [3, 5, 2, 12, 0], [2, 7, 0, 4, 3], [3, 12, 0, 5, 2], [0, 4, 3, 7, 2], [2, 12, 0, 5, 3], [0, 5, 3, 12, 2], [2, 8, 3, 12, 0], [3, 8, 0, 6, 2], [0, 6, 2, 8, 3], [0, 6, 2, 4, 3], [2, 5, 0, 8, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 3990 ms
+Running simulation...
+Finished in 95675 ms
+Valid prob: 0.647, Solution prob: 0.205424, Average d: 1.570, Min d: 1.491, Classical Min d: 1.491.
+Out of solutions [[5, 6, 1, 3, 13], [6, 5, 1, 3, 13], [6, 5, 4, 3, 13], [7, 8, 1, 3, 13], [7, 8, 9, 3, 13], [7, 8, 12, 3, 13], [8, 7, 1, 3, 13], [8, 9, 1, 3, 13], [8, 9, 11, 3, 13], [9, 8, 1, 3, 13], [9, 8, 12, 3, 13], [9, 10, 1, 3, 13], [9, 10, 5, 3, 13], [10, 9, 1, 3, 13], [10, 9, 8, 3, 13], [10, 9, 11, 3, 13], [11, 9, 1, 3, 13], [11, 9, 8, 3, 13], [12, 8, 1, 3, 13], [12, 8, 9, 3, 13], [13, 3, 1, 5, 6], [13, 3, 1, 6, 5], [13, 3, 1, 7, 8], [13, 3, 1, 8, 7], [13, 3, 1, 8, 9], [13, 3, 1, 8, 12], [13, 3, 1, 9, 8], [13, 3, 1, 9, 10], [13, 3, 1, 9, 11], [13, 3, 1, 10, 9], [13, 3, 4, 5, 6], [13, 3, 5, 10, 9], [13, 3, 8, 9, 10], [13, 3, 8, 9, 11], [13, 3, 9, 8, 7], [13, 3, 9, 8, 12], [13, 3, 11, 9, 8], [13, 3, 11, 9, 10], [13, 3, 12, 8, 7], [13, 3, 12, 8, 9]], quantum algorithm found [[10, 9, 1, 3, 13], [11, 9, 1, 3, 13], [13, 3, 9, 8, 12], [13, 3, 4, 5, 6], [13, 3, 8, 9, 10], [13, 3, 1, 9, 10], [12, 8, 1, 3, 13], [6, 5, 1, 3, 13], [13, 3, 1, 5, 6], [13, 3, 12, 8, 7], [13, 3, 1, 8, 7], [12, 8, 9, 3, 13], [10, 9, 11, 3, 13], [7, 8, 1, 3, 13], [13, 3, 1, 9, 11], [13, 3, 1, 7, 8], [5, 6, 1, 3, 13], [13, 3, 9, 8, 7], [13, 3, 11, 9, 10], [13, 3, 12, 8, 9], [9, 10, 1, 3, 13], [6, 5, 4, 3, 13], [8, 9, 1, 3, 13], [8, 9, 11, 3, 13], [9, 8, 1, 3, 13], [11, 9, 8, 3, 13], [13, 3, 1, 8, 12], [7, 8, 9, 3, 13], [13, 3, 1, 9, 8], [9, 8, 12, 3, 13], [10, 9, 8, 3, 13], [13, 3, 1, 6, 5], [9, 10, 5, 3, 13], [8, 7, 1, 3, 13], [13, 3, 5, 10, 9], [7, 8, 12, 3, 13], [13, 3, 1, 10, 9], [13, 3, 8, 9, 11], [13, 3, 11, 9, 8], [13, 3, 1, 8, 9]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 4096 ms
+Running simulation...
+Finished in 96860 ms
+Valid prob: 0.653, Solution prob: 0.007640, Average d: 1.649, Min d: 1.491, Classical Min d: 1.491.
+ 78%|███████▊  | 103/132 [1:27:57<50:38, 104.77s/it] 79%|███████▉  | 104/132 [1:29:43<49:03, 105.12s/it] 80%|███████▉  | 105/132 [1:31:30<47:31, 105.60s/it] 80%|████████  | 106/132 [1:33:16<45:47, 105.67s/it] 81%|████████  | 107/132 [1:35:01<44:02, 105.70s/it] 82%|████████▏ | 108/132 [1:36:49<42:29, 106.21s/it] 83%|████████▎ | 109/132 [1:38:48<42:09, 109.99s/it] 83%|████████▎ | 110/132 [1:40:42<40:47, 111.25s/it] 84%|████████▍ | 111/132 [1:42:39<39:35, 113.13s/it] 85%|████████▍ | 112/132 [1:44:37<38:09, 114.46s/it] 86%|████████▌ | 113/132 [1:46:36<36:40, 115.80s/it] 86%|████████▋ | 114/132 [1:48:36<35:10, 117.28s/it] 87%|████████▋ | 115/132 [1:50:37<33:28, 118.15s/it]Out of solutions [[11, 6, 5, 4, 12], [12, 4, 5, 6, 11]], quantum algorithm found [[12, 4, 5, 6, 11], [11, 6, 5, 4, 12]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 3986 ms
+Running simulation...
+Finished in 96453 ms
+Valid prob: 0.601, Solution prob: 0.249553, Average d: 1.007, Min d: 0.882, Classical Min d: 0.882.
+Out of solutions [[3, 4, 0, 6, 2], [3, 4, 0, 7, 2], [3, 4, 0, 8, 2], [3, 4, 0, 9, 2], [3, 4, 0, 12, 2], [3, 4, 2, 6, 0], [3, 4, 2, 7, 0], [3, 4, 2, 8, 0], [3, 4, 2, 9, 0], [3, 4, 2, 12, 0]], quantum algorithm found [[3, 4, 2, 7, 0], [3, 4, 0, 12, 2], [0, 7, 2, 4, 3], [3, 4, 0, 6, 2], [2, 12, 0, 4, 3], [3, 4, 0, 8, 2], [2, 6, 0, 4, 3], [3, 4, 2, 12, 0], [0, 12, 2, 4, 3], [3, 4, 2, 8, 0], [2, 9, 0, 4, 3], [2, 7, 0, 4, 3], [3, 4, 2, 6, 0], [0, 8, 2, 4, 3], [0, 6, 2, 4, 3], [3, 4, 0, 9, 2], [3, 4, 0, 7, 2], [3, 4, 2, 9, 0], [0, 9, 2, 4, 3], [2, 8, 0, 4, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 4145 ms
+Running simulation...
+Finished in 96871 ms
+Valid prob: 0.628, Solution prob: 0.079665, Average d: 1.294, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[1, 8, 0, 7, 9], [1, 8, 0, 9, 7], [7, 9, 0, 8, 1], [9, 7, 0, 8, 1]], quantum algorithm found [[1, 8, 0, 7, 9], [7, 9, 0, 8, 1], [1, 8, 0, 9, 7], [9, 7, 0, 8, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 3964 ms
+Running simulation...
+Finished in 96190 ms
+Valid prob: 0.607, Solution prob: 0.095133, Average d: 1.280, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[0, 1, 4, 2, 3], [0, 1, 6, 2, 3], [3, 2, 0, 5, 6], [3, 2, 0, 6, 5], [3, 2, 4, 1, 0], [3, 2, 6, 1, 0], [5, 6, 0, 2, 3], [6, 5, 0, 2, 3]], quantum algorithm found [[3, 2, 4, 1, 0], [6, 5, 0, 2, 3], [0, 1, 6, 2, 3], [3, 2, 6, 1, 0], [3, 2, 0, 5, 6], [3, 2, 0, 6, 5], [0, 1, 4, 2, 3], [5, 6, 0, 2, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 4123 ms
+Running simulation...
+Finished in 96145 ms
+Valid prob: 0.687, Solution prob: 0.111474, Average d: 0.998, Min d: 0.745, Classical Min d: 0.745.
+Out of solutions [[3, 4, 0, 8, 10], [3, 4, 13, 8, 10], [10, 8, 0, 4, 3], [10, 8, 13, 4, 3]], quantum algorithm found [[10, 8, 0, 4, 3], [10, 8, 13, 4, 3], [3, 4, 0, 8, 10], [3, 4, 13, 8, 10]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 14
+Building circuit...
+Finished in 4187 ms
+Running simulation...
+Finished in 97218 ms
+Valid prob: 0.683, Solution prob: 0.047863, Average d: 1.884, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[1, 6, 7, 8, 13], [13, 8, 7, 6, 1]], quantum algorithm found [[13, 8, 7, 6, 1], [1, 6, 7, 8, 13]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4414 ms
+Running simulation...
+Finished in 106329 ms
+Valid prob: 0.589, Solution prob: 0.131144, Average d: 0.711, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 2, 6, 7], [7, 6, 2, 1, 0]], quantum algorithm found [[0, 1, 2, 6, 7], [7, 6, 2, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4272 ms
+Running simulation...
+Finished in 101915 ms
+Valid prob: 0.522, Solution prob: 0.157734, Average d: 0.598, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]], quantum algorithm found [[0, 1, 2, 3, 4], [4, 3, 2, 1, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4387 ms
+Running simulation...
+Finished in 105021 ms
+Valid prob: 0.656, Solution prob: 0.207631, Average d: 0.570, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[5, 13, 1, 14, 6], [6, 14, 1, 13, 5]], quantum algorithm found [[5, 13, 1, 14, 6], [6, 14, 1, 13, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4370 ms
+Running simulation...
+Finished in 104437 ms
+Valid prob: 0.601, Solution prob: 0.011699, Average d: 1.878, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[2, 0, 4, 11, 12], [2, 0, 4, 11, 13], [2, 0, 4, 11, 14], [4, 5, 3, 7, 8], [4, 5, 3, 7, 9], [4, 5, 3, 7, 10], [8, 7, 3, 5, 4], [9, 7, 3, 5, 4], [10, 7, 3, 5, 4], [12, 11, 4, 0, 2], [13, 11, 4, 0, 2], [14, 11, 4, 0, 2]], quantum algorithm found [[2, 0, 4, 11, 12], [2, 0, 4, 11, 13], [9, 7, 3, 5, 4], [2, 0, 4, 11, 14], [12, 11, 4, 0, 2], [4, 5, 3, 7, 8], [4, 5, 3, 7, 10], [14, 11, 4, 0, 2], [8, 7, 3, 5, 4], [10, 7, 3, 5, 4], [4, 5, 3, 7, 9], [13, 11, 4, 0, 2]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4569 ms
+Running simulation...
+Finished in 105795 ms
+Valid prob: 0.715, Solution prob: 0.008080, Average d: 1.682, Min d: 1.556, Classical Min d: 1.556.
+Out of solutions [[5, 3, 0, 4, 6], [6, 4, 0, 3, 5]], quantum algorithm found [[5, 3, 0, 4, 6], [6, 4, 0, 3, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4632 ms
+Running simulation...
+Finished in 107738 ms
+Valid prob: 0.712, Solution prob: 0.158116, Average d: 1.729, Min d: 1.563, Classical Min d: 1.563.
+Out of solutions [[0, 11, 7, 10, 12], [0, 11, 7, 12, 10], [10, 12, 7, 11, 0], [12, 10, 7, 11, 0]], quantum algorithm found [[0, 11, 7, 12, 10], [12, 10, 7, 11, 0], [10, 12, 7, 11, 0], [0, 11, 7, 10, 12]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4535 ms
+Running simulation...
+Finished in 107121 ms
+Valid prob: 0.661, Solution prob: 0.026432, Average d: 1.618, Min d: 1.491, Classical Min d: 1.491.
+Out of solutions [[0, 11, 4, 6, 3], [3, 6, 4, 11, 0]], quantum algorithm found [[0, 11, 4, 6, 3], [3, 6, 4, 11, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4578 ms
+Running simulation...
+Finished in 105921 ms
+Valid prob: 0.677, Solution prob: 0.021770, Average d: 1.286, Min d: 1.106, Classical Min d: 1.106.
+ 88%|████████▊ | 116/132 [1:52:35<31:33, 118.33s/it] 89%|████████▊ | 117/132 [1:54:34<29:37, 118.48s/it] 89%|████████▉ | 118/132 [1:56:35<27:49, 119.27s/it] 90%|█████████ | 119/132 [1:58:35<25:50, 119.23s/it] 91%|█████████ | 120/132 [2:00:32<23:45, 118.81s/it] 92%|█████████▏| 121/132 [2:02:31<21:47, 118.91s/it] 92%|█████████▏| 122/132 [2:04:41<20:22, 122.23s/it] 93%|█████████▎| 123/132 [2:06:48<18:31, 123.52s/it] 94%|█████████▍| 124/132 [2:08:57<16:41, 125.16s/it] 95%|█████████▍| 125/132 [2:11:03<14:37, 125.29s/it]Out of solutions [[1, 13, 0, 6, 5], [5, 6, 0, 13, 1]], quantum algorithm found [[5, 6, 0, 13, 1], [1, 13, 0, 6, 5]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4450 ms
+Running simulation...
+Finished in 106027 ms
+Valid prob: 0.686, Solution prob: 0.152127, Average d: 1.093, Min d: 0.943, Classical Min d: 0.943.
+Out of solutions [[1, 8, 3, 5, 4], [1, 8, 3, 6, 4], [1, 8, 4, 5, 3], [1, 8, 4, 6, 3], [3, 5, 4, 8, 1], [3, 6, 4, 8, 1], [4, 5, 3, 8, 1], [4, 6, 3, 8, 1]], quantum algorithm found [[1, 8, 3, 5, 4], [3, 6, 4, 8, 1], [4, 5, 3, 8, 1], [3, 5, 4, 8, 1], [1, 8, 4, 6, 3], [1, 8, 3, 6, 4], [1, 8, 4, 5, 3], [4, 6, 3, 8, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4706 ms
+Running simulation...
+Finished in 106981 ms
+Valid prob: 0.626, Solution prob: 0.007343, Average d: 2.340, Min d: 2.261, Classical Min d: 2.261.
+Out of solutions [[3, 7, 0, 8, 4], [4, 8, 0, 7, 3], [9, 5, 3, 7, 0], [10, 6, 4, 8, 0]], quantum algorithm found [[0, 8, 4, 6, 10], [4, 8, 0, 7, 3], [0, 7, 3, 5, 9], [3, 7, 0, 8, 4], [10, 6, 4, 8, 0], [9, 5, 3, 7, 0]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4503 ms
+Running simulation...
+Finished in 106536 ms
+Valid prob: 0.681, Solution prob: 0.167151, Average d: 1.078, Min d: 0.943, Classical Min d: 0.943.
+Out of solutions [[3, 14, 1, 7, 2], [3, 14, 2, 7, 1]], quantum algorithm found [[3, 14, 1, 7, 2], [1, 7, 2, 14, 3], [3, 14, 2, 7, 1], [2, 7, 1, 14, 3]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4479 ms
+Running simulation...
+Finished in 104924 ms
+Valid prob: 0.664, Solution prob: 0.089907, Average d: 1.551, Min d: 1.414, Classical Min d: 1.414.
+Out of solutions [[1, 7, 2, 5, 8], [8, 5, 2, 7, 1]], quantum algorithm found [[8, 5, 2, 7, 1], [1, 7, 2, 5, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 15
+Building circuit...
+Finished in 4592 ms
+Running simulation...
+Finished in 106151 ms
+Valid prob: 0.638, Solution prob: 0.009990, Average d: 1.637, Min d: 1.528, Classical Min d: 1.528.
+Out of solutions [[0, 1, 10, 7, 8], [8, 7, 10, 1, 0]], quantum algorithm found [[8, 7, 10, 1, 0], [0, 1, 10, 7, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 4835 ms
+Running simulation...
+Finished in 113501 ms
+Valid prob: 0.646, Solution prob: 0.009456, Average d: 0.620, Min d: 0.000, Classical Min d: 0.000.
+Out of solutions [[12, 10, 9, 11, 13], [13, 11, 9, 10, 12], [14, 7, 6, 8, 15], [15, 8, 6, 7, 14]], quantum algorithm found [[14, 7, 6, 8, 15], [12, 10, 9, 11, 13], [15, 8, 6, 7, 14], [13, 11, 9, 10, 12]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 4897 ms
+Running simulation...
+Finished in 110212 ms
+Valid prob: 0.754, Solution prob: 0.333159, Average d: 0.554, Min d: 0.333, Classical Min d: 0.333.
+Out of solutions [[6, 10, 4, 11, 7], [6, 10, 5, 11, 7], [7, 11, 4, 10, 6], [7, 11, 5, 10, 6]], quantum algorithm found [[6, 10, 5, 11, 7], [7, 11, 5, 10, 6], [6, 10, 4, 11, 7], [7, 11, 4, 10, 6]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 4921 ms
+Running simulation...
+Finished in 112129 ms
+Valid prob: 0.666, Solution prob: 0.117235, Average d: 1.347, Min d: 1.193, Classical Min d: 1.193.
+Out of solutions [[3, 4, 5, 12, 13], [5, 4, 3, 12, 13], [5, 4, 7, 12, 13], [5, 6, 3, 12, 13], [5, 6, 7, 12, 13], [7, 6, 5, 12, 13], [13, 12, 3, 4, 5], [13, 12, 3, 6, 5], [13, 12, 5, 4, 3], [13, 12, 5, 6, 7], [13, 12, 7, 4, 5], [13, 12, 7, 6, 5]], quantum algorithm found [[13, 12, 3, 4, 5], [5, 6, 3, 12, 13], [3, 4, 5, 12, 13], [7, 6, 5, 12, 13], [13, 12, 3, 6, 5], [13, 12, 5, 4, 3], [13, 12, 7, 6, 5], [13, 12, 5, 6, 7], [13, 12, 7, 4, 5], [5, 6, 7, 12, 13], [5, 4, 7, 12, 13], [5, 4, 3, 12, 13]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 4766 ms
+Running simulation...
+Finished in 109277 ms
+Valid prob: 0.666, Solution prob: 0.268683, Average d: 1.245, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[0, 9, 7, 13, 8], [1, 9, 7, 13, 8], [2, 10, 7, 13, 8], [3, 10, 7, 13, 8], [4, 12, 7, 13, 8], [5, 12, 7, 13, 8], [6, 12, 7, 13, 8], [8, 13, 7, 9, 0], [8, 13, 7, 9, 1], [8, 13, 7, 9, 10], [8, 13, 7, 10, 2], [8, 13, 7, 10, 3], [8, 13, 7, 10, 9], [8, 13, 7, 10, 12], [8, 13, 7, 12, 4], [8, 13, 7, 12, 5], [8, 13, 7, 12, 6], [8, 13, 7, 12, 10], [9, 10, 7, 13, 8], [10, 9, 7, 13, 8], [10, 12, 7, 13, 8], [12, 10, 7, 13, 8]], quantum algorithm found [[1, 9, 7, 13, 8], [8, 13, 7, 12, 5], [5, 12, 7, 13, 8], [8, 13, 7, 9, 1], [10, 12, 7, 13, 8], [8, 13, 7, 12, 10], [8, 13, 7, 12, 6], [8, 13, 7, 10, 3], [0, 9, 7, 13, 8], [3, 10, 7, 13, 8], [9, 10, 7, 13, 8], [4, 12, 7, 13, 8], [6, 12, 7, 13, 8], [8, 13, 7, 10, 2], [8, 13, 7, 10, 9], [8, 13, 7, 10, 12], [12, 10, 7, 13, 8], [8, 13, 7, 9, 0], [8, 13, 7, 9, 10], [10, 9, 7, 13, 8], [8, 13, 7, 12, 4], [2, 10, 7, 13, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 5005 ms
+Running simulation...
+Finished in 114691 ms
+Valid prob: 0.711, Solution prob: 0.248941, Average d: 1.579, Min d: 1.491, Classical Min d: 1.491.
+ 95%|█████████▌| 126/132 [2:13:14<12:43, 127.24s/it] 96%|█████████▌| 127/132 [2:15:25<10:40, 128.11s/it] 97%|█████████▋| 128/132 [2:17:35<08:35, 128.77s/it] 98%|█████████▊| 129/132 [2:19:46<06:28, 129.50s/it] 98%|█████████▊| 130/132 [2:22:00<04:21, 130.84s/it] 99%|█████████▉| 131/132 [2:24:07<02:09, 129.69s/it]100%|██████████| 132/132 [2:26:15<00:00, 129.27s/it]100%|██████████| 132/132 [2:26:15<00:00, 66.48s/it] 
+Out of solutions [[0, 15, 1, 3, 5], [0, 15, 1, 4, 6], [0, 15, 1, 5, 3], [0, 15, 3, 6, 4], [0, 15, 3, 10, 1], [0, 15, 4, 3, 5], [0, 15, 4, 5, 3], [0, 15, 5, 10, 1], [0, 15, 6, 3, 5], [0, 15, 8, 5, 3], [0, 15, 10, 3, 5], [0, 15, 10, 5, 3], [0, 15, 11, 10, 1], [0, 15, 12, 10, 1], [0, 15, 13, 3, 5], [0, 15, 13, 5, 3], [0, 15, 13, 10, 1], [0, 15, 14, 3, 5], [0, 15, 14, 5, 3], [0, 15, 14, 10, 1], [1, 10, 0, 3, 5], [1, 10, 0, 5, 3], [1, 10, 3, 15, 0], [1, 10, 5, 15, 0], [1, 10, 11, 15, 0], [1, 10, 12, 15, 0], [1, 10, 13, 15, 0], [1, 10, 14, 15, 0], [3, 5, 0, 10, 1], [3, 5, 1, 15, 0], [3, 5, 4, 15, 0], [3, 5, 8, 15, 0], [3, 5, 10, 15, 0], [3, 5, 13, 15, 0], [3, 5, 14, 15, 0], [4, 6, 3, 15, 0], [5, 3, 0, 10, 1], [5, 3, 1, 15, 0], [5, 3, 4, 15, 0], [5, 3, 6, 15, 0], [5, 3, 10, 15, 0], [5, 3, 13, 15, 0], [5, 3, 14, 15, 0], [6, 4, 1, 15, 0]], quantum algorithm found [[3, 5, 10, 15, 0], [1, 10, 3, 15, 0], [0, 15, 13, 10, 1], [1, 10, 13, 15, 0], [1, 10, 5, 15, 0], [5, 3, 0, 10, 1], [0, 15, 14, 10, 1], [0, 15, 1, 5, 3], [4, 6, 3, 15, 0], [1, 10, 0, 3, 5], [1, 10, 12, 15, 0], [0, 15, 8, 5, 3], [1, 10, 0, 5, 3], [3, 5, 4, 15, 0], [5, 3, 13, 15, 0], [0, 15, 10, 5, 3], [3, 5, 8, 15, 0], [5, 3, 6, 15, 0], [0, 15, 6, 3, 5], [0, 15, 3, 6, 4], [0, 15, 5, 10, 1], [0, 15, 1, 3, 5], [0, 15, 1, 4, 6], [0, 15, 4, 5, 3], [3, 5, 1, 15, 0], [1, 10, 14, 15, 0], [0, 15, 14, 5, 3], [0, 15, 13, 3, 5], [0, 15, 11, 10, 1], [5, 3, 14, 15, 0], [5, 3, 1, 15, 0], [3, 5, 0, 10, 1], [0, 15, 13, 5, 3], [1, 10, 11, 15, 0], [6, 4, 1, 15, 0], [0, 15, 10, 3, 5], [5, 3, 10, 15, 0], [0, 15, 14, 3, 5], [0, 15, 12, 10, 1], [5, 3, 4, 15, 0], [3, 5, 14, 15, 0], [0, 15, 4, 3, 5], [3, 5, 13, 15, 0], [0, 15, 3, 10, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 5123 ms
+Running simulation...
+Finished in 113367 ms
+Valid prob: 0.644, Solution prob: 0.067717, Average d: 1.418, Min d: 1.247, Classical Min d: 1.247.
+Out of solutions [[1, 11, 0, 9, 13], [1, 11, 0, 13, 9], [9, 13, 0, 11, 1], [13, 9, 0, 11, 1]], quantum algorithm found [[9, 13, 0, 11, 1], [1, 11, 0, 9, 13], [13, 9, 0, 11, 1], [1, 11, 0, 13, 9]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 5105 ms
+Running simulation...
+Finished in 113428 ms
+Valid prob: 0.611, Solution prob: 0.096613, Average d: 1.373, Min d: 1.106, Classical Min d: 1.106.
+Out of solutions [[1, 10, 0, 8, 9], [1, 10, 0, 9, 8], [8, 9, 0, 10, 1], [9, 8, 0, 10, 1]], quantum algorithm found [[9, 8, 0, 10, 1], [8, 9, 0, 10, 1], [1, 10, 0, 8, 9], [1, 10, 0, 9, 8]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 5085 ms
+Running simulation...
+Finished in 113862 ms
+Valid prob: 0.742, Solution prob: 0.019941, Average d: 1.646, Min d: 1.528, Classical Min d: 1.528.
+Out of solutions [[4, 7, 0, 9, 11], [7, 4, 0, 9, 11], [10, 13, 0, 9, 11], [11, 9, 0, 4, 7], [11, 9, 0, 7, 4], [11, 9, 0, 10, 13], [11, 9, 0, 13, 10], [13, 10, 0, 9, 11]], quantum algorithm found [[10, 13, 0, 9, 11], [11, 9, 0, 13, 10], [4, 7, 0, 9, 11], [7, 4, 0, 9, 11], [11, 9, 0, 4, 7], [11, 9, 0, 10, 13], [13, 10, 0, 9, 11], [11, 9, 0, 7, 4]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 5042 ms
+Running simulation...
+Finished in 115650 ms
+Valid prob: 0.576, Solution prob: 0.014616, Average d: 1.907, Min d: 1.795, Classical Min d: 1.795.
+Out of solutions [[0, 1, 2, 14, 15], [3, 2, 14, 12, 13], [4, 5, 15, 9, 8], [7, 6, 5, 15, 14], [8, 9, 15, 5, 4], [10, 11, 12, 14, 15], [11, 10, 9, 15, 14], [13, 12, 14, 2, 3], [14, 15, 5, 6, 7], [14, 15, 9, 10, 11], [15, 14, 2, 1, 0], [15, 14, 12, 11, 10]], quantum algorithm found [[15, 14, 2, 1, 0], [13, 12, 14, 2, 3], [7, 6, 5, 15, 14], [11, 10, 9, 15, 14], [8, 9, 15, 5, 4], [14, 15, 9, 10, 11], [4, 5, 15, 9, 8], [3, 2, 14, 12, 13], [10, 11, 12, 14, 15], [15, 14, 12, 11, 10], [14, 15, 5, 6, 7], [0, 1, 2, 14, 15]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 5109 ms
+Running simulation...
+Finished in 110379 ms
+Valid prob: 0.647, Solution prob: 0.524478, Average d: 1.345, Min d: 1.291, Classical Min d: 1.291.
+Out of solutions [[0, 12, 1, 14, 2], [0, 12, 1, 15, 3], [0, 12, 2, 13, 1], [0, 12, 2, 15, 3], [0, 12, 3, 13, 1], [0, 12, 3, 14, 2], [1, 13, 0, 14, 2], [1, 13, 0, 15, 3], [1, 13, 2, 12, 0], [1, 13, 2, 15, 3], [1, 13, 3, 12, 0], [1, 13, 3, 14, 2], [2, 14, 0, 13, 1], [2, 14, 0, 15, 3], [2, 14, 1, 12, 0], [2, 14, 1, 15, 3], [2, 14, 3, 12, 0], [2, 14, 3, 13, 1], [3, 15, 0, 13, 1], [3, 15, 0, 14, 2], [3, 15, 1, 12, 0], [3, 15, 1, 14, 2], [3, 15, 2, 12, 0], [3, 15, 2, 13, 1]], quantum algorithm found [[0, 12, 3, 13, 1], [2, 14, 1, 12, 0], [2, 14, 1, 15, 3], [0, 12, 2, 15, 3], [3, 15, 0, 14, 2], [1, 13, 3, 14, 2], [1, 13, 2, 12, 0], [1, 13, 0, 14, 2], [2, 14, 0, 13, 1], [0, 12, 3, 14, 2], [3, 15, 0, 13, 1], [1, 13, 0, 15, 3], [0, 12, 1, 14, 2], [3, 15, 2, 12, 0], [2, 14, 3, 12, 0], [1, 13, 2, 15, 3], [3, 15, 2, 13, 1], [2, 14, 0, 15, 3], [0, 12, 2, 13, 1], [1, 13, 3, 12, 0], [3, 15, 1, 14, 2], [0, 12, 1, 15, 3], [3, 15, 1, 12, 0], [2, 14, 3, 13, 1]].
+------------------
+Starting QA simulation under the following param: 
+{'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
+We are using 20 qubits, with N = 5 , M = 16
+Building circuit...
+Finished in 4893 ms
+Running simulation...
+Finished in 111728 ms
+Valid prob: 0.772, Solution prob: 0.155920, Average d: 0.925, Min d: 0.650, Classical Min d: 0.650.
+Out of solutions [[9, 8, 10, 6, 15], [15, 6, 10, 8, 9]], quantum algorithm found [[15, 6, 10, 8, 9], [9, 8, 10, 6, 15]].
