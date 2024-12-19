@@ -12,13 +12,13 @@ def convert_str_to_list_or_tuple(val):
         return val
 
 
-path_tcsa = "qa_TSCA_result"
+path_tcsa = "qva_TSCA_result"
 # path_tcsa = "../data/qva_TSCA_result"
 
 group_idx = 16
 df_group = pd.read_csv("../data/fun_group.csv")
 group_name_list = df_group["GroupName"].apply(convert_str_to_list_or_tuple)
-file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}" 
+file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}" + "_20"
 # file_name = [f for f in os.listdir(path_tcsa) if f.startswith(str(group_idx + 1))][0]
 
 df_data = pd.read_csv(f"../data/{path_tcsa}/{file_name}" + ".csv")
@@ -46,7 +46,7 @@ def get_sorted_arr(prob, indices):
 
 
 def plot_data(prob, indices, label, color):
-    plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=5, marker='o')
+    plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=3, marker='o')
     # plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=12, marker='x')
     # plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=5, facecolors='none', edgecolors=color)
 
@@ -62,7 +62,7 @@ def plot_err(prob, indices, color, ecolor, markersize=4.5):
 def plot_avg(prob, indices, label, color):
     x, y_list = get_sorted_arr(prob, indices)
     avg = [np.mean(data) for data in y_list]
-    plt.plot(x, avg, label=label, color=color)
+    plt.plot(x, avg, label=label, color=color, linestyle='--')
 
 
 def plot_degeneracy_data(prob, indices, label, ylim=(0, 1)):
@@ -111,10 +111,12 @@ def plot_sub_fig(prob, prob_name, indices, label, color_list, ecolor, ylim=(0, 1
     plt.figure()
     plt.ylim(ylim)
     i = 0 if label == "has" else 1
-    plot_data(prob, indices, label, color_list[i])
+    plot_data(prob, indices, "data points", color_list[i])
     # plot_err(prob, indices, color_list[2], ecolor)
-    plot_avg(prob, indices, "average", color_list[2])
+    plot_avg(prob, indices, f"Average p_{prob_name}", color_list[2])
     # plt.grid()
+    plt.xlabel("Number of atoms (excluding H) in a molecule")
+    plt.ylabel(f"p_{prob_name}")
     plt.legend()
     plt.savefig(f"../figure/{path_tcsa}/{file_name}_{label}_{prob_name}.pdf")
     plt.close()
