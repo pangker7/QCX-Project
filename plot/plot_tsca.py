@@ -15,10 +15,10 @@ def convert_str_to_list_or_tuple(val):
 path_tcsa = "qa_TSCA_result"
 # path_tcsa = "../data/qva_TSCA_result"
 
-group_idx =11
+group_idx = 16
 df_group = pd.read_csv("../data/fun_group.csv")
 group_name_list = df_group["GroupName"].apply(convert_str_to_list_or_tuple)
-file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}"
+file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}" 
 # file_name = [f for f in os.listdir(path_tcsa) if f.startswith(str(group_idx + 1))][0]
 
 df_data = pd.read_csv(f"../data/{path_tcsa}/{file_name}" + ".csv")
@@ -31,7 +31,6 @@ num_molecule = len(len_molecule)
 
 has_indices = np.where(d_min == 0)[0]
 not_has_indices = np.where(d_min != 0)[0]
-
 
 def get_sorted_arr(prob, indices):
     sorted_dict = {}
@@ -47,15 +46,23 @@ def get_sorted_arr(prob, indices):
 
 
 def plot_data(prob, indices, label, color):
-    plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=12)
+    plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=5, marker='o')
+    # plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=12, marker='x')
+    # plt.scatter(len_molecule[indices], prob[indices], label=label, color=color, s=5, facecolors='none', edgecolors=color)
+
 
 
 def plot_err(prob, indices, color, ecolor, markersize=4.5):
     x, y_list = get_sorted_arr(prob, indices)
     avg = [np.mean(data) for data in y_list]
     err = [np.std(data) for data in y_list]
-    plt.errorbar(x, avg, yerr=err, fmt="o", color=color, ecolor=ecolor, elinewidth=1, capsize=3, markersize=markersize)
-    # plt.errorbar(x, avg, fmt="o", color=color, ecolor=ecolor, elinewidth=1, capsize=3, markersize=markersize)
+    # plt.errorbar(x, avg, yerr=err, fmt="o", color=color, ecolor=ecolor, elinewidth=1, capsize=3, markersize=markersize)
+    plt.errorbar(x, avg, fmt="o", color=color, ecolor=ecolor, elinewidth=1, capsize=3, markersize=markersize)
+
+def plot_avg(prob, indices, label, color):
+    x, y_list = get_sorted_arr(prob, indices)
+    avg = [np.mean(data) for data in y_list]
+    plt.plot(x, avg, label=label, color=color)
 
 
 def plot_degeneracy_data(prob, indices, label, ylim=(0, 1)):
@@ -79,7 +86,7 @@ def plot_degeneracy_data(prob, indices, label, ylim=(0, 1)):
     plt.show()
     
 
-plot_degeneracy_data(sol_prob, has_indices, "has")
+# plot_degeneracy_data(sol_prob, has_indices, "has")
 
 def plot_total_fig(prob, prob_name, indices_list, label_list, color_list, ecolor, plot_err_flag=True, plot_data_flag=True, ylim=(0, 1)):
     """
@@ -105,7 +112,8 @@ def plot_sub_fig(prob, prob_name, indices, label, color_list, ecolor, ylim=(0, 1
     plt.ylim(ylim)
     i = 0 if label == "has" else 1
     plot_data(prob, indices, label, color_list[i])
-    plot_err(prob, indices, color_list[2], ecolor)
+    # plot_err(prob, indices, color_list[2], ecolor)
+    plot_avg(prob, indices, "average", color_list[2])
     # plt.grid()
     plt.legend()
     plt.savefig(f"../figure/{path_tcsa}/{file_name}_{label}_{prob_name}.pdf")
@@ -117,11 +125,11 @@ indices_list = [has_indices, not_has_indices]
 label_list = ["has", "not_has"]
 # [data, err]
 # color_list = [["#1f77b4", "#aec7e8"], ["#ff7f0e", "#ffbb78"]]
-color_list = ["#1f70a9", "#1f70a9", "#c22f2f"]
+color_list = ["#1f70a9", "black", "#c22f2f"]
 
 # plot_total_fig(sol_prob, "sol", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0, 1))
 # plot_total_fig(valid_prob, "valid", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0.7, 1))
-plot_sub_fig(valid_prob, "valid", has_indices, "has", color_list, ecolor="grey", ylim=(0.6, 1))
-plot_sub_fig(valid_prob, "valid", not_has_indices, "not_has", color_list, ecolor="grey", ylim=(0.6, 1))
+plot_sub_fig(valid_prob, "valid", has_indices, "has", color_list, ecolor="grey", ylim=(0.0, 1))
+plot_sub_fig(valid_prob, "valid", not_has_indices, "not_has", color_list, ecolor="grey", ylim=(0.0, 1))
 plot_sub_fig(sol_prob, "sol", has_indices, "has", color_list, ecolor="grey")
 plot_sub_fig(sol_prob, "sol", not_has_indices, "not_has", color_list, ecolor="grey")
