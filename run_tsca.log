@@ -4983,4 +4983,5 @@ Out of solutions [[37, 6, 13], [37, 6, 15], [37, 6, 16], [44, 8, 13], [44, 8, 15
 Starting QA simulation under the following param: 
 {'device': 'GPU', 'silent': False, 'shots': 1000000, 'm0': 100, 't0': 50, 'b0': 1, 'l1': 10, 'l2': 10, 'dynamic_l': 4}
 We are using 18 qubits, with N = 3 , M = 54
-100%|█████████▉| 499/501 [3:42:27<09:33, 286.86s/it]
+100%|█████████▉| 499/501 [3:42:27<09:33, 286.86s/it]nohup: ignoring input
+  0%|          | 0/2 [00:00<?, ?it/s]
