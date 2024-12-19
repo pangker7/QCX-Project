@@ -111,7 +111,7 @@ def QVA_circuit(problem:basic.Problem, params:dict):
     return circ
 
 
-def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
+def QVA_run(problem:basic.Problem, circ:QuantumCircuit, x:np.ndarray, params:dict):
     """
     Run the simulation for the QVA circuit to evaluate target function d
     """
@@ -136,7 +136,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
         f = problem.result_to_f(result)
         valid = problem.valid(f)
         valid_prob += int(valid) * count
-        w_value = problem.eval_W(f, params['l1'], params['l2'])
+        w_value = problem.eval_W(f, params.setdefault('l1', 2), params.setdefault('l2', 2))
         w_avg += w_value * count
         w_hist.setdefault(w_value, 0)
         w_hist[w_value] += count
@@ -168,6 +168,7 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
     result['w_hist'] = w_hist
     result['d_avg'] = d_avg
     result['d_min'] = d_min
+    result['d_min_cl'] = d_min_cl
     result['valid_prob'] = valid_prob
     result['sol_prob'] = sol_prob
     result['solutions'] = solutions
@@ -175,11 +176,12 @@ def QVA_run(circ:QuantumCircuit, x:np.ndarray, params:dict):
     return result
 
 
-def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
+def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={}, loss_func:str='w_avg') -> dict:
     """
-    Run optimization for QVA circuit for a set of problems and return the optimized circuit parameters.
+    Run optimization for QVA circuit for the problem and return the optimized circuit parameters.
     Args:
-        problems (list[basic.Problem]): List of problems to optimize.
+        problem (basic.Problem): Problem to optimize.
+        x0 (None|np.ndarray): Initial parameters, None for QAOA antasz by default.
         params (dict): Parameters for circuit and simulation, contaning the following options.
             device (string): Device for AerSimulator, 'CPU' by default.
             silent (bool): Whether print information to console or not, False by default.
@@ -188,6 +190,7 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
             lr (float): Learning rate for gradient decent, 0.1 by default.
             m0 (int): Number of layers, 10 by default.
             l1,l2 (float): Coefficients for regularization terms, 2 by defalut.
+        loss_function (str): w_avg / sol_prob 
 
     Returns:
         `x (np.ndarray): Optimized circuit parameters.
@@ -229,10 +232,12 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
 
     # loss function
     def loss(x, output=False):
-        result = QVA_run(circ, x, params)
+        result = QVA_run(problem, circ, x, params)
         # The loss function can be set to w_avg or valid_prob+sol_prob
-        # loss = result['w_avg']
-        loss = -result['valid_prob']-50*result['sol_prob']
+        if (loss_func == 'w_avg'):
+            loss = result['w_avg']
+        else:
+            loss = -result['valid_prob']-50*result['sol_prob']
         if output:
             print(f"Loss:{loss:.6f}, Valid prob: {result['valid_prob']:.6f}, Solution prob: {result['sol_prob']:.6f}, Average W: {result['w_avg']:.6f}.")
         return loss, result
@@ -243,7 +248,9 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
     vt_bx = dt * np.array(range(m0)[::-1]) / m0
     vt_func = dt * np.array(range(1, m0+1)) / m0
     vt_reg = 5 * dt * (np.array(range(1, m0+1)) / m0) ** 4
-    x0 = np.concatenate((vt_bx, vt_func, vt_reg))
+    if x0 is None:
+        x0 = np.concatenate((vt_bx, vt_func, vt_reg))
+    assert(len(x0) == 3*m0)
     # x0 = np.fromstring("0.50088642  0.26506707  0.25897509  0.23941262  0.19595158  0.16509826  0.19426582  0.18108924  0.05771234  0.06291906 -0.02278328  0.0786359  0.16914648  0.19343238  0.24072872  0.24033925  0.31208672  0.46683556  0.32480595  0.43947762  0.03918165  0.20645738  0.34412306  0.42481009  0.48928957  0.49324575  0.69216613  1.00998438  1.51448759  2.47851422", sep='  ')
     # x0 = np.fromstring("0.55567744 0.31985418 0.3154204 0.29289699 0.24580314 0.25377599 0.26581269 0.25639002 0.01231195 0.12632531 0.02566008 0.25065348 0.30052734 0.29431129 0.31064278 0.35470253 0.42783867 0.56750939 0.32998368 0.48692684 0.19225587 0.23341441 0.38693361 0.54335892 0.62600832 0.60938638 0.71355285 1.08386133 1.52981962 2.54265875", sep=' ')
     # x0 = np.fromstring("0.58141084 0.35431984 0.32296056 0.3045198  0.26732146 0.29228505 0.26268464 0.21704494 0.00885976 0.12957597 0.04933953 0.27064219 0.35276554 0.39305281 0.39410575 0.4071655  0.44757094 0.58181396 0.30172231 0.44724496 0.18634681 0.31204253 0.38848888 0.57642626 0.68998328 0.66488236 0.73852051 1.03074391 1.5579331  2.50588777", sep=' ')
@@ -315,6 +322,60 @@ def QVA_optimize(problems:list[basic.Problem], params:dict={}) -> dict:
         print(f"w_avgs = {w_avgs}")
         print(f"valid_probs = {valid_probs}")
         print(f"sol_probs = {sol_probs}")
+
+def QVA_apply(problem:basic.Problem, x:np.ndarray, params:dict={}) -> dict:
+    """
+    Apply optimized parameter x to QVA circuit for the problem and return the simulation result.
+    Args:
+        problem (basic.Problem): Problem to optimize.
+        x (np.ndarray): Optimized parameter.
+        params (dict): Parameters for circuit and simulation, contaning the following options.
+            device (string): Device for AerSimulator, 'CPU' by default.
+            silent (bool): Whether print information to console or not, False by default.
+            shots (int): Number of running times for each circuit, 1,000,000 by default.
+    Returns:
+        result(dict): result information.
+    """
+
+    default_params = {'device': 'CPU', 
+                      'silent': False, 
+                      'shots': 1000000}
+    params = {**default_params, **params}
+
+    N = problem.N
+    M = problem.M
+    L = problem.L
+
+    assert(len(x) % 3 == 0)
+    params['m0'] = int(len(x) / 3)
+
+    if(not params['silent']):
+        print("------------------")
+        print("Starting QVA simulation under the following param: ")
+        print(params)
+        print("We are using",N*L,"qubits, with N =",N,", M =",M)
+
+    # Build circuit
+    if(not params['silent']):
+        print("Building circuit...")
+    start_time = time.time()
+    circ = QVA_circuit(problem, params)
+    end_time = time.time()
+    if(not params['silent']):
+        print(f"Finished in {int(1000*(end_time-start_time))} ms")
+    
+    # Run circuit
+    if(not params['silent']):
+        print("Running simulation...")
+    result = QVA_run(problem, circ, x, params)
+    end_time = time.time()
+    if(not params['silent']):
+        print(f"Finished in {int(1000*(end_time-start_time))} ms")
+
+    if not params["silent"]:
+        print(f"Valid prob: {result['valid_prob']:.6f}, Solution prob: {result['sol_prob']:.6f}, Average W: {result['w_avg']:.6f}.")
+
+    return result
 
 if __name__ == "__main__":
     # Example usage for training:
