@@ -15,7 +15,7 @@ def convert_str_to_list_or_tuple(val):
 path_tcsa = "qva_TSCA_result"
 # path_tcsa = "../data/qva_TSCA_result"
 
-group_idx = 16
+group_idx = 25
 df_group = pd.read_csv("../data/fun_group.csv")
 group_name_list = df_group["GroupName"].apply(convert_str_to_list_or_tuple)
 file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}" + "_20"
