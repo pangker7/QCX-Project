@@ -14,7 +14,7 @@ import numpy as np
 
 if __name__ == "__main__":
 
-    x = np.loadtxt("model/10a.txt")
+    x = np.loadtxt("model/20a.txt")
 
     def convert_str_to_list_or_tuple(val):
         try:
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         run_data = json.load(file)
 
     # (group_idx, group_size): (0,1), (6,1), (2,2), (24,2), (11,3), (15,3), (25,6), (16,5)
-    group_idx = 11
+    group_idx = 25
     run_data_group = run_data[group_idx]
     group_id = run_data_group["group_id"]
     group_name = run_data_group["group_name"]
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         "degeneracy",
         "find_rate",
     ]
-    with open(f"./data/qva_TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
+    with open(f"./data/qva_TSCA_result/{group_idx+1}_{group_name}_20.csv", mode="a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(field_name)
 
