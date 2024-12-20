@@ -262,6 +262,7 @@ def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={},
     w_avgs = [result0['w_avg']]
     valid_probs = [result0['valid_prob']]
     sol_probs = [result0['sol_prob']]
+    w_hist = [result0["w_hist"]]
 
     # GD
     num_params = len(x0)
@@ -276,8 +277,7 @@ def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={},
             x1 = x0.copy()
             x1[i] += delta
             loss1, _ = loss(x1)
-            grad[i] = (loss1 - loss0) / delta 
-        print(grad.size)
+            grad[i] = (loss1 - loss0) / delta
         if(not params['silent']):
             print(f"grad = {grad}")
 
@@ -314,6 +314,7 @@ def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={},
         w_avgs.append(result0['w_avg'])
         valid_probs.append(result0['valid_prob'])
         sol_probs.append(result0['sol_prob'])
+        w_hist.append(result0["w_hist"])
         end_time = time.time()
     if(not params['silent']):
         print(f"Finished in {int(1000*(end_time-start_time))} ms")
@@ -322,6 +323,8 @@ def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={},
         print(f"w_avgs = {w_avgs}")
         print(f"valid_probs = {valid_probs}")
         print(f"sol_probs = {sol_probs}")
+    
+    return x0, (losses, w_avgs, valid_probs, sol_probs, w_hist)
 
 def QVA_apply(problem:basic.Problem, x:np.ndarray, params:dict={}) -> dict:
     """

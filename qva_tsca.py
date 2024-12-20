@@ -42,7 +42,7 @@ if __name__ == "__main__":
         run_data = json.load(file)
 
     # (group_idx, group_size): (0,1), (6,1), (2,2), (24,2), (11,3), (15,3), (25,6), (16,5)
-    group_idx = 25
+    group_idx = 0
     run_data_group = run_data[group_idx]
     group_id = run_data_group["group_id"]
     group_name = run_data_group["group_name"]
