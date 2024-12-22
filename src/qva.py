@@ -4,6 +4,7 @@ from qiskit.circuit.controlflow import for_loop
 from qiskit.quantum_info import Operator
 from qiskit.circuit.library import PhaseGate
 from qiskit_aer import *
+from qiskit_aer.noise import NoiseModel, thermal_relaxation_error
 import numpy as np
 from scipy.linalg import polar
 from argparse import *
@@ -112,14 +113,14 @@ def QVA_circuit(problem:basic.Problem, params:dict):
     return circ
 
 
-def QVA_run(problem:basic.Problem, circ:QuantumCircuit, x:np.ndarray, params:dict):
+def QVA_run(problem:basic.Problem, circ:QuantumCircuit, x:np.ndarray, params:dict, noise_model:Optional[NoiseModel]=None):
     """
     Run the simulation for the QVA circuit to evaluate target function d
     """
 
     circ = circ.assign_parameters(x, inplace=False)
     simulator = AerSimulator(device=params['device'], method='statevector')
-    job = simulator.run(circ, shots=params['shots'])
+    job = simulator.run(circ, shots=params['shots'], noise_model=noise_model)
     sim_result = job.result()
 
     counts = sim_result.get_counts(circ)
@@ -329,6 +330,7 @@ def QVA_optimize(problem:basic.Problem, x0:Optional[np.ndarray]=None, params:dic
     
     return x0, (losses, w_avgs, valid_probs, sol_probs, w_hist)
 
+
 def QVA_apply(problem:basic.Problem, x:np.ndarray, params:dict={}) -> dict:
     """
     Apply optimized parameter x to QVA circuit for the problem and return the simulation result.
@@ -382,6 +384,81 @@ def QVA_apply(problem:basic.Problem, x:np.ndarray, params:dict={}) -> dict:
         print(f"Valid prob: {result['valid_prob']:.6f}, Solution prob: {result['sol_prob']:.6f}, Average W: {result['w_avg']:.6f}.")
 
     return result
+
+
+def QVA_apply_noisy(problem:basic.Problem, x:np.ndarray, params:dict={}) -> dict:
+    """
+    Apply optimized parameter x to noisy QVA circuit for the problem and return the simulation result.
+    Args:
+        problem (basic.Problem): Problem to optimize.
+        x (np.ndarray): Optimized parameter.
+        params (dict): Parameters for circuit and simulation, contaning the following options.
+            device (string): Device for AerSimulator, 'CPU' by default.
+            silent (bool): Whether print information to console or not, False by default.
+            shots (int): Number of running times for each circuit, 1,000,000 by default.
+            
+    Returns:
+        result(dict): result information.
+    """
+
+    default_params = {'device': 'CPU', 
+                      'silent': False, 
+                      'shots': 1000000}
+    params = {**default_params, **params}
+
+    N = problem.N
+    M = problem.M
+    L = problem.L
+
+    assert(len(x) % 3 == 0)
+    params['m0'] = int(len(x) / 3)
+
+    if(not params['silent']):
+        print("------------------")
+        print("Starting QVA simulation under the following param: ")
+        print(params)
+        print("We are using",N*L,"qubits, with N =",N,", M =",M)
+
+    # error. ~99.8% for single qubit gate, ~99% for double qubit gate
+    T1 = 200#ns
+    T2 = 100#ns
+    TAU1 = 0.2
+    TAU2 = 1
+
+    # Create a noise model with the specified T1 and T2 rates
+    noise_model = NoiseModel()
+    basis_gates = ['u1','u2','u3','id','cx']
+
+    single_qubit_error = thermal_relaxation_error(T1, T2, time=TAU1)#ns
+    noise_model.add_all_qubit_quantum_error(single_qubit_error, ['u1', 'u2', 'u3', 'id'])
+
+    two_qubit_error_i = thermal_relaxation_error(T1, T2, time=TAU2)#ns
+    two_qubit_error = two_qubit_error_i.expand(two_qubit_error_i)
+    noise_model.add_all_qubit_quantum_error(two_qubit_error, ['cx'])
+
+    # Build circuit
+    if(not params['silent']):
+        print("Building circuit...")
+    start_time = time.time()
+    circ = QVA_circuit(problem, params)
+    transpile(circ, basis_gates=basis_gates)
+    end_time = time.time()
+    if(not params['silent']):
+        print(f"Finished in {int(1000*(end_time-start_time))} ms")
+    
+    # Run circuit
+    if(not params['silent']):
+        print("Running simulation...")
+    result = QVA_run(problem, circ, x, params, noise_model = noise_model)
+    end_time = time.time()
+    if(not params['silent']):
+        print(f"Finished in {int(1000*(end_time-start_time))} ms")
+
+    if not params["silent"]:
+        print(f"Valid prob: {result['valid_prob']:.6f}, Solution prob: {result['sol_prob']:.6f}, Average W: {result['w_avg']:.6f}.")
+
+    return result
+
 
 if __name__ == "__main__":
     # Example usage for training:

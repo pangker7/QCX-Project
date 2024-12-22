@@ -14,7 +14,7 @@ import numpy as np
 
 if __name__ == "__main__":
 
-    x = np.loadtxt("model/20a.txt")
+    x = np.loadtxt("./model/20a.txt")
 
     def convert_str_to_list_or_tuple(val):
         try:

@@ -5,3 +5,6 @@ src/plot.ipynb
 data/molecule_info_classified_myh.csv
 .DS_Store
 plot/*.pdf
+src/script/excited_state_test.ipynb
+src/script/spectrum.ipynb
+src/script/plot.ipynb
