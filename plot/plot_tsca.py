@@ -15,10 +15,10 @@ def convert_str_to_list_or_tuple(val):
 path_tcsa = "qa_TSCA_result"
 # path_tcsa = "../data/qva_TSCA_result"
 
-group_idx = 15
+group_idx = 2
 df_group = pd.read_csv("../data/fun_group.csv")
 group_name_list = df_group["GroupName"].apply(convert_str_to_list_or_tuple)
-file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}"
+file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}" + "_rand"
 # file_name = [f for f in os.listdir(path_tcsa) if f.startswith(str(group_idx + 1))][0]
 
 df_data = pd.read_csv(f"../data/{path_tcsa}/{file_name}" + ".csv")
@@ -131,7 +131,7 @@ color_list = ["#1f70a9", "black", "#c22f2f"]
 
 # plot_total_fig(sol_prob, "sol", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0, 1))
 # plot_total_fig(valid_prob, "valid", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0.7, 1))
-plot_sub_fig(valid_prob, "valid", has_indices, "has", color_list, ecolor="grey", ylim=(0.6, 1))
-plot_sub_fig(valid_prob, "valid", not_has_indices, "not_has", color_list, ecolor="grey", ylim=(0.6, 1))
+plot_sub_fig(valid_prob, "valid", has_indices, "has", color_list, ecolor="grey", ylim=(0.65, 1))
+plot_sub_fig(valid_prob, "valid", not_has_indices, "not_has", color_list, ecolor="grey", ylim=(0.65, 1))
 plot_sub_fig(sol_prob, "sol", has_indices, "has", color_list, ecolor="grey")
 plot_sub_fig(sol_prob, "sol", not_has_indices, "not_has", color_list, ecolor="grey")
