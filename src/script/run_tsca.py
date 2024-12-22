@@ -34,7 +34,7 @@ molecule_num_hydrogen_set = df_molecule["NumHydrogenSet"].apply(convert_str_to_l
 with open("./data/TSCA_run_data.json", "r", encoding="utf-8") as file:
     run_data = json.load(file)
 
-group_idx = 16
+group_idx = 15
 run_data_group = run_data[group_idx]
 group_id = run_data_group["group_id"]
 group_name = run_data_group["group_name"]
@@ -59,11 +59,11 @@ field_name = [
     "degeneracy",
     "find_rate",
 ]
-with open(f"./data/TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(field_name)
+# with open(f"./data/qa_TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
+#     writer = csv.writer(file)
+#     writer.writerow(field_name)
 
-molecule_id_list = molecule_id_list[499:]
+molecule_id_list = molecule_id_list[496:]
 for molecule_id in tqdm(molecule_id_list):
     cha_b = molecule_vertice_set[molecule_id]
     bonds_b = molecule_edge_set[molecule_id]
@@ -88,6 +88,6 @@ for molecule_id in tqdm(molecule_id_list):
         degeneracy,
         find_rate,
     ]
-    with open(f"./data/TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
+    with open(f"./data/qa_TSCA_result/{group_idx+1}_{group_name}.csv", mode="a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(row)
