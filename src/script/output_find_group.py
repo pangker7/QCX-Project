@@ -7,13 +7,9 @@ import os
 import importlib
 from collections import defaultdict
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-include_path = os.path.join(script_dir, "../src")
-sys.path.append(include_path)
-
-import preprocess
-import basic
-import qa
+from .. import preprocess
+from .. import basic
+from .. import qa
 
 def read_and_rearrange_data(file_path):
     with open(file_path, 'r') as file:
@@ -80,14 +76,14 @@ if __name__ == "__main__":
     group = int(input("Enter name of group. 1 is invalid, 2 for Carbonyl (-CO-), 3 for Carboxyl (-COOH), 4 for Phosphonate (-PO₃H₂), 5 for Imide (-C(O)NHC(O)-), 6 for Benzene: "))
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_path = os.path.join(script_dir, "artificial_molecule.txt")
-    output_path = os.path.join(script_dir, "../output")
+    input_path = os.path.join(script_dir, "../../data/artificial_molecule.txt")
+    output_path = os.path.join(script_dir, "../../output")
     data = read_and_rearrange_data(input_path)
     random.shuffle(data)
     if not os.path.exists(output_path):
         os.mkdir(output_path)
 
-    file_path = os.path.join(script_dir, f"../output/output_find_carboxyl_{exp}.txt")
+    file_path = os.path.join(script_dir, f"../../output/output_find_carboxyl_{exp}.txt")
     if not os.path.exists(file_path):
         with open(file_path, "w") as file:
             file.write("")

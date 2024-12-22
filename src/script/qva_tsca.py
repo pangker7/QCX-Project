@@ -1,7 +1,7 @@
 import json
 from re import sub
-from src.qva import QVA_apply
-from src.basic import Problem
+from ..qva import QVA_apply
+from ..basic import Problem
 import pandas as pd
 import csv
 from tqdm import tqdm

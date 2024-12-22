@@ -8,6 +8,7 @@ import numpy as np
 from scipy.linalg import polar
 from argparse import *
 import time
+from typing import Optional
 
 from . import preprocess
 from . import basic
@@ -176,7 +177,7 @@ def QVA_run(problem:basic.Problem, circ:QuantumCircuit, x:np.ndarray, params:dic
     return result
 
 
-def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={}, loss_func:str='w_avg') -> dict:
+def QVA_optimize(problem:basic.Problem, x0:Optional[np.ndarray]=None, params:dict={}) -> dict:
     """
     Run optimization for QVA circuit for the problem and return the optimized circuit parameters.
     Args:
@@ -203,8 +204,10 @@ def QVA_optimize(problem:basic.Problem, x0:None|np.ndarray=None, params:dict={},
                       'lr': 0.1, 
                       'm0': 10, 
                       'l1': 2, 
-                      'l2': 2}
+                      'l2': 2,
+                      'loss_function': 'w_avg'}
     params = {**default_params, **params}
+    loss_func = params['loss_function']
 
     N = problem.N
     M = problem.M

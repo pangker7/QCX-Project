@@ -1,7 +1,7 @@
 import json
 from re import sub
-from src.qa import QA_simulate
-from src.basic import Problem
+from ..qa import QA_simulate
+from ..basic import Problem
 import pandas as pd
 import csv
 from tqdm import tqdm
