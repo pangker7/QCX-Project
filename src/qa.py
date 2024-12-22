@@ -8,6 +8,7 @@ import numpy as np
 from scipy.linalg import polar
 from argparse import *
 import time
+import random
 
 from . import preprocess
 from . import basic
@@ -76,17 +77,21 @@ def QA_circuit(problem, params):
                     if j != i:
                         circ.compose(spin_two(-2*params["l2"]*dt*x**(params["dynamic_l"]+1),b,b),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
                     for a in range(M):
+                        random.seed(a)
+                        random.seed(random.random()+b)
+                        random.seed(random.random()+i)
+                        random.seed(random.random()+j)
                         dist = mat_B[a][b] - mat_A[i][j]
                         if (not dist == 0):
                             if j == i:
                                 if a == b: # now a = b, or the factor is zero.
                                     if problem.subgraph:
                                         if dist < 0:
-                                            circ.compose(spin_one(-2*dt*x*dist**2,a),list(range(L*j,L*j+L)),inplace=True)
+                                            circ.compose(spin_one(-2*dt*x*(dist-random.random()*(params["rand_factor"])*(1-x))**2,a),list(range(L*j,L*j+L)),inplace=True)
                                     else:
-                                        circ.compose(spin_one(-2*dt*x*dist**2,a),list(range(L*j,L*j+L)),inplace=True)
+                                        circ.compose(spin_one(-2*dt*x*(dist-random.random()*(params["rand_factor"])*(1-x))**2,a),list(range(L*j,L*j+L)),inplace=True)
                             else:
-                                circ.compose(spin_two(-2*dt*x*dist**2,b,a),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
+                                circ.compose(spin_two(-2*dt*x*(dist-random.random()*(params["rand_factor"])*(1-x))**2,b,a),list(range(L*j,L*j+L))+list(range(L*i, L*i+L)),inplace=True)
         circ.rx(2*dt*(1-x)*params["b0"], range(N*L))
         return circ
 
@@ -141,6 +146,7 @@ def QA_simulate(problem: basic.Problem, params: dict) -> dict:
         "l1": 10,
         "l2": 10,
         "dynamic_l": 4,
+        "rand_factor": 1.5,
     }
     params = {**default_params, **params}
 
@@ -239,12 +245,12 @@ if __name__ == "__main__":
     # bonds_a = [('C1', 'O1'), ('C1', 'O1'), ('C1', 'O2')]
     # hydrogen_a = [0, 0, 1]
 
-    cha_b = ['O1', 'C1', 'O2', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'Cl1', 'Cl2']
-    bonds_b = [('O1', 'C1'), ('C1', 'O2'), ('C1', 'O2'), ('C1', 'C2'), ('C2', 'C3'), ('C2', 'C7'), ('C2', 'C7'), ('C3', 'C4'), ('C3', 'C4'), ('C3', 'Cl1'), ('C4', 'C5'), ('C4', 'Cl2'), ('C5', 'C6'), ('C5', 'C6'), ('C6', 'C7')]
-    hydrogen_b = [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0]
-    cha_a = ['O1', 'C1', 'O2', 'C2']
-    bonds_a = [('O1', 'C1'), ('C1', 'O2'), ('C1', 'O2'), ('C1', 'C2')]
-    hydrogen_a = [1, 0, 0, 0]
+    cha_b = ['O1', 'O2', 'N1', 'N2', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15']
+    bonds_b = [('O1', 'C14'), ('O1', 'C14'), ('O2', 'C15'), ('O2', 'C15'), ('N1', 'C4'), ('N1', 'C15'), ('N1', 'C15'), ('N2', 'C5'), ('N2', 'C14'), ('N2', 'C14'), ('C1', 'C3'), ('C1', 'C6'), ('C1', 'C6'), ('C1', 'C8'), ('C2', 'C3'), ('C2', 'C7'), ('C2', 'C7'), ('C2', 'C9'), ('C4', 'C10'), ('C4', 'C10'), ('C4', 'C12'), ('C5', 'C11'), ('C5', 'C11'), ('C5', 'C13'), ('C6', 'C10'), ('C7', 'C11'), ('C8', 'C12'), ('C8', 'C12'), ('C9', 'C13'), ('C9', 'C13')]
+    hydrogen_b = [0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
+    cha_a = ['N1','C1']
+    bonds_a = [('N1','C1'),('N1','C1')]
+    hydrogen_a = [0,0]
     
     mat_B = preprocess.change_to_graph(cha_b, bonds_b, hydrogen_b, 3, 3)
     mat_A = preprocess.change_to_graph(cha_a, bonds_a, hydrogen_a, 3, 3)
@@ -253,5 +259,5 @@ if __name__ == "__main__":
         mat_A, mat_B, cha_a, cha_b, same_group_loss=0.2, diff_group_loss=1.0
     )
 
-    QA_simulate(problem, params={'t0':50, 'm0':100})
+    QA_simulate(problem, params={'t0':50, 'm0':100, 'rand_factor':1.5})
     
