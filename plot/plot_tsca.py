@@ -13,12 +13,13 @@ def convert_str_to_list_or_tuple(val):
 
 
 path_tcsa = "qa_TSCA_result"
-# path_tcsa = "../data/qva_TSCA_result"
 
 group_idx = 25
 df_group = pd.read_csv("../data/fun_group.csv")
+group_vertices = df_group['VerticeSet'].apply(convert_str_to_list_or_tuple)
+len_group = len(group_vertices[group_idx])
 group_name_list = df_group["GroupName"].apply(convert_str_to_list_or_tuple)
-file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}" + "_rand"
+file_name = str(group_idx + 1) + f"_{group_name_list[group_idx]}"
 # file_name = [f for f in os.listdir(path_tcsa) if f.startswith(str(group_idx + 1))][0]
 
 df_data = pd.read_csv(f"../data/{path_tcsa}/{file_name}" + ".csv")
@@ -62,7 +63,14 @@ def plot_err(prob, indices, color, ecolor, markersize=4.5):
 def plot_avg(prob, indices, label, color):
     x, y_list = get_sorted_arr(prob, indices)
     avg = [np.mean(data) for data in y_list]
-    plt.plot(x, avg, label=label, color=color, linestyle='--')
+    plt.plot(x, avg, label=label, color=color, linestyle='-')
+
+def plot_guess(prob, indices, label, color = 'orange'):
+    x, y_list = get_sorted_arr(prob, indices)
+    avg = [np.mean(data) for data in y_list]
+    import math
+    guess = [avg[i] / math.perm(x[i], len_group) for i in range(len(x))]
+    plt.plot(x, guess, label=label, color=color, linestyle='-')
 
 
 def plot_degeneracy_data(prob, indices, label, ylim=(0, 1)):
@@ -88,24 +96,24 @@ def plot_degeneracy_data(prob, indices, label, ylim=(0, 1)):
 
 # plot_degeneracy_data(sol_prob, has_indices, "has")
 
-def plot_total_fig(prob, prob_name, indices_list, label_list, color_list, ecolor, plot_err_flag=True, plot_data_flag=True, ylim=(0, 1)):
-    """
-    indices_list = [has, not_has], label_list = [has, not_has], color_list = [has, not_has, avg]
-    """
-    plt.figure()
-    plt.ylim(ylim)
-    if plot_data_flag:
-        for i in range(2):
-            plot_data(prob, indices_list[i], label_list[i], color_list[i])
-    if plot_err_flag:
-        plot_err(prob, range(num_molecule), color_list[2], ecolor)
-    plt.grid()
-    plt.legend()
-    label_name = "+".join(label_list)
-    plot_name = ("err" if plot_err else "") + ("data" if plot_data else "")
-    fig_name = prob_name + label_name + plot_name
-    plt.savefig(f"{fig_name}.pdf")
-    plt.close()
+# def plot_total_fig(prob, prob_name, indices_list, label_list, color_list, ecolor, plot_err_flag=True, plot_data_flag=True, ylim=(0, 1)):
+#     """
+#     indices_list = [has, not_has], label_list = [has, not_has], color_list = [has, not_has, avg]
+#     """
+#     plt.figure()
+#     plt.ylim(ylim)
+#     if plot_data_flag:
+#         for i in range(2):
+#             plot_data(prob, indices_list[i], label_list[i], color_list[i])
+#     if plot_err_flag:
+#         plot_err(prob, range(num_molecule), color_list[2], ecolor)
+#     plt.grid()
+#     plt.legend()
+#     label_name = "+".join(label_list)
+#     plot_name = ("err" if plot_err else "") + ("data" if plot_data else "")
+#     fig_name = prob_name + label_name + plot_name
+#     plt.savefig(f"{fig_name}.pdf")
+#     plt.close()
 
 def plot_sub_fig(prob, prob_name, indices, label, color_list, ecolor, ylim=(0, 1)):
     plt.figure()
@@ -113,25 +121,57 @@ def plot_sub_fig(prob, prob_name, indices, label, color_list, ecolor, ylim=(0, 1
     i = 0 if label == "has" else 1
     plot_data(prob, indices, "data points", color_list[i])
     # plot_err(prob, indices, color_list[2], ecolor)
-    plot_avg(prob, indices, f"Average p_{prob_name}", color_list[2])
+    plot_avg(prob, indices, f"average {prob_name}_prob", color_list[2])
+    if prob_name == 'sol':
+        plot_guess(degeneracy, indices, "average random guess")
     # plt.grid()
     plt.xlabel("Number of atoms (excluding H) in a molecule")
-    plt.ylabel(f"p_{prob_name}")
+    plt.ylabel(f"{prob_name}_prob")
     plt.legend()
     plt.savefig(f"../figure/{path_tcsa}/{file_name}_{label}_{prob_name}.pdf")
     plt.close()
 
+def plot_total_valid_fig(color_list, ylim=(0, 1)):
+    plt.figure()
+    plt.ylim(ylim)
+
+    plot_data(valid_prob, np.arange(len(d_min)), "data points", color_list[0])
+
+    plot_avg(valid_prob, np.arange(len(d_min)), "average p_valid", color_list[2])
+    # plt.grid()
+    plt.xlabel("Number of atoms (excluding H) in a molecule")
+    plt.ylabel("valid_prob")
+    plt.legend()
+    plt.savefig(f"../figure/{path_tcsa}/{file_name}_total_valid.pdf")
+    # plt.show()
+    plt.close()
+
+def plot_total_sol_fig(color_list, ylim=(0, 1)):
+    plt.figure()
+    plt.ylim(ylim)
+
+    plot_data(sol_prob, np.arange(len(d_min)), "data points", color_list[0])
+
+    # plot_avg(sol_prob, np.arange(len(d_min)), "Average p_valid", color_list[2])
+    plot_avg(sol_prob, np.arange(len(d_min)), "average p_valid", color_list[2])
+    plot_guess(degeneracy, np.arange(len(d_min)), "average random guess")
 
 
-indices_list = [has_indices, not_has_indices]
-label_list = ["has", "not_has"]
-# [data, err]
-# color_list = [["#1f77b4", "#aec7e8"], ["#ff7f0e", "#ffbb78"]]
+    # plt.grid()
+    plt.xlabel("Number of atoms (excluding H) in a molecule")
+    plt.ylabel("sol_prob")
+    plt.legend()
+    plt.savefig(f"../figure/{path_tcsa}/{file_name}_total_sol.pdf")
+    # plt.show()
+    plt.close()
+
+
 color_list = ["#1f70a9", "black", "#c22f2f"]
 
-# plot_total_fig(sol_prob, "sol", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0, 1))
-# plot_total_fig(valid_prob, "valid", indices_list=indices_list, label_list=label_list, color_list=color_list, ecolor="grey", ylim=(0.7, 1))
 plot_sub_fig(valid_prob, "valid", has_indices, "has", color_list, ecolor="grey", ylim=(0.0, 1))
 plot_sub_fig(valid_prob, "valid", not_has_indices, "not_has", color_list, ecolor="grey", ylim=(0.0, 1))
 plot_sub_fig(sol_prob, "sol", has_indices, "has", color_list, ecolor="grey")
 plot_sub_fig(sol_prob, "sol", not_has_indices, "not_has", color_list, ecolor="grey")
+
+plot_total_valid_fig(color_list, ylim=(0.0, 1))
+plot_total_sol_fig(color_list)
